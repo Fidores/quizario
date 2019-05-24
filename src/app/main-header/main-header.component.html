@@ -1,0 +1,32 @@
+<div class="header-right">
+    
+    <div class="header-item">
+        <fa-icon [icon]="faBars" size="lg" ></fa-icon>
+    </div>
+
+    <div class="header-item logo-text">
+        Quizario
+    </div>
+
+</div>
+
+<div class="header-middle">
+    <div class="input-sticker">
+        <div class="sticker">
+            <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+        </div>
+        <input type="text" name="search-quiz" placeholder="Szukaj quizu">
+    </div>
+</div>
+
+<div class="header-left">
+
+    <div class="header-item" [tooltip]="'Konto'">
+        <fa-icon [icon]="faUser" size="lg"></fa-icon>
+    </div>
+
+    <div class="header-item" [tooltip]="'Dodaj nowy quiz'">
+        <fa-icon [icon]="faPlusSquare" size="lg"></fa-icon>
+    </div>
+
+</div>

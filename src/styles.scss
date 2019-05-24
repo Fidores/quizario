@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import './app/sass/components/input';
+@import './app/sass/components/tooltip';
+
+body{
+    background-color: #303030;
+    margin: 0px;
+    padding: 0px;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}

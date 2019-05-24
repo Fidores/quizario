@@ -1,0 +1,11 @@
+@function em($pixels, $root-font-size: 16){
+    @if(unitless($pixels)){
+        $pixels: $pixels * 1px;
+    }
+
+    @if(unitless($root-font-size)){
+        $root-font-size: $root-font-size * 1px;
+    }
+
+    @return ($pixels / $root-font-size) * 1em;
+}

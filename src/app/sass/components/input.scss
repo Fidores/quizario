@@ -1,0 +1,33 @@
+@import '../functions/em';
+
+input[type="text"],
+input[type="number"],
+input[type="email"]{
+    background-color: #2E2E2E;
+    border-radius: em(5px);
+    outline: none;
+    border: none;
+    padding: em(12px) em(22px);
+    color: #ffffff;
+    font-size: em(17px);
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+input[type="email"]::placeholder{
+    color: #686868;
+}
+
+.input-sticker{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: #2E2E2E;
+    border-radius: em(5px);
+    padding: 0px em(10px);
+
+    .sticker{
+        color: #686868;
+    }
+}

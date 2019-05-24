@@ -1,0 +1,10 @@
+@import '../functions/em';
+
+.tooltip{
+    position: absolute;
+    background-color: black;
+    padding: em(5px) em(10px);
+    border-radius: em(3px);
+    font-size: em(14px);
+    text-align: center;
+}
