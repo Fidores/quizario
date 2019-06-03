@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import './app/sass/components/input';
 @import './app/sass/components/tooltip';
+@import './app/sass/components/buttons';
+@import './app/sass/components/colours';
 
 body{
-    background-color: #303030;
+    background-color: $dark-primary-color;
     margin: 0px;
     padding: 0px;
     color: #FFFFFF;
@@ -12,4 +14,13 @@ body{
 
 *, *::after, *::before{
     box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+a:link, a:visited, a{
+    color: $accent-color;
 }

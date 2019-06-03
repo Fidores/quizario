@@ -2,19 +2,36 @@
 
 input[type="text"],
 input[type="number"],
-input[type="email"]{
-    background-color: #2E2E2E;
+input[type="email"],
+input[type="password"]{
+    background-color: #3D3D3D;
     border-radius: em(5px);
     outline: none;
     border: none;
     padding: em(12px) em(22px);
     color: #ffffff;
     font-size: em(17px);
+    width: 100%;
+}
+
+input[type="text"].valid,
+input[type="number"].valid,
+input[type="email"].valid,
+input[type="password"].valid{
+    box-shadow: 0px 0px 0px 2px #0F8F2B;
+}
+
+input[type="text"].invalid,
+input[type="number"].invalid,
+input[type="email"].invalid,
+input[type="password"].invalid{
+    box-shadow: 0px 0px 0px 2px rgb(161, 45, 19);
 }
 
 input[type="text"]::placeholder,
 input[type="number"]::placeholder,
-input[type="email"]::placeholder{
+input[type="email"]::placeholder,
+input[type="password"]::placeholder{
     color: #686868;
 }
 
@@ -23,11 +40,39 @@ input[type="email"]::placeholder{
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    background-color: #2E2E2E;
+    background-color: #3D3D3D;
     border-radius: em(5px);
     padding: 0px em(10px);
 
     .sticker{
         color: #686868;
     }
+}
+
+.input-group{
+    margin: 20px 0px;
+}
+
+.hint{
+    font-size: em(13px);
+    color: #808080;
+}
+
+.hint-error{
+    color: rgb(236, 70, 32);
+}
+
+.input-inline-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 20px 0px;
+}
+
+.input-inline-group > input{
+    margin-left: 20px;
+}
+
+.input-inline-group > input:first-child{
+    margin-left: 0px;
 }

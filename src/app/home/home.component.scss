@@ -1,0 +1,62 @@
+@import '../sass/components/colours';
+
+.quizzes{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+
+    &-row{
+
+        &-title{
+            padding-left: 20px;
+        }
+
+        &-content{
+            width: 1500px;
+
+            &-quiz{
+                background-color: $light-primary-color;
+                height: 200px;
+                border-radius: 10px;
+                margin: 0px 20px;
+                cursor: pointer;
+                transition: background-color 0.2s ease-out;
+
+                &-title{
+                    text-align: center;
+                }
+
+                &-image{
+                    width: 133px;
+                    margin: 0px auto;
+                }
+
+                &:hover{
+                    background-color: $primary-color;
+                }
+            }
+        }
+    }
+    
+    &-prev, &-next{
+        background-color: #2E2E2E;
+        width: 100px;
+        height: 200px;
+        align-self: end;
+        border-radius: 10px;
+        border: none;
+        color: #FFFFFF;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &-prev{
+        justify-self: end;
+        margin-right: 20px;
+    }
+
+    &-next{
+        margin-left: 20px;
+    }
+}

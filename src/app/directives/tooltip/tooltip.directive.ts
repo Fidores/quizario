@@ -71,4 +71,3 @@ export class TooltipDirective implements OnInit{
   }
 
 }
-

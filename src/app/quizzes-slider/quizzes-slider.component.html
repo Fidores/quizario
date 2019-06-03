@@ -1,0 +1,37 @@
+<section class="quizzes">
+
+    <button class="quizzes-prev" #prevBtn>
+      <fa-icon [icon]="faChevronLeft" size="4x"></fa-icon>
+    </button>
+  
+    <div class="quizzes-row">
+  
+      <div class="quizzes-row-title">
+        <h2>{{ section.title }}</h2>
+      </div>
+  
+      <ngx-slick-carousel class="quizzes-row-content" [config]="sliderConfig">
+        
+        <div ngxSlickItem class="quizzes-row-content-quiz" *ngFor="let quiz of section.quizzes">
+  
+          <div class="quizzes-row-content-quiz-title">
+            <h4>{{ quiz.title }}</h4>
+          </div>
+  
+          <div class="quizzes-row-content-quiz-image">
+            <img [src]="quiz.img">
+          </div>
+  
+        </div>
+  
+      </ngx-slick-carousel>
+  
+    </div>
+  
+    <button class="quizzes-next" #nextBtn>
+      <fa-icon [icon]="faChevronRight" size="4x"></fa-icon>
+    </button>
+  
+  </section>
+  
+  
