@@ -8,24 +8,33 @@ export class OverlayService {
 
   constructor() { }
 
-  private readonly addElementListener = new Subject();
-  private readonly destroyElementListener = new Subject();
+  private readonly _addElementListener = new Subject();
+  private readonly _destroyElementListener = new Subject();
+  private readonly _fullScreenListener = new Subject();
   
   appendElement(el: HTMLElement): HTMLElement{
-    this.addElementListener.next(el);
+    this._addElementListener.next(el);
     return el;
   }
 
   deleteElement(el: HTMLElement){
-    this.destroyElementListener.next(el);
+    this._destroyElementListener.next(el);
     return el;
   }
 
+  fullScreen(status: boolean) {
+    this._fullScreenListener.next(status);
+  }
+
   get addElListener(){
-    return this.addElementListener;
+    return this._addElementListener;
   }
 
   get deleteElListener(){
-    return this.destroyElementListener;
+    return this._destroyElementListener;
+  }
+
+  get fullScreenListener() {
+    return this._fullScreenListener;
   }
 }

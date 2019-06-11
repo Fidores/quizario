@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding, ViewChild, ElementRef } from '@angular/core';
 import { faHome, faBars } from '@fortawesome/free-solid-svg-icons';
 import { SideNavService } from '../services/side-nav/side-nav.service';
+import { OverlayService } from '../services/overlay/overlay.service';
 
 @Component({
   selector: 'side-nav',
@@ -10,7 +11,8 @@ import { SideNavService } from '../services/side-nav/side-nav.service';
 export class SideNavComponent implements OnInit {
 
   constructor(
-    private readonly sideNav: SideNavService
+    private readonly sideNav: SideNavService,
+    private readonly Overlay: OverlayService
   ) { }
 
   faHome = faHome;
@@ -25,6 +27,7 @@ export class SideNavComponent implements OnInit {
 
   close() {
     this.status = 'closed';
+    this.Overlay.fullScreen(false);
   }
 
   open() {

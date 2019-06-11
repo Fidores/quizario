@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, HostBinding } from '@angular/core';
 import { OverlayService } from '../services/overlay/overlay.service';
 
 @Component({
@@ -14,9 +14,12 @@ export class OverlayComponent implements OnInit {
     private hostEl: ElementRef
   ) { }
 
+  fullScreen: boolean = false;
+
   ngOnInit() {
     this.Overlay.addElListener.subscribe(el => this.renderer.appendChild(this.hostEl.nativeElement, el));
     this.Overlay.deleteElListener.subscribe(el => this.renderer.removeChild(this.hostEl.nativeElement, el));
+    this.Overlay.fullScreenListener.subscribe(v => this.fullScreen = v as boolean);
   }
 
 }
