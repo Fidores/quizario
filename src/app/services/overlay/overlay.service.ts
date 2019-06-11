@@ -8,8 +8,8 @@ export class OverlayService {
 
   constructor() { }
 
-  private addElementListener = new Subject();
-  private destroyElementListener = new Subject();
+  private readonly addElementListener = new Subject();
+  private readonly destroyElementListener = new Subject();
   
   appendElement(el: HTMLElement): HTMLElement{
     this.addElementListener.next(el);

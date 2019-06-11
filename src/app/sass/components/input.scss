@@ -50,7 +50,7 @@ input[type="password"]::placeholder{
 }
 
 .input-group{
-    margin: 20px 0px;
+    margin: em(20px) 0px;
 }
 
 .hint{
@@ -66,11 +66,11 @@ input[type="password"]::placeholder{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin: 20px 0px;
+    margin: em(20px) 0px;
 }
 
 .input-inline-group > input{
-    margin-left: 20px;
+    margin-left: em(20px);
 }
 
 .input-inline-group > input:first-child{

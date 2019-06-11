@@ -1,0 +1,56 @@
+@import '../sass/functions/em';
+@import '../sass/components/colours';
+
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #1C1C1C;
+    transform: translateX(em(-240px));
+    transition: transform .3s ease-in-out;
+    height: 100vh;
+}
+
+:host.closed {
+    transform: translateX(-100%);
+}
+
+:host.opened {
+    transform: translateX(0);
+}
+
+.side-nav__item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: em(240px);
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+    height: em(64px);
+}
+
+.side-nav__item:hover {
+    background-color: rgb(44, 44, 44);
+}
+
+.side-nav__item--icon {
+    padding-left: em(32px);
+}
+
+.side-nav__item--text {
+    padding-left: em(32px);
+}
+
+.logo{
+    background-color: $primary-color;
+}
+
+.logo:hover{
+    background-color: $primary-color;
+}
+
+.logo > .side-nav__item--text{
+    font-weight: 900;
+    font-size: em(24px);
+}

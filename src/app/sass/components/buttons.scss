@@ -1,17 +1,18 @@
 @import './colours';
+@import '../functions/em';
 
-button.btn{
+.btn{
     background-color: $secondary-color;
     border: none;
     outline: none;
-    padding: 10px;
-    border-radius: 3px;
+    padding: em(10px);
+    border-radius: em(3px);
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
 }
 
-button.btn.btn-block{
+.btn.btn-block{
     width: 100%;
 }
 

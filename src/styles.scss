@@ -10,10 +10,12 @@ body{
     padding: 0px;
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-size: 100%;
 }
 
 *, *::after, *::before{
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 img{

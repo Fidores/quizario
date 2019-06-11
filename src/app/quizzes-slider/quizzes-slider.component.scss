@@ -1,4 +1,5 @@
 @import '../sass/components/colours';
+@import '../sass/functions/em';
 
 .quizzes{
     display: grid;
@@ -7,17 +8,17 @@
     &-row{
 
         &-title{
-            padding-left: 20px;
+            padding-left: em(20px);
         }
 
         &-content{
-            width: 1500px;
+            width: em(1500px);
 
             &-quiz{
                 background-color: $light-primary-color;
-                height: 200px;
-                border-radius: 10px;
-                margin: 0px 20px;
+                height: em(200px);
+                border-radius: em(10px);
+                margin: 0px em(20px);
                 cursor: pointer;
                 transition: background-color 0.2s ease-out;
 
@@ -26,7 +27,7 @@
                 }
 
                 &-image{
-                    width: 133px;
+                    width: em(133px);
                     margin: 0px auto;
                 }
 
@@ -39,10 +40,10 @@
     
     &-prev, &-next{
         background-color: #2E2E2E;
-        width: 100px;
-        height: 200px;
+        width: em(100px);
+        height: em(200px);
         align-self: end;
-        border-radius: 10px;
+        border-radius: em(10px);
         border: none;
         color: #FFFFFF;
         display: grid;
@@ -53,10 +54,10 @@
 
     &-prev{
         justify-self: end;
-        margin-right: 20px;
+        margin-right: em(20px);
     }
 
     &-next{
-        margin-left: 20px;
+        margin-left: em(20px);
     }
 }

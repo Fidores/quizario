@@ -1,3 +1,4 @@
+import { SideNavService } from './../services/side-nav/side-nav.service';
 import { Component, OnInit } from '@angular/core';
 import { faBars, faUser, faPlusSquare, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,7 +9,9 @@ import { faBars, faUser, faPlusSquare, faSearch } from '@fortawesome/free-solid-
 })
 export class MainHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly sideNav: SideNavService
+  ) { }
 
   faBars = faBars;
   faUser = faUser;
@@ -16,6 +19,10 @@ export class MainHeaderComponent implements OnInit {
   faSearch = faSearch;
 
   ngOnInit() {
+  }
+
+  openSideNav() {
+    this.sideNav.open();
   }
 
 }

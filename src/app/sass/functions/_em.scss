@@ -7,5 +7,5 @@
         $root-font-size: $root-font-size * 1px;
     }
 
-    @return ($pixels / $root-font-size) * 1em;
+    @return ($pixels / $root-font-size) * 1rem;
 }
