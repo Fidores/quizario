@@ -1,3 +1,6 @@
-<div class="container" [ngClass]="{
-    'full-screen': fullScreen
-}"></div>
+<div 
+#fullScreenContainer
+class="container"
+*ngIf="fullScreen"
+@fullscreen
+(click)="notifyClick()"></div>

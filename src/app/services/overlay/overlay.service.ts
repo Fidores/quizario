@@ -8,11 +8,12 @@ export class OverlayService {
 
   constructor() { }
 
-  private readonly _addElementListener = new Subject();
-  private readonly _destroyElementListener = new Subject();
-  private readonly _fullScreenListener = new Subject();
+  private readonly _addElementListener: Subject<HTMLElement> = new Subject();
+  private readonly _destroyElementListener: Subject<HTMLElement> = new Subject();
+  private readonly _fullScreenListener: Subject<boolean> = new Subject();
+  private readonly _fullScreenClickListener: Subject<null> = new Subject();
   
-  appendElement(el: HTMLElement): HTMLElement{
+  appendElement(el: HTMLElement) {
     this._addElementListener.next(el);
     return el;
   }
@@ -22,8 +23,12 @@ export class OverlayService {
     return el;
   }
 
-  fullScreen(status: boolean) {
-    this._fullScreenListener.next(status);
+  fullScreen(open: boolean) {
+    this._fullScreenListener.next(open);
+  }
+
+  clickedOnFullScreen() {
+    this.fullScreenClickListener.next();
   }
 
   get addElListener(){
@@ -36,5 +41,9 @@ export class OverlayService {
 
   get fullScreenListener() {
     return this._fullScreenListener;
+  }
+
+  get fullScreenClickListener() {
+    return this._fullScreenClickListener;
   }
 }

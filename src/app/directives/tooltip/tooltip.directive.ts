@@ -5,7 +5,7 @@ import { isOffscreen } from 'src/app/helpers/isOffscreen';
 @Directive({
   selector: '[tooltip]'
 })
-export class TooltipDirective implements OnInit{
+export class TooltipDirective implements OnInit {
 
   constructor(
     private hostRef: ElementRef,

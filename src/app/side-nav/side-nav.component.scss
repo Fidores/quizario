@@ -10,7 +10,7 @@
     transform: translateX(em(-240px));
     transition: transform .3s ease-in-out;
     height: 100vh;
-    z-index: 15;
+    z-index: 100;
 }
 
 :host.closed {

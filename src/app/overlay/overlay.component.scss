@@ -1,13 +1,12 @@
 @import '../sass/animations/fadeIn';
 
-.container.full-screen {
+.container {
     position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.473);
-    z-index: 14;
-    opacity: 1;
-    animation: fadeIn .2s ease-out;
+    z-index: 99;
+    // animation: fadeIn .2s ease-out;
 }
