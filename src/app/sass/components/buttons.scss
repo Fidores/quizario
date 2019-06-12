@@ -10,13 +10,13 @@
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-}
 
-.btn.btn-block{
-    width: 100%;
-}
+    &.btn-block{
+        width: 100%;
+    }
 
-button:disabled{
-    color: #000000;
-    opacity: 0.6;
+    &:disabled{
+        color: #000000;
+        opacity: 0.6;
+    }
 }

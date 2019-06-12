@@ -1,9 +1,6 @@
 @import '../functions/em';
 
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="password"]{
+.input-control{
     background-color: #3D3D3D;
     border-radius: em(5px);
     outline: none;
@@ -12,27 +9,18 @@ input[type="password"]{
     color: #ffffff;
     font-size: em(17px);
     width: 100%;
-}
 
-input[type="text"].valid,
-input[type="number"].valid,
-input[type="email"].valid,
-input[type="password"].valid{
-    box-shadow: 0px 0px 0px 2px #0F8F2B;
-}
+    &.valid{
+        box-shadow: 0px 0px 0px em(2px) #0F8F2B;
+    }
 
-input[type="text"].invalid,
-input[type="number"].invalid,
-input[type="email"].invalid,
-input[type="password"].invalid{
-    box-shadow: 0px 0px 0px 2px rgb(161, 45, 19);
-}
+    &.invalid{
+        box-shadow: 0px 0px 0px em(2px) rgb(161, 45, 19);
+    }
 
-input[type="text"]::placeholder,
-input[type="number"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder{
-    color: #686868;
+    &::placeholder{
+        color: #686868;
+    }
 }
 
 .input-sticker{
@@ -67,12 +55,12 @@ input[type="password"]::placeholder{
     flex-direction: row;
     flex-wrap: nowrap;
     margin: em(20px) 0px;
-}
 
-.input-inline-group > input{
-    margin-left: em(20px);
-}
+    .input-control{
+        margin-left: em(20px);
 
-.input-inline-group > input:first-child{
-    margin-left: 0px;
+        &:first-child{
+            margin-left: 0px;
+        }
+    }
 }
