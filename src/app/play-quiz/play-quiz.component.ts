@@ -5,6 +5,7 @@ import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { QuizzesService } from '../services/quizzes/quizzes.service';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'play-quiz',
@@ -22,6 +23,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   faArrowRight = faArrowRight;
 
   quizSubscription: Subscription;
+  env = environment;
 
   index = 0;
   quiz: Quiz;

@@ -1,3 +1,4 @@
+import { AuthGuard } from './route-guards/auth.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,8 +10,8 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'play-quiz/:id', component: PlayQuizComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

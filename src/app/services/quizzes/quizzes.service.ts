@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from 'src/app/models/quiz';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class QuizzesService {
     private readonly http: HttpClient
   ) { }
 
-  url = 'http://localhost:3000';
+  url = environment.apiOrigin;
 
   // getHomeSections(){
   //   return of([
@@ -56,14 +57,14 @@ export class QuizzesService {
   // }
 
   getHomeSections() {
-    return this.http.get(this.url);
+    return this.http.get(environment.backendOrigin);
   }
 
   getQuizz(id: string): Observable<Quiz>{
-    return this.http.get<Quiz>(`${this.url}/api/quizzes/${id}`);
+    return this.http.get<Quiz>(`${this.url}/quizzes/${id}`);
   }
 
   getAllQuizzes(): Observable<Quiz[]>{
-    return this.http.get<Quiz[]>(`${this.url}/api/quizzes`);
+    return this.http.get<Quiz[]>(`${this.url}quizzes`);
   }
 }

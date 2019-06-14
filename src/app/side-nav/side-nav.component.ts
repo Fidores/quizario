@@ -12,7 +12,7 @@ export class SideNavComponent implements OnInit {
 
   constructor(
     private readonly sideNav: SideNavService,
-    private readonly Overlay: OverlayService
+    private readonly overlay: OverlayService
   ) { }
 
   faHome = faHome;
@@ -23,17 +23,17 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     this.sideNav.closeListeaner.subscribe(className => this.status = className as string);
     this.sideNav.openListeaner.subscribe(className => this.status = className as string);
-    this.Overlay.fullScreenClickListener.subscribe(click => this.close());
+    this.overlay.fullScreenClickListener.subscribe(click => this.close());
   }
 
   close() {
     this.status = 'closed';
-    this.Overlay.fullScreen(false);
+    this.overlay.fullScreen(false);
   }
 
   open() {
     this.status = 'opened';
-    this.Overlay.fullScreen(true);
+    this.overlay.fullScreen(true);
   }
 
 }

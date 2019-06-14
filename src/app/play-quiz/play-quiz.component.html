@@ -18,7 +18,7 @@
       {{ question?.title }}
     </h3>
 
-    <div class="play-quiz__question--image">
+    <div class="play-quiz__question--image" [style.background-image]="'url('+ env.backendOrigin + question?.img +')'">
 
     </div>
 

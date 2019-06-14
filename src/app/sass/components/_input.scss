@@ -10,11 +10,11 @@
     font-size: em(17px);
     width: 100%;
 
-    &.valid{
+    &.ng-valid.ng-touched{
         box-shadow: 0px 0px 0px em(2px) #0F8F2B;
     }
 
-    &.invalid{
+    &.ng-invalid.ng-touched{
         box-shadow: 0px 0px 0px em(2px) rgb(161, 45, 19);
     }
 

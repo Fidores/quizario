@@ -1,19 +1,40 @@
-<form action="#" class="account-form">
+<form (ngSubmit)="logInUser(logInForm)" action="#" class="account-form" #logInForm="ngForm">
 
   <h1>Zaloguj się</h1>
 
   <div class="input-group">
-    <input type="email" class="input-control" placeholder="Email...">
+    <input 
+      name="email" 
+      #email="ngModel" 
+      email
+      maxlength="128"
+      class="input-control" 
+      placeholder="Email..." 
+      [(ngModel)]="logIn.email" 
+      required >
+
+    <p class="hint-error" *ngIf="email.hasError('required') && email.touched">Email jest <strong>wymagany.</strong></p>
+    <p class="hint-error" *ngIf="email.hasError('email') && email.touched">Podaj <strong>poprawny</strong> adres email.</p>
   </div>
 
   <div class="input-group">
-    <input type="password" class="input-control" placeholder="Hasło...">
+    <input 
+      name="password" 
+      #password="ngModel" 
+      type="password" 
+      class="input-control"
+      placeholder="Hasło..." 
+      [(ngModel)]="logIn.password"
+      maxlength="255" 
+      required>
+
+    <p class="hint-error" *ngIf="password.hasError('required') && password.touched">Hasło jest <strong>wymagane.</strong></p>
   </div>
 
   <p>Nie masz jeszcze konta ? <a routerLink="/signup">Załóż konto tutaj</a></p>
 
   <div class="input-group">
-    <button type="submit" class="btn btn-block">
+    <button type="submit" class="btn btn-block" [disabled]="logInForm.invalid">
       Zaloguj się
     </button>
   </div>

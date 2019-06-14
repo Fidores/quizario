@@ -17,6 +17,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { QuizzesSliderComponent } from './quizzes-slider/quizzes-slider.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

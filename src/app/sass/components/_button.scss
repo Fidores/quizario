@@ -18,5 +18,6 @@
     &:disabled{
         color: #000000;
         opacity: 0.6;
+        cursor: default;
     }
 }

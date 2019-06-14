@@ -19,7 +19,8 @@
           </div>
   
           <div class="quizzes-row-content-quiz-image">
-            <img [src]="quiz.img">
+            <!-- <img [src]="quiz.img || '../../assets/faq.png'"> -->
+            <img src="{{ quiz.img ? env.backendOrigin + quiz.img : '../../assets/faq.png' }}">
           </div>
   
         </div>
@@ -33,5 +34,3 @@
     </button>
   
   </section>
-  
-  

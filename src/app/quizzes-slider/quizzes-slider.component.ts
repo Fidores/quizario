@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { environment } from './../../environments/environment';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Element } from '@angular/compiler';
+
 
 
 @Component({
@@ -14,6 +16,8 @@ export class QuizzesSliderComponent implements OnInit {
 
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
+
+  env = environment
 
   @Input('section') section;
   @ViewChild('prevBtn') prevArrow: ElementRef<Element>;
