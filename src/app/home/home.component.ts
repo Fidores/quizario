@@ -1,6 +1,6 @@
 import { QuizzesService } from './../services/quizzes/quizzes.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -21,14 +21,4 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.sections = this.quizzesService.getHomeSections();
   }
-
-  getSliderConfig(prevArr: ElementRef, nextArr: ElementRef){
-    return {
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      prevArrow: prevArr,
-      nextArrow: nextArr
-    }
-  }
-
 }

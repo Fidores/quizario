@@ -12,7 +12,7 @@
   
       <ngx-slick-carousel class="quizzes-row-content" [config]="sliderConfig">
         
-        <div ngxSlickItem class="quizzes-row-content-quiz" *ngFor="let quiz of section.quizzes">
+        <div ngxSlickItem class="quizzes-row-content-quiz" *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]">
   
           <div class="quizzes-row-content-quiz-title">
             <h4>{{ quiz.title }}</h4>

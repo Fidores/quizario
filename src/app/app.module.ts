@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { QuizzesSliderComponent } from './quizzes-slider/quizzes-slider.component';
+import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { QuizzesSliderComponent } from './quizzes-slider/quizzes-slider.componen
     NotFoundComponent,
     SignUpComponent,
     SideNavComponent,
-    QuizzesSliderComponent
+    QuizzesSliderComponent,
+    PlayQuizComponent,
   ],
   imports: [
     BrowserModule,

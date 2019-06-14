@@ -2,7 +2,7 @@
 @import '../animations/fadeIn';
 
 .tooltip{
-    position: absolute;
+    position: fixed;
     background-color: black;
     padding: em(5px) em(10px);
     border-radius: em(3px);

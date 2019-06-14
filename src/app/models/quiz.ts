@@ -9,8 +9,9 @@ export interface Quiz {
 export interface Question {
     title: string,
     answers: [ Answer ],
-    rightAnsert: string,
-    img: string 
+    rightAnswer: string,
+    img?: string ,
+    answeredCorrectly?: number
 }
 
 export interface Answer {

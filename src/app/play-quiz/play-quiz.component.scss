@@ -1,0 +1,89 @@
+@import '../sass/components/colours';
+@import '../sass/functions/em';
+@import '../sass/abstract/reset-button';
+
+.play-quiz {
+    width: 50vw;
+    margin: em(20px) auto 0px auto;
+
+    &__actions {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        margin-bottom: em(10px);
+        padding: 0px 20px;
+
+        .ng-fa-icon { cursor: pointer; }
+
+        &--close {
+            @include reset-button();
+            justify-self: start;
+        }
+
+        &--timer {
+            text-align: center;
+            font-weight: 900;
+        }
+
+        &--next {
+            @include reset-button();
+            justify-self: end;
+        }
+    }
+
+    &__question {
+        background-color: $light-primary-color;
+        border-radius: em(3px);
+        padding: em(15px);
+
+        &--title {
+            text-align: center;
+            font-weight: 900;
+        }
+
+        &--image {
+            background-image: url('../../assets/JavaScript-logo.png');
+            background-position: center center;
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            max-width: em(700px);
+            height: em(300px);
+            margin: em(20px) auto;
+        }
+
+        &--answers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, em(65px));
+            grid-gap: em(20px);
+
+            &__answer {
+                @include reset-button();
+                background-color: $answer-color;
+                border-radius: em(3px);
+                display: flex;
+                align-items: center;
+                padding: 0 em(15px);
+                cursor: pointer;
+                transition: box-shadow .2s ease-in-out;
+                font-size: 1.3rem;
+
+                &.answered.valid {
+                    background-color: $answer-valid-color;
+                }
+
+                &.answered.invalid {
+                    background-color: $answer-invalid-color;
+                }
+
+                &.answered.choosen {
+                    box-shadow: 0px 0px 0px em(3px) $accent-color; 
+                }
+
+                &:hover {
+                    box-shadow: 0px 0px 0px em(1px) $accent-color; 
+                }
+            }
+        }
+    }
+}

@@ -11,14 +11,14 @@
     transition: transform .3s ease-in-out;
     height: 100vh;
     z-index: 100;
-}
 
-:host.closed {
-    transform: translateX(-100%);
-}
+    &.closed{
+        transform: translateX(-100%);
+    }
 
-:host.opened {
-    transform: translateX(0);
+    &.opened {
+        transform: translateX(0);
+    }
 }
 
 .side-nav__item {
@@ -29,29 +29,29 @@
     cursor: pointer;
     transition: background-color .2s ease-in-out;
     height: em(64px);
-}
 
-.side-nav__item:hover {
-    background-color: rgb(44, 44, 44);
-}
-
-.side-nav__item--icon {
-    padding-left: em(32px);
-}
-
-.side-nav__item--text {
-    padding-left: em(32px);
+    &:hover {
+        background-color: rgb(44, 44, 44);
+    }
+    
+    &--icon {
+        padding-left: em(32px);
+    }
+    
+    &--text {
+        padding-left: em(32px);
+    }
 }
 
 .logo{
     background-color: $primary-color;
-}
 
-.logo:hover{
-    background-color: $primary-color;
-}
+    &:hover{
+        background-color: $primary-color;
+    }
 
-.logo > .side-nav__item--text{
-    font-weight: 900;
-    font-size: em(24px);
+    .side-nav__item--text{
+        font-weight: 900;
+        font-size: em(24px);
+    }
 }
