@@ -1,6 +1,6 @@
 <div class="play-quiz">
   <div class="play-quiz__actions">
-    <button class="play-quiz__actions--close">
+    <button class="play-quiz__actions--close" [routerLink]="['/']">
       <fa-icon [icon]="faTimes" size="2x"></fa-icon>
     </button>
 
@@ -13,12 +13,12 @@
     </button>
   </div>
 
-  <div class="play-quiz__question">
+  <div class="play-quiz__question" *ngIf="question">
     <h3 class="play-quiz__question--title">
-      {{ question?.title }}
+      {{ question.title }}
     </h3>
 
-    <div class="play-quiz__question--image" [style.background-image]="'url('+ env.backendOrigin + question?.img +')'">
+    <div class="play-quiz__question--image" *ngIf="question.img" [style.background-image]="'url('+ environment.backendOrigin + question.img +')'">
 
     </div>
 
@@ -26,38 +26,34 @@
       <button
         class="play-quiz__question--answers__answer" 
         [ngClass]="{ 
-          valid: question?.rightAnswer === 'a', 
-          invalid: question?.rightAnswer !== 'a', 
-          answered: choosenAnswer,
+          valid: choosenAnswer && question.rightAnswer === 'a', 
+          invalid: choosenAnswer && question.rightAnswer !== 'a', 
           choosen: choosenAnswer === 'a' }" 
-        (click)="chooseAnswer('a')">a) {{ question?.answers['a'] }}</button>
+        (click)="chooseAnswer('a')">a) {{ question.answers['a'] }}</button>
 
       <button 
         class="play-quiz__question--answers__answer"
         [ngClass]="{ 
-          valid: question?.rightAnswer === 'b', 
-          invalid: question?.rightAnswer !== 'b', 
-          answered: choosenAnswer,
+          valid: choosenAnswer &&  question.rightAnswer === 'b', 
+          invalid: choosenAnswer &&  question.rightAnswer !== 'b', 
           choosen: choosenAnswer === 'b' }"
-        (click)="chooseAnswer('b')">b) {{ question?.answers['b'] }}</button>
+        (click)="chooseAnswer('b')">b) {{ question.answers['b'] }}</button>
 
       <button 
         class="play-quiz__question--answers__answer"
         [ngClass]="{ 
-          valid: question?.rightAnswer === 'c', 
-          invalid: question?.rightAnswer !== 'c', 
-          answered: choosenAnswer,
+          valid: choosenAnswer &&  question.rightAnswer === 'c', 
+          invalid: choosenAnswer &&  question.rightAnswer !== 'c', 
           choosen: choosenAnswer === 'c'}" 
-        (click)="chooseAnswer('c')">c) {{ question?.answers['c'] }}</button>
+        (click)="chooseAnswer('c')">c) {{ question.answers['c'] }}</button>
       
       <button 
         class="play-quiz__question--answers__answer"
         [ngClass]="{ 
-          valid: question?.rightAnswer === 'd', 
-          invalid: question?.rightAnswer !== 'd', 
-          answered: choosenAnswer,
+          valid: choosenAnswer &&  question.rightAnswer === 'd', 
+          invalid: choosenAnswer &&  question.rightAnswer !== 'd', 
           choosen: choosenAnswer === 'd'}" 
-        (click)="chooseAnswer('d')">d) {{ question?.answers['d'] }}</button>
+        (click)="chooseAnswer('d')">d) {{ question.answers['d'] }}</button>
     </div>
   </div>
 </div>

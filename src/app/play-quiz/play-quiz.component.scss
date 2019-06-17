@@ -68,15 +68,15 @@
                 transition: box-shadow .2s ease-in-out;
                 font-size: 1.3rem;
 
-                &.answered.valid {
+                &.valid {
                     background-color: $answer-valid-color;
                 }
 
-                &.answered.invalid {
+                &.invalid {
                     background-color: $answer-invalid-color;
                 }
 
-                &.answered.choosen {
+                &.choosen {
                     box-shadow: 0px 0px 0px em(3px) $accent-color; 
                 }
 

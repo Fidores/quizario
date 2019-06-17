@@ -15,7 +15,7 @@ export class AuthService {
   ) { }
 
   logIn(email: string, password: string): Observable<string> {
-    return this.http.post<string>(environment.apiOrigin + '/auth', JSON.stringify({ password, email }), {
+    return this.http.post<string>(environment.apiOrigin + '/auth', { password, email }, {
       headers: {
         'Content-Type': 'application/json'
       },

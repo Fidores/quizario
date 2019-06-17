@@ -1,5 +1,5 @@
 import { Question, Quiz } from './../models/quiz';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './play-quiz.component.html',
   styleUrls: ['./play-quiz.component.scss']
 })
-export class PlayQuizComponent implements OnInit, OnDestroy {
+export class PlayQuizComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -22,8 +22,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   faTimes = faTimes;
   faArrowRight = faArrowRight;
 
-  quizSubscription: Subscription;
-  env = environment;
+  environment = environment;
 
   index = 0;
   quiz: Quiz;
@@ -32,16 +31,13 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   choosenAnswer: string;
 
   ngOnInit() {
-    this.quizSubscription = this.route.params.pipe(switchMap(params => this.quizzes.getQuizz(params.id)))
-      .subscribe(quiz => {
-        this.quiz = quiz;
-        this.questions = this.quiz.questions;
-        this.question = this.quiz.questions[0];
-      });
-  }
-
-  ngOnDestroy() {
-    this.quizSubscription.unsubscribe();
+    this.route.params.pipe(switchMap(params => this.quizzes.getQuizz(params.id)))
+    .pipe(take(1))
+    .subscribe(quiz => {
+      this.quiz = quiz;
+      this.questions = this.quiz.questions;
+      this.question = this.quiz.questions[0];
+    });
   }
 
   next() {
