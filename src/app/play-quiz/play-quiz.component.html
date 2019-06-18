@@ -23,37 +23,16 @@
     </div>
 
     <div class="play-quiz__question--answers">
+
       <button
         class="play-quiz__question--answers__answer" 
+        *ngFor="let answer of question.answers | keyvalue"
         [ngClass]="{ 
-          valid: choosenAnswer && question.rightAnswer === 'a', 
-          invalid: choosenAnswer && question.rightAnswer !== 'a', 
-          choosen: choosenAnswer === 'a' }" 
-        (click)="chooseAnswer('a')">a) {{ question.answers['a'] }}</button>
-
-      <button 
-        class="play-quiz__question--answers__answer"
-        [ngClass]="{ 
-          valid: choosenAnswer &&  question.rightAnswer === 'b', 
-          invalid: choosenAnswer &&  question.rightAnswer !== 'b', 
-          choosen: choosenAnswer === 'b' }"
-        (click)="chooseAnswer('b')">b) {{ question.answers['b'] }}</button>
-
-      <button 
-        class="play-quiz__question--answers__answer"
-        [ngClass]="{ 
-          valid: choosenAnswer &&  question.rightAnswer === 'c', 
-          invalid: choosenAnswer &&  question.rightAnswer !== 'c', 
-          choosen: choosenAnswer === 'c'}" 
-        (click)="chooseAnswer('c')">c) {{ question.answers['c'] }}</button>
-      
-      <button 
-        class="play-quiz__question--answers__answer"
-        [ngClass]="{ 
-          valid: choosenAnswer &&  question.rightAnswer === 'd', 
-          invalid: choosenAnswer &&  question.rightAnswer !== 'd', 
-          choosen: choosenAnswer === 'd'}" 
-        (click)="chooseAnswer('d')">d) {{ question.answers['d'] }}</button>
+          valid: choosenAnswer && question.rightAnswer === answer.key, 
+          invalid: choosenAnswer && question.rightAnswer !== answer.key, 
+          choosen: choosenAnswer === answer.key }" 
+        (click)="chooseAnswer(answer.key)">{{ answer.key }} {{ answer.value }}</button>
+        
     </div>
   </div>
 </div>

@@ -9,12 +9,13 @@
     color: #ffffff;
     font-size: em(17px);
     width: 100%;
+    transition: box-shadow .2s ease-in-out;
 
-    &.ng-valid.ng-touched{
+    &.ng-valid.ng-touched, &.valid.ng-touched {
         box-shadow: 0px 0px 0px em(2px) #0F8F2B;
     }
 
-    &.ng-invalid.ng-touched{
+    &.ng-invalid.ng-touched, &.invalid.ng-touched {
         box-shadow: 0px 0px 0px em(2px) rgb(161, 45, 19);
     }
 

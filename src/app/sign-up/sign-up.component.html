@@ -1,28 +1,28 @@
-<form action="#" class="account-form">
+<form action="#" class="account-form" [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm)">
 
   <h1>Zarejestruj się</h1>
 
   <div class="input-inline-group">
-    <input type="text" class="input-control" placeholder="Imię">
-    <input type="text" class="input-control" placeholder="Nazwisko">
+    <input type="text" class="input-control" placeholder="Imię" formControlName="name">
+    <input type="text" class="input-control" placeholder="Nazwisko" formControlName="surname">
   </div>
 
   <div class="input-group">
-    <input type="email" class="input-control" placeholder="Email...">
+    <input type="email" class="input-control" placeholder="Email..." formControlName="email">
   </div>
 
   <div class="input-group">
-    <input type="password" class="input-control" placeholder="Hasło...">
+    <input type="password" class="input-control" placeholder="Hasło..." formControlName="password">
   </div>
 
   <div class="input-group">
-    <input type="password" class="input-control" placeholder="Powtórz hasło...">
+    <input type="password" class="input-control" placeholder="Powtórz hasło..." formControlName="confirmPassword" [ngClass]="{ 'invalid': password.value !== confirmPassword.value }">
   </div>
 
   <p>Masz już konto ? <a routerLink="/login">Zaloguj się tutaj</a></p>
 
   <div class="input-group">
-    <button type="submit" class="btn btn-block">
+    <button type="submit" class="btn btn-block" [disabled]="signUpForm.invalid">
       Zaloguj się
     </button>
   </div>
