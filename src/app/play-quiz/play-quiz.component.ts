@@ -1,10 +1,9 @@
 import { Question, Quiz } from './../models/quiz';
 import { switchMap, take } from 'rxjs/operators';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from '@angular/core';
+import { faTimes, faArrowRight, faEye } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { QuizzesService } from '../services/quizzes/quizzes.service';
-import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,6 +20,7 @@ export class PlayQuizComponent implements OnInit {
 
   faTimes = faTimes;
   faArrowRight = faArrowRight;
+  faEye = faEye;
 
   environment = environment;
 
@@ -29,6 +29,7 @@ export class PlayQuizComponent implements OnInit {
   questions: Question[] = [];
   question: Question;
   choosenAnswer: string;
+  isFinished: boolean = true;
 
   ngOnInit() {
     this.route.params.pipe(switchMap(params => this.quizzes.getQuizz(params.id)))
@@ -41,7 +42,10 @@ export class PlayQuizComponent implements OnInit {
   }
 
   next() {
-    if(this.index + 1 > this.questions.length - 1) return;
+    if(this.index + 1 > this.questions.length - 1) {
+      this.isFinished = true;
+      return;
+    }
     this.choosenAnswer = '';
     this.index++;
     this.question = this.questions[this.index];

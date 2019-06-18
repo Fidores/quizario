@@ -1,4 +1,5 @@
-<div class="play-quiz">
+<div class="play-quiz" *ngIf="!isFinished else summary">
+
   <div class="play-quiz__actions">
     <button class="play-quiz__actions--close" [routerLink]="['/']">
       <fa-icon [icon]="faTimes" size="2x"></fa-icon>
@@ -31,8 +32,65 @@
           valid: choosenAnswer && question.rightAnswer === answer.key, 
           invalid: choosenAnswer && question.rightAnswer !== answer.key, 
           choosen: choosenAnswer === answer.key }" 
-        (click)="chooseAnswer(answer.key)">{{ answer.key }} {{ answer.value }}</button>
+        (click)="chooseAnswer(answer.key)">{{ answer.key }}) {{ answer.value }}</button>
         
     </div>
   </div>
 </div>
+
+<ng-template #summary>
+  <div class="summary">
+    <h2 class="summary--title">
+      Podsumowanie
+    </h2>
+
+    <div class="summary--score">
+      Zdobyłeś 29 / 40 punktów (72%)
+    </div>
+
+    <div class="summary--details">
+
+      <div class="summary__question">
+        <div class="summary__question--name">Pytanie 1</div>
+
+        <div class="summary__question--preview">
+          <fa-icon [icon]="faEye" size="lg"></fa-icon>
+        </div>
+
+        <div class="summary__question--answer">
+          <div class="indicator right"></div>
+        </div>
+      </div>
+
+      <div class="summary__question">
+          <div class="summary__question--name">Pytanie 1</div>
+  
+          <div class="summary__question--preview">
+            <fa-icon [icon]="faEye" size="lg"></fa-icon>
+          </div>
+  
+          <div class="summary__question--answer">
+            <div class="indicator right"></div>
+          </div>
+        </div>
+
+        <div class="summary__question">
+            <div class="summary__question--name">Pytanie 1</div>
+    
+            <div class="summary__question--preview">
+              <fa-icon [icon]="faEye" size="lg"></fa-icon>
+            </div>
+    
+            <div class="summary__question--answer">
+              <div class="indicator right"></div>
+            </div>
+          </div>
+
+    </div>
+
+    <div class="end-quiz__button">
+      <button class="btn empty">Zakończ</button>
+    </div>
+
+  </div>
+</ng-template>

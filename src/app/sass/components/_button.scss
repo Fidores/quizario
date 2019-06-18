@@ -15,6 +15,12 @@
         width: 100%;
     }
 
+    &.empty {
+        background-color: transparent;
+        color: $secondary-color;
+        padding: em(10px) 0px;
+    }
+
     &:disabled{
         color: #000000;
         opacity: 0.6;

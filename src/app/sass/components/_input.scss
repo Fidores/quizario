@@ -45,10 +45,10 @@
 .hint{
     font-size: em(13px);
     color: #808080;
-}
 
-.hint-error{
-    color: rgb(236, 70, 32);
+    &-error {
+        color: rgb(236, 70, 32);
+    }
 }
 
 .input-inline-group{

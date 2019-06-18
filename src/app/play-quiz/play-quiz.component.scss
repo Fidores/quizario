@@ -87,3 +87,65 @@
         }
     }
 }
+
+.summary {
+    width: 50vw;
+    margin: em(20px) auto 0px auto;
+    background-color: $light-primary-color;
+    border-radius: em(3px);
+    padding: em(15px) em(60px);
+
+    &--title {
+        text-align: center;
+    }
+
+    &--score {
+        font-size: em(20px);
+        margin: em(20px) 0px;
+    }
+
+    &--details {
+        font-size: em(18px);
+    }
+
+    &__question {
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
+        padding: em(15px) 0px;
+        align-items: center;
+
+        &--preview {
+            justify-self: end;
+            
+        }
+
+        &--name {
+            font-size: em(20px);
+        }
+
+        &--answer {
+            justify-self: end;
+        }
+    }
+
+    .end-quiz__button {
+        text-align: end;
+        margin-top: em(70px);
+    }
+}
+
+
+
+.indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+
+    &.right {
+        background-color: $answer-valid-color;
+    }
+    
+    &.wrong {
+        background-color: $answer-invalid-color;
+    }
+}

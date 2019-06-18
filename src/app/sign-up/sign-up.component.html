@@ -19,6 +19,8 @@
     <input type="password" class="input-control" placeholder="Powtórz hasło..." formControlName="confirmPassword" [ngClass]="{ 'invalid': password.value !== confirmPassword.value }">
   </div>
 
+  <p class="hint-error" *ngIf="error">{{ error.error }}</p>
+
   <p>Masz już konto ? <a routerLink="/login">Zaloguj się tutaj</a></p>
 
   <div class="input-group">
