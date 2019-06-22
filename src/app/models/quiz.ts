@@ -10,8 +10,9 @@ export interface Question {
     title: string,
     answers: [ Answer ],
     rightAnswer: string,
+    duration: number,
     img?: string ,
-    answeredCorrectly?: number
+    isAnsweredCorrectly?: number
 }
 
 export interface Answer {

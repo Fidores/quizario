@@ -1,37 +1,37 @@
-<div class="play-quiz" *ngIf="!isFinished else summary">
+<div class="quiz-board" *ngIf="!isFinished else summary">
 
-  <div class="play-quiz__actions">
-    <button class="play-quiz__actions--close" [routerLink]="['/']">
+  <div class="actions">
+    <button class="actions__close" [routerLink]="['/']">
       <fa-icon [icon]="faTimes" size="2x"></fa-icon>
     </button>
 
-    <div class="play-quiz__actions--timer">
-      Pozostały czas: 23s
+    <div class="actions__timer" [style.visibility]="question && question.duration ? 'visible' : 'hidden'">
+      Pozostały czas: {{ timeLeft }}s
     </div>
 
-    <button class="play-quiz__actions--next" (click)="next()">
+    <button class="actions__next" (click)="next()">
       <fa-icon [icon]="faArrowRight" size="2x"></fa-icon>
     </button>
   </div>
 
-  <div class="play-quiz__question" *ngIf="question">
-    <h3 class="play-quiz__question--title">
+  <div class="question" *ngIf="question">
+    <h3 class="question__title">
       {{ question.title }}
     </h3>
 
-    <div class="play-quiz__question--image" *ngIf="question.img" [style.background-image]="'url('+ environment.backendOrigin + question.img +')'">
+    <div class="question__image" *ngIf="question.img" [style.background-image]="'url('+ environment.backendOrigin + question.img +')'">
 
     </div>
 
-    <div class="play-quiz__question--answers">
+    <div class="question__answers">
 
       <button
-        class="play-quiz__question--answers__answer" 
+        class="question__answer" 
         *ngFor="let answer of question.answers | keyvalue"
         [ngClass]="{ 
-          valid: choosenAnswer && question.rightAnswer === answer.key, 
-          invalid: choosenAnswer && question.rightAnswer !== answer.key, 
-          choosen: choosenAnswer === answer.key }" 
+          'question__answer--valid': choosenAnswer && question.rightAnswer === answer.key, 
+          'question__answer--invalid': choosenAnswer && question.rightAnswer !== answer.key, 
+          'question__answer--choosen': choosenAnswer === answer.key }" 
         (click)="chooseAnswer(answer.key)">{{ answer.key }}) {{ answer.value }}</button>
         
     </div>
@@ -40,56 +40,33 @@
 
 <ng-template #summary>
   <div class="summary">
-    <h2 class="summary--title">
+    <h2 class="summary__title">
       Podsumowanie
     </h2>
 
-    <div class="summary--score">
-      Zdobyłeś 29 / 40 punktów (72%)
+    <div class="summary__score">
+      Zdobyłeś {{ this.numberOfCorrectAnswers }} / {{ this.questions.length }} punktów ({{ this.calculateScore() }}%)
     </div>
 
-    <div class="summary--details">
+    <div class="summary__details">
 
-      <div class="summary__question">
-        <div class="summary__question--name">Pytanie 1</div>
+      <div class="questions--heading">
+        <div>Treść pytania</div>
+        <div>Prawidłowa odpowiedź</div>
+      </div>
 
-        <div class="summary__question--preview">
-          <fa-icon [icon]="faEye" size="lg"></fa-icon>
-        </div>
+      <div class="question" *ngFor="let question of questions; let index = index">
+        <div class="question__name" [ngClass]="question.isAnsweredCorrectly ? 'question__name--correct' : 'question__name--wrong'">{{ question.title }}</div>
 
-        <div class="summary__question--answer">
-          <div class="indicator right"></div>
+        <div class="question__answer">
+          {{ question.answers[question.rightAnswer] }}
         </div>
       </div>
 
-      <div class="summary__question">
-          <div class="summary__question--name">Pytanie 1</div>
-  
-          <div class="summary__question--preview">
-            <fa-icon [icon]="faEye" size="lg"></fa-icon>
-          </div>
-  
-          <div class="summary__question--answer">
-            <div class="indicator right"></div>
-          </div>
-        </div>
-
-        <div class="summary__question">
-            <div class="summary__question--name">Pytanie 1</div>
-    
-            <div class="summary__question--preview">
-              <fa-icon [icon]="faEye" size="lg"></fa-icon>
-            </div>
-    
-            <div class="summary__question--answer">
-              <div class="indicator right"></div>
-            </div>
-          </div>
-
     </div>
 
-    <div class="end-quiz__button">
-      <button class="btn empty">Zakończ</button>
+    <div class="summary__button">
+      <button class="btn empty" [routerLink]="['/']">Zakończ</button>
     </div>
 
   </div>

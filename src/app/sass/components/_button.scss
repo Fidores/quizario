@@ -10,6 +10,7 @@
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
+    transition: background-color .2s ease-out;
 
     &.btn-block{
         width: 100%;
@@ -18,7 +19,11 @@
     &.empty {
         background-color: transparent;
         color: $secondary-color;
-        padding: em(10px) 0px;
+
+        &:hover {
+            transition: background-color .2s ease-in;
+            background-color: rgba($secondary-color, 0.150);
+        }
     }
 
     &:disabled{

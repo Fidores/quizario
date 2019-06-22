@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { QuizzesSliderComponent } from './quizzes-slider/quizzes-slider.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptor } from './common/HTTP/AuthHttpInterceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
