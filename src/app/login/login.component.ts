@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  logInUser(form: NgForm){
+  logInUser(form: NgForm) {
     this.error = null;
 
     this.auth.logIn(form.value.email, form.value.password)
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       return of(empty);
     }), take(1))
     .subscribe(token => {
-      if(!this.error) this.router.navigate(['/']);
+      if (!this.error) { this.router.navigate(['/']); }
     });
   }
 

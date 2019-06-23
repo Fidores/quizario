@@ -17,7 +17,7 @@ export class QuizzesSliderComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
-  env = environment
+  env = environment;
 
   @Input('section') section;
   @ViewChild('prevBtn') prevArrow: ElementRef<Element>;
@@ -26,11 +26,11 @@ export class QuizzesSliderComponent implements OnInit {
   sliderConfig = {
     slidesToShow: 3,
     slidesToScroll: 3
-  }
+  };
 
   ngOnInit() {
-    this.sliderConfig['nextArrow'] = this.nextArrow.nativeElement;
-    this.sliderConfig['prevArrow'] = this.prevArrow.nativeElement;
+    this.sliderConfig.nextArrow = this.nextArrow.nativeElement;
+    this.sliderConfig.prevArrow = this.prevArrow.nativeElement;
   }
 
 }

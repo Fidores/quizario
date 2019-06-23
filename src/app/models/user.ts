@@ -1,8 +1,8 @@
 export interface User {
-    name: string,
-    surname: string,
-    email: string,
-    registrationTime: Date,
-    isAdmin: boolean,
-    password?: string
+    name: string;
+    surname: string;
+    email: string;
+    registrationTime: Date;
+    isAdmin: boolean;
+    password?: string;
 }

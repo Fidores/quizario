@@ -19,25 +19,25 @@ export class TooltipDirective implements OnInit {
   @Input('position') position: String;
   @Input('margin') margin = 10;
 
-  ngOnInit(){ this.margin = +this.margin; }
+  ngOnInit() { this.margin = +this.margin; }
 
-  @HostListener('mouseenter') show(){
+  @HostListener('mouseenter') show() {
     this.tooltipRef = this.overlay.appendElement(this.createTooltip());
     this.setPositions();
   }
 
-  @HostListener('mouseleave') hide(){ this.overlay.deleteElement(this.tooltipRef); }
+  @HostListener('mouseleave') hide() { this.overlay.deleteElement(this.tooltipRef); }
 
-  private createTooltip(): HTMLSpanElement{
+  private createTooltip(): HTMLSpanElement {
     const tooltip = document.createElement('span');
 
     tooltip.textContent = String(this.text);
     tooltip.classList.add('tooltip');
-    
+
     return tooltip;
   }
 
-  private setPositions(): void{
+  private setPositions(): void {
     const hostPos = this.host.getBoundingClientRect();
     const tooltipPos = this.tooltipRef.getBoundingClientRect();
     const positions = { top: 0, left: 0 };
@@ -46,18 +46,18 @@ export class TooltipDirective implements OnInit {
       case 'top':
           positions.top = hostPos.top - hostPos.height - this.margin;
           positions.left = (hostPos.left + hostPos.width / 2) - tooltipPos.width / 2;
-        break;
+          break;
 
       case 'left':
           positions.top = (hostPos.top + hostPos.height / 2) - tooltipPos.height / 2;
           positions.left = hostPos.left - tooltipPos.width - this.margin;
-        break;
+          break;
 
       case 'right':
         positions.top = (hostPos.top + hostPos.height / 2) - tooltipPos.height / 2;
         positions.left = hostPos.left + hostPos.width + this.margin;
         break;
-    
+
       default:
         positions.top = hostPos.top + hostPos.height + this.margin;
         positions.left = (hostPos.left + hostPos.width / 2) - tooltipPos.width / 2;

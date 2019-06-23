@@ -20,11 +20,11 @@ export class QuizzesService {
     return this.http.get<SectionOfQuizzes>(environment.backendOrigin);
   }
 
-  getQuizz(id: string): Observable<Quiz>{
+  getQuizz(id: string): Observable<Quiz> {
     return this.http.get<Quiz>(`${this.url}/quizzes/${id}`);
   }
 
-  getAllQuizzes(): Observable<Quiz[]>{
+  getAllQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(`${this.url}quizzes`);
   }
 }

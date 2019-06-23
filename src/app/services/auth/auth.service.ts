@@ -22,7 +22,7 @@ export class AuthService {
         'Content-Type': 'application/json'
       },
       responseType: 'text' as 'json'
-    }).pipe(map(token => { localStorage.setItem('auth-token', token) ;return token }));
+    }).pipe(map(token => { localStorage.setItem('auth-token', token) ; return token; }));
   }
 
   logOut() {

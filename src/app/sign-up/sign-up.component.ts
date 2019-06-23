@@ -20,29 +20,6 @@ export class SignUpComponent implements OnInit {
     private readonly router: Router
   ) { }
 
-  error: HttpErrorResponse;
-
-  ngOnInit() {
-  }
-
-  signUpForm = new FormGroup({
-    name: new FormControl('AAAAAAAAA', [ Validators.minLength(3), Validators.maxLength(128), Validators.required ]),
-    surname: new FormControl('AAAAAAAAA', [ Validators.minLength(3), Validators.maxLength(128), Validators.required ]),
-    email: new FormControl('albert7773000@gmail.pl', [ Validators.email, Validators.maxLength(128), Validators.required ]),
-    password: new FormControl('1234567', [ Validators.minLength(5), Validators.maxLength(255), Validators.required ]),
-    confirmPassword: new FormControl('1234567', [ Validators.minLength(5), Validators.maxLength(255), Validators.required ])
-  }, MatchPasswordsValidator);
-
-  signUp(){
-    const { name, surname, email, password } = this.signUpForm.value;
-
-    this.error = null;
-
-    this.user.signUp({ name, surname, email, password } as User)
-      .pipe(catchError((err: HttpErrorResponse) => { this.error = err; return of(empty); }), take(1))
-      .subscribe((user: User) => { if(!this.error) this.router.navigate(['/']) });
-  }
-
   get password() {
     return this.signUpForm.get('password');
   }
@@ -61,6 +38,29 @@ export class SignUpComponent implements OnInit {
 
   get surname() {
     return this.signUpForm.get('surname');
+  }
+
+  error: HttpErrorResponse;
+
+  signUpForm = new FormGroup({
+    name: new FormControl('AAAAAAAAA', [ Validators.minLength(3), Validators.maxLength(128), Validators.required ]),
+    surname: new FormControl('AAAAAAAAA', [ Validators.minLength(3), Validators.maxLength(128), Validators.required ]),
+    email: new FormControl('albert7773000@gmail.pl', [ Validators.email, Validators.maxLength(128), Validators.required ]),
+    password: new FormControl('1234567', [ Validators.minLength(5), Validators.maxLength(255), Validators.required ]),
+    confirmPassword: new FormControl('1234567', [ Validators.minLength(5), Validators.maxLength(255), Validators.required ])
+  }, MatchPasswordsValidator);
+
+  ngOnInit() {
+  }
+
+  signUp() {
+    const { name, surname, email, password } = this.signUpForm.value;
+
+    this.error = null;
+
+    this.user.signUp({ name, surname, email, password } as User)
+      .pipe(catchError((err: HttpErrorResponse) => { this.error = err; return of(empty); }), take(1))
+      .subscribe((user: User) => { if (!this.error) { this.router.navigate(['/']); } });
   }
 
 }

@@ -29,7 +29,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   questions: Question[] = [];
   question: Question;
   choosenAnswer: string;
-  isFinished: boolean = false;
+  isFinished = false;
   timeLeft: number;
   questionTimer: Subscription;
 
@@ -45,36 +45,36 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.questionTimer) this.questionTimer.unsubscribe();
+    if (this.questionTimer) { this.questionTimer.unsubscribe(); }
   }
 
   next(): void {
-    if(this.index + 1 > this.questions.length - 1) {
+    if (this.index + 1 > this.questions.length - 1) {
       this.isFinished = true;
       return;
     }
     this.choosenAnswer = '';
     this.index++;
     this.question = this.questions[this.index];
-    if(this.questionTimer) this.questionTimer.unsubscribe();
+    if (this.questionTimer) { this.questionTimer.unsubscribe(); }
     this.timeLeft = this.question.duration;
     this.setTimer(this.question.duration);
   }
 
   setTimer(duration: number): void {
-    if(!duration) return;
+    if (!duration) { return; }
 
     const source = timer(1000, 1000);
 
     this.questionTimer = source.pipe(take(duration + 1))
       .subscribe(time => {
-        if(time === duration) this.next();
+        if (time === duration) { this.next(); }
         this.timeLeft = duration - time;
       });
   }
 
   chooseAnswer(answer: string) {
-    if(this.choosenAnswer) return;
+    if (this.choosenAnswer) { return; }
     this.choosenAnswer = answer;
     this.question.isAnsweredCorrectly = this.question.rightAnswer === answer ? 1 : 0;
   }

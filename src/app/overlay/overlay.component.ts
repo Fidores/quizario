@@ -25,7 +25,7 @@ export class OverlayComponent implements OnInit {
   ) { }
 
   @ViewChild('fullScreenContainer') container: ElementRef<HTMLElement>;
-  fullScreen: boolean = false;
+  fullScreen = false;
 
   ngOnInit() {
     this.Overlay.addElListener.subscribe(el => this.renderer.appendChild(this.hostEl.nativeElement, el));

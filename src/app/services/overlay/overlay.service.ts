@@ -12,13 +12,13 @@ export class OverlayService {
   private readonly _destroyElementListener: Subject<HTMLElement> = new Subject();
   private readonly _fullScreenListener: Subject<boolean> = new Subject();
   private readonly _fullScreenClickListener: Subject<null> = new Subject();
-  
+
   appendElement(el: HTMLElement) {
     this._addElementListener.next(el);
     return el;
   }
 
-  deleteElement(el: HTMLElement){
+  deleteElement(el: HTMLElement) {
     this._destroyElementListener.next(el);
     return el;
   }
@@ -31,11 +31,11 @@ export class OverlayService {
     this.fullScreenClickListener.next();
   }
 
-  get addElListener(){
+  get addElListener() {
     return this._addElementListener;
   }
 
-  get deleteElListener(){
+  get deleteElListener() {
     return this._destroyElementListener;
   }
 
