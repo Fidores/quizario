@@ -1,0 +1,39 @@
+@import '../sass/functions/em';
+@import '../sass/abstract/reset-button';
+@import '../sass/components/colours';
+
+.quiz-form {
+    width: 50vw;
+    margin: 0px auto;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: em(10px);
+}
+
+.add-question-btn {
+    @include reset-button;
+    background-color: $secondary-color;
+    color: #000;
+}
+
+.add-quiz-btn {
+    @include reset-button;
+    background-color: $accent-color;
+    color: #000;
+    margin-top: em(10px);
+}
+
+.question {
+    background-color: $primary-color;
+    padding: em(10px);
+    border-radius: em(5px);
+    margin-bottom: em(20);
+}
+
+.main-heading {
+    text-align: center;
+}

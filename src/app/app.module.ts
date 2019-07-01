@@ -19,6 +19,7 @@ import { QuizzesSliderComponent } from './quizzes-slider/quizzes-slider.componen
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './common/HTTP/AuthHttpInterceptor';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AuthInterceptor } from './common/HTTP/AuthHttpInterceptor';
     SideNavComponent,
     QuizzesSliderComponent,
     PlayQuizComponent,
+    CreateQuizComponent,
   ],
   imports: [
     BrowserModule,

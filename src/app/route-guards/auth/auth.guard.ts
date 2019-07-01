@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
+/** 
+ * Prevents access to route if user is logged in.
+*/
+
 @Injectable({
   providedIn: 'root'
 })

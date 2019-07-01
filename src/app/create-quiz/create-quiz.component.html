@@ -1,0 +1,73 @@
+<h1 class="main-heading">Stwórz nowy quiz</h1>
+
+<form action="#" [formGroup]="quizForm" (ngSubmit)="addQuiz()" class="quiz-form">
+  <div class="input-group">
+    <input type="text" formControlName="title" class="input-control" placeholder="Nazwa quizu">
+    <p class="hint-error" *ngIf="title.hasError('required') && title.touched">Nazwa jest wymagana.</p>
+    <p class="hint-error" *ngIf="title.hasError('minlength') && title.touched">Nazwa musi mieć <strong>przynajmniej</strong> {{ title.getError('minlength').requiredLength }} znaków.</p>
+    <p class="hint-error" *ngIf="title.hasError('maxlength') && title.touched">Nazwa nie może posiadać wiecej niż {{ title.getError('maxlength').requiredLength }} znaków.</p>
+  </div>
+
+  <div formArrayName="questions" class="questions">
+
+    <div *ngFor="let question of questions.controls; let i=index" [formGroupName]="i" class="question">
+
+      <h2>Pytanie {{ i + 1 }}</h2>
+
+      <div class="input-group">
+        <input type="text" formControlName="title" class="input-control" placeholder="Treść pytania">
+        <p class="hint-error" *ngIf="getQuestionTitle(i).hasError('required') && getQuestionTitle(i).touched">Pytanie jest wymagane.</p>
+        <p class="hint-error" *ngIf="getQuestionTitle(i).hasError('minlength') && getQuestionTitle(i).touched">Pytanie musi mieć <strong>przynajmniej</strong> {{ getQuestionTitle(i).getError('minlength').requiredLength }} znaków.</p>
+        <p class="hint-error" *ngIf="getQuestionTitle(i).hasError('maxlength') && getQuestionTitle(i).touched">Pytanie nie może posiadać wiecej niż {{ getQuestionTitle(i).getError('maxlength').requiredLength }} znaków.</p>    
+      </div>
+
+      <div class="input-group">
+        <div formGroupName="answers" class="answers">
+          <input type="text" formControlName="a" class="input-control answer" placeholder="Odpowiedź a)">
+          <input type="text" formControlName="b" class="input-control answer" placeholder="Odpowiedź b)">
+          <input type="text" formControlName="c" class="input-control answer" placeholder="Odpowiedź c)">
+          <input type="text" formControlName="d" class="input-control answer" placeholder="Odpowiedź d)">
+        </div>
+      </div>
+
+      <div class="input-group">
+        <h3>Prawidłowa odpowiedź</h3>
+        <label>
+          <input type="radio" value="a" formControlName="rightAnswer">
+          a
+        </label>
+
+        <label>
+          <input type="radio" value="b" formControlName="rightAnswer">
+          b
+        </label>
+
+        <label>
+          <input type="radio" value="c" formControlName="rightAnswer">
+          c
+        </label>
+
+        <label>
+          <input type="radio" value="d" formControlName="rightAnswer">
+          d
+        </label>
+
+        <p class="hint-error" *ngIf="getRightAnswer(i).hasError('required') && getRightAnswer(i).touched">Prawidłowa odpowiedź jest <strong>wymagana</strong>.</p>
+      </div>
+
+      <div class="input-group">
+        <input type="number" name="duration" formControlName="duration" class="input-control" placeholder="Czas na odpowiedź w sekundach">
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="btn btn-block add-question-btn" (click)="addQuestion($event)">
+    <fa-icon [icon]="faPlus" size="lg"></fa-icon>
+  </button>
+
+  <button class="btn btn-block add-quiz-btn" [disabled]="quizForm.invalid">
+      <fa-icon [icon]="faSave" size="lg"></fa-icon>
+  </button>
+</form>

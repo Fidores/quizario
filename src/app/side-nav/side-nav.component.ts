@@ -1,5 +1,5 @@
-import { Component, OnInit, HostBinding, ViewChild, ElementRef } from '@angular/core';
-import { faHome, faBars } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { faHome, faBars, faSave, faHistory } from '@fortawesome/free-solid-svg-icons';
 import { SideNavService } from '../services/side-nav/side-nav.service';
 import { OverlayService } from '../services/overlay/overlay.service';
 
@@ -17,6 +17,8 @@ export class SideNavComponent implements OnInit {
 
   faHome = faHome;
   faBars = faBars;
+  faSave = faSave;
+  faHistory = faHistory;
 
   @HostBinding('class') status = '';
 

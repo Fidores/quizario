@@ -45,7 +45,7 @@
     </h2>
 
     <div class="summary__score">
-      Zdobyłeś {{ this.numberOfCorrectAnswers }} / {{ this.questions.length }} punktów ({{ this.calculateScore() }}%)
+      Zdobyłeś {{ this.numberOfCorrectAnswers }} / {{ this.questions.length }} punktów ({{ this.calculateScore().toFixed(0) }}%)
     </div>
 
     <div class="summary__details">

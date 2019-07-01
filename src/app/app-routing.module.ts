@@ -1,3 +1,5 @@
+import { UserGuard } from './route-guards/user/user.guard';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { AuthGuard } from './route-guards/auth/auth.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +14,7 @@ const routes: Routes = [
   { path: 'play-quiz/:id', component: PlayQuizComponent },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'signup', component: SignUpComponent, canActivate: [AuthGuard] },
+  { path: 'create-quiz', component: CreateQuizComponent, canActivate: [UserGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

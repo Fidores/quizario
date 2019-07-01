@@ -24,13 +24,13 @@ export class QuizzesSliderComponent implements OnInit {
   @ViewChild('nextBtn') nextArrow: ElementRef<Element>;
 
   sliderConfig = {
-    slidesToShow: 3,
-    slidesToScroll: 3
+    slidesToShow: 4,
+    slidesToScroll: 4
   };
 
   ngOnInit() {
-    this.sliderConfig.nextArrow = this.nextArrow.nativeElement;
-    this.sliderConfig.prevArrow = this.prevArrow.nativeElement;
+    this.sliderConfig['nextArrow'] = this.nextArrow.nativeElement;
+    this.sliderConfig['prevArrow'] = this.prevArrow.nativeElement;
   }
 
 }

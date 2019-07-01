@@ -1,7 +1,8 @@
 @import '../functions/em';
+@import '../components/colours';
 
 .input-control{
-    background-color: #3D3D3D;
+    background-color: $light-primary-color;
     border-radius: em(5px);
     outline: none;
     border: none;
@@ -20,7 +21,7 @@
     }
 
     &::placeholder{
-        color: #686868;
+        color: #797979;
     }
 }
 
@@ -29,12 +30,12 @@
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    background-color: #3D3D3D;
+    background-color: $light-primary-color;
     border-radius: em(5px);
     padding: 0px em(10px);
 
     .sticker{
-        color: #686868;
+        color: #797979;
     }
 }
 

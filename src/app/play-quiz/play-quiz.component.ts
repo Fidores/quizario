@@ -80,7 +80,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   calculateScore(): number {
-    const answeredCorrectly = this.questions.reduce((score, question) => score + question.isAnsweredCorrectly, 0) || 0;
+    const answeredCorrectly = this.questions.reduce((score, question) => score + question.isAnsweredCorrectly || 0, 0);
     const score = (answeredCorrectly / this.questions.length) * 100;
     return score;
   }

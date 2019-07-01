@@ -20,26 +20,6 @@ export class SignUpComponent implements OnInit {
     private readonly router: Router
   ) { }
 
-  get password() {
-    return this.signUpForm.get('password');
-  }
-
-  get confirmPassword() {
-    return this.signUpForm.get('confirmPassword');
-  }
-
-  get email() {
-    return this.signUpForm.get('password');
-  }
-
-  get name() {
-    return this.signUpForm.get('name');
-  }
-
-  get surname() {
-    return this.signUpForm.get('surname');
-  }
-
   error: HttpErrorResponse;
 
   signUpForm = new FormGroup({
@@ -63,4 +43,23 @@ export class SignUpComponent implements OnInit {
       .subscribe((user: User) => { if (!this.error) { this.router.navigate(['/']); } });
   }
 
+  get password() {
+    return this.signUpForm.get('password');
+  }
+
+  get confirmPassword() {
+    return this.signUpForm.get('confirmPassword');
+  }
+
+  get email() {
+    return this.signUpForm.get('password');
+  }
+
+  get name() {
+    return this.signUpForm.get('name');
+  }
+
+  get surname() {
+    return this.signUpForm.get('surname');
+  }
 }

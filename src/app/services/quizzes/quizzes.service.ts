@@ -27,4 +27,8 @@ export class QuizzesService {
   getAllQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(`${this.url}quizzes`);
   }
+
+  addQuiz(quiz: Quiz) {
+    return this.http.post<Quiz>(`${environment.apiOrigin}/quizzes`, quiz);
+  }
 }

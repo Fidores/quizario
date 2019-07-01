@@ -26,7 +26,7 @@ export const isOffscreen = (el: HTMLElement, _options?: Options): Offscreen  => 
     }
 
     if (options.autoCorrect) {
-        el.style.transform = `translateX(${ offscreen.difference }px)`;
+      el.style.transform = `translateX(${ offscreen.difference }px)`;
     }
 
     return offscreen;
