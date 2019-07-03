@@ -1,4 +1,6 @@
 <main-header></main-header>
 <overlay></overlay>
 <side-nav></side-nav>
-<router-outlet></router-outlet>
+<main [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet='outlet'></router-outlet>
+</main>

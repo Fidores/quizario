@@ -1,6 +1,6 @@
 import { UserService } from './../user/user.service';
 import { User } from './../../models/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -16,17 +16,18 @@ export class AuthService {
     private readonly user: UserService
   ) { }
 
-  logIn(email: string, password: string): Observable<string> {
-    return this.http.post<string>(environment.apiOrigin + '/auth', { password, email }, {
+  logIn(email: string, password: string) {
+    return this.http.post<User>(environment.apiOrigin + '/auth', { password, email }, {
       headers: {
         'Content-Type': 'application/json'
       },
-      responseType: 'text' as 'json'
-    }).pipe(map(token => { localStorage.setItem('auth-token', token) ; return token; }));
-  }
-
-  logOut() {
-    localStorage.removeItem('auth-token');
+      responseType: 'text' as 'json',
+      observe: 'response'
+    }).pipe(map(res => { 
+      localStorage.setItem('auth-token', res.headers.get('x-auth-token')); 
+      this.user.user$.next(res.body);
+      return res.body;
+    }));
   }
 
 }

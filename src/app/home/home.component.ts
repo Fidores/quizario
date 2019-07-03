@@ -1,6 +1,7 @@
 import { QuizzesService } from './../services/quizzes/quizzes.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private readonly quizzesService: QuizzesService
+    private readonly quizzesService: QuizzesService,
+    private readonly pageTitle: Title
   ) { }
 
   faChevronLeft = faChevronLeft;
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit {
   sections;
 
   ngOnInit() {
+    this.pageTitle.setTitle('Quizario');
     this.sections = this.quizzesService.getHomeSections();
   }
 }

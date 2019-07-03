@@ -3,6 +3,10 @@ import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
 import { Quiz } from '../models/quiz';
+import { Title } from '@angular/platform-browser';
+import { catchError } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'create-quiz',
@@ -12,7 +16,9 @@ import { Quiz } from '../models/quiz';
 export class CreateQuizComponent implements OnInit {
 
   constructor(
-    private readonly _quizzesService: QuizzesService
+    private readonly _quizzesService: QuizzesService,
+    private readonly pageTitle: Title,
+    private readonly router: Router
   ) { }
 
   faPlus = faPlus;
@@ -24,12 +30,13 @@ export class CreateQuizComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.pageTitle.setTitle('Quizario - stwórz quiz');
     this.addQuestion();
   }
 
   addQuiz(){
     const quiz = this.quizForm.value as Quiz;
-    this._quizzesService.addQuiz(quiz).subscribe(console.log);
+    this._quizzesService.addQuiz(quiz).subscribe((quiz) => this.router.navigate(['/']));
   }
 
   addQuestion($event?: Event) {
@@ -44,7 +51,7 @@ export class CreateQuizComponent implements OnInit {
         d: new FormControl('', [Validators.required, Validators.maxLength(50)])
       }),
       rightAnswer: new FormControl('', Validators.required),
-      duration: new FormControl('', Validators.min(0))
+      duration: new FormControl(0, Validators.min(0))
     });
 
     this.questions.push(question);

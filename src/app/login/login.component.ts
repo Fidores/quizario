@@ -3,8 +3,6 @@ import { AuthService } from './../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, take } from 'rxjs/operators';
-import { of, empty } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -31,13 +29,8 @@ export class LoginComponent implements OnInit {
     this.error = null;
 
     this.auth.logIn(form.value.email, form.value.password)
-    .pipe(catchError((err: HttpErrorResponse) => {
-      this.error = err;
-      return of(empty);
-    }), take(1))
-    .subscribe(token => {
-      if (!this.error) { this.router.navigate(['/']); }
-    });
+    .subscribe(user => this.router.navigate(['/']), 
+    (err: HttpErrorResponse) => this.error = err );
   }
 
 }

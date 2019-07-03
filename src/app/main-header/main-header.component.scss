@@ -34,11 +34,11 @@
         font-size: em(24px);
     }
 
-    .header-right {
+    .header-left {
         @extend %header-section;
     }
 
-    .header-left{
+    .header-right{
         @extend %header-section;
         justify-self: end;
     }

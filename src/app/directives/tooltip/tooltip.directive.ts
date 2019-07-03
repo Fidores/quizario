@@ -1,36 +1,38 @@
-import { Directive, Input, HostListener, ElementRef, OnInit } from '@angular/core';
+import { Directive, Input, HostListener, ElementRef, Renderer2 } from '@angular/core';
 import { OverlayService } from 'src/app/services/overlay/overlay.service';
 import { isOffscreen } from 'src/app/helpers/isOffscreen';
 
 @Directive({
   selector: '[tooltip]'
 })
-export class TooltipDirective implements OnInit {
+export class TooltipDirective {
 
   constructor(
-    private hostRef: ElementRef,
-    private overlay: OverlayService
+    private readonly hostRef: ElementRef,
+    private readonly overlay: OverlayService,
+    private readonly renderer: Renderer2
   ) { }
 
   tooltipRef: HTMLElement;
   host: HTMLElement = this.hostRef.nativeElement;
 
-  @Input('tooltip') text: String;
-  @Input('position') position: String;
-  @Input('margin') margin = 10;
-
-  ngOnInit() { this.margin = +this.margin; }
+  @Input('tooltip') text: string;
+  @Input('position') position: string;
+  @Input('margin') margin: number = 10;
 
   @HostListener('mouseenter') show() {
     this.tooltipRef = this.overlay.appendElement(this.createTooltip());
     this.setPositions();
   }
 
-  @HostListener('mouseleave') hide() { this.overlay.deleteElement(this.tooltipRef); }
+  @HostListener('mouseleave') onmouseleave() { this.hide() };
+  
+  @HostListener('click') onclick() { this.hide() };
+
+  hide(): void { this.overlay.deleteElement(this.tooltipRef); }
 
   private createTooltip(): HTMLSpanElement {
-    const tooltip = document.createElement('span');
-
+    const tooltip = this.renderer.createElement('span');
     tooltip.textContent = String(this.text);
     tooltip.classList.add('tooltip');
 

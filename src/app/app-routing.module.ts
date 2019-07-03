@@ -11,10 +11,10 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'play-quiz/:id', component: PlayQuizComponent },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuard] },
-  { path: 'create-quiz', component: CreateQuizComponent, canActivate: [UserGuard] },
+  { path: 'play-quiz/:id', component: PlayQuizComponent, data: { animation: 'play-quiz' } },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard], data: { animation: 'login' } },
+  { path: 'signup', component: SignUpComponent, canActivate: [AuthGuard], data: { animation: 'signup' } },
+  { path: 'create-quiz', component: CreateQuizComponent, canActivate: [UserGuard], data: { animation: 'ihsRight' } },
   { path: '**', component: NotFoundComponent }
 ];
 

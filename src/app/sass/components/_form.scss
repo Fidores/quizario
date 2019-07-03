@@ -1,11 +1,12 @@
 .form{
     width: em(500px);
     margin: 0px auto;
+    margin-top: 50px;
     padding: em(10px) em(20px) em(20px) em(20px);
     background-color: $primary-color;
     position: absolute;
     left: 50%; top: 30%;
-    transform: translate(-50%, -30%);
+    transform: translateX(-50%);
     border-radius: em(3px);
 
     h1{

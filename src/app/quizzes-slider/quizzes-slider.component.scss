@@ -20,13 +20,13 @@
     grid-template-columns: 1fr auto 1fr;
 
     &-row{
-
+        width: 70vw;
         &-title{
             padding-left: em(20px);
         }
 
         &-content{
-            width: 70vw;
+            
 
             &-quiz{
                 background-color: $light-primary-color;
