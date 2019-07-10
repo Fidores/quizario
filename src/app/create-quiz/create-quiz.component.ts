@@ -1,12 +1,12 @@
 import { QuizzesService } from './../services/quizzes/quizzes.service';
 import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { faPlus, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSave, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Quiz } from '../models/quiz';
 import { Title } from '@angular/platform-browser';
-import { catchError } from 'rxjs/operators';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { take, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'create-quiz',
@@ -16,13 +16,18 @@ import { Router } from '@angular/router';
 export class CreateQuizComponent implements OnInit {
 
   constructor(
-    private readonly _quizzesService: QuizzesService,
+    private readonly quizzes: QuizzesService,
     private readonly pageTitle: Title,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) { }
 
   faPlus = faPlus;
   faSave = faSave;
+  faPen = faPen;
+  
+  editMode = false;
+  id: string;
 
   quizForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
@@ -31,12 +36,23 @@ export class CreateQuizComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle.setTitle('Quizario - stwórz quiz');
-    this.addQuestion();
+
+    this.route.params
+      .pipe(take(1), switchMap(params => { return params.id ? this.quizzes.getQuizz(params.id) : of(null) }))
+      .subscribe((quiz: Quiz) => {
+        if(!quiz) return;
+
+        this.pageTitle.setTitle('Quizario - edytuj quiz');
+        this.editMode = true;
+        for(let i=0 ; i<=quiz.questions.length - 1 ; i++) this.addQuestion();
+        this.quizForm.patchValue(quiz);
+      });
+    // this.addQuestion();
   }
 
-  addQuiz(){
+  addQuiz() {
     const quiz = this.quizForm.value as Quiz;
-    this._quizzesService.addQuiz(quiz).subscribe((quiz) => this.router.navigate(['/']));
+    this.quizzes.addQuiz(quiz).subscribe((quiz) => this.router.navigate(['/']));
   }
 
   addQuestion($event?: Event) {

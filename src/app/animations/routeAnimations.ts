@@ -11,10 +11,10 @@ export const fader =
           opacity: 0,
           transform: 'scale(0.8)',
         }),
-      ]),
+      ], { optional: true }),
       query(':enter', [
-        animate('300ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
-      ])
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ], { optional: true })
     ]),
 ]);
 

@@ -3,7 +3,6 @@ import { User } from './../../models/user';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -28,6 +27,10 @@ export class AuthService {
       this.user.user$.next(res.body);
       return res.body;
     }));
+  }
+
+  isAuthorized(): boolean {
+    return localStorage.getItem('auth-token') ? true : false;
   }
 
 }

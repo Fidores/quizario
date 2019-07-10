@@ -29,6 +29,6 @@ export class QuizzesService {
   }
 
   addQuiz(quiz: Quiz) {
-    return this.http.post<Quiz>(`${environment.apiOrigin}/quizzes`, quiz);
+    return this.http.post<Quiz>(`${this.url}/quizzes`, quiz);
   }
 }

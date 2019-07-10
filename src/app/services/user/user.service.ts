@@ -2,9 +2,8 @@ import { User } from './../../models/user';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +29,10 @@ export class UserService {
     localStorage.removeItem('auth-token');
     this.user$.next(null);
   }
+
+  /**
+   * Notifies app if the user is logged in.
+   */
 
   notify(): void {
     const token = localStorage.getItem('auth-token');

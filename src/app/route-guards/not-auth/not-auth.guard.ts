@@ -4,14 +4,14 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 
 /**
-* If user is logged in, the guard gives access to the route.
-* If user isn't logged in, the guard refuses access to the route and redirects to login page.
+ * If user is logged in, the guard refuses access to the route and redirects to home page.
+ * If user isn't logged in, the guard gives access to the route.
 */
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NotAuthGuard implements CanActivate {
 
   constructor(
     private readonly auth: AuthService,
@@ -23,8 +23,8 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const isAuthorized = this.auth.isAuthorized();
       
-      if(!isAuthorized) this.router.navigate(['/login']);
-      return isAuthorized ? true : false;
+      if(isAuthorized) this.router.navigate(['/']);
+      return isAuthorized ? false : true;
   }
   
 }
