@@ -21,7 +21,7 @@
 
 <div class="header-right">
 
-    <div class="header-item" [tooltip]="'Konto'" *ngIf="user">
+    <div class="header-item" [tooltip]="'Konto'" *ngIf="user" routerLink="/account/me">
         <fa-icon [icon]="faUser" size="lg"></fa-icon>
     </div>
 

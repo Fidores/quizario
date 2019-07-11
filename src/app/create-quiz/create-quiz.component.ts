@@ -38,26 +38,30 @@ export class CreateQuizComponent implements OnInit {
     this.pageTitle.setTitle('Quizario - stwórz quiz');
 
     this.route.params
-      .pipe(take(1), switchMap(params => { return params.id ? this.quizzes.getQuizz(params.id) : of(null) }))
+      .pipe(take(1), switchMap(params => { this.id = params.id; return params.id ? this.quizzes.getQuizz(params.id) : of(null) }))
       .subscribe((quiz: Quiz) => {
         if(!quiz) return;
 
         this.pageTitle.setTitle('Quizario - edytuj quiz');
         this.editMode = true;
-        for(let i=0 ; i<=quiz.questions.length - 1 ; i++) this.addQuestion();
+        for(let i=0 ; i<=quiz.questions.length - 2 ; i++) this.addQuestion();
         this.quizForm.patchValue(quiz);
       });
-    // this.addQuestion();
+    
+    this.addQuestion();
   }
 
   addQuiz() {
     const quiz = this.quizForm.value as Quiz;
     this.quizzes.addQuiz(quiz).subscribe((quiz) => this.router.navigate(['/']));
   }
+  
+  updateQuiz() {
+    const quiz = this.quizForm.value as Quiz;
+    this.quizzes.updateQuiz(this.id, quiz).subscribe((quiz) => this.router.navigate(['/']));
+  }
 
-  addQuestion($event?: Event) {
-    if($event) $event.preventDefault();
-
+  addQuestion() {
     const question = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
       answers: new FormGroup({
@@ -67,7 +71,7 @@ export class CreateQuizComponent implements OnInit {
         d: new FormControl('', [Validators.required, Validators.maxLength(50)])
       }),
       rightAnswer: new FormControl('', Validators.required),
-      duration: new FormControl(0, Validators.min(0))
+      duration: new FormControl('', [Validators.required, Validators.min(0)])
     });
 
     this.questions.push(question);
@@ -79,6 +83,10 @@ export class CreateQuizComponent implements OnInit {
 
   getRightAnswer(index: number) {
     return (this.quizForm.get('questions') as FormArray).at(index).get('rightAnswer');
+  }
+
+  getAnswer(index: number, answer: string) {
+    return (this.quizForm.get('questions') as FormArray).at(index).get('answers').get(answer)
   }
 
   get questions() {

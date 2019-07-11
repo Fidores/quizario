@@ -20,6 +20,9 @@ import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './common/HTTP/AuthHttpInterceptor';
 import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { AccountComponent } from './account/account.component';
+import { AccountDetailsComponent } from './account-details/account-details.component';
+import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
     QuizzesSliderComponent,
     PlayQuizComponent,
     CreateQuizComponent,
+    AccountComponent,
+    AccountDetailsComponent,
+    UserQuizzesComponent,
   ],
   imports: [
     BrowserModule,

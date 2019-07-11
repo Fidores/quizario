@@ -23,10 +23,29 @@
 
       <div class="input-group">
         <div formGroupName="answers" class="answers">
-          <input type="text" formControlName="a" class="input-control answer" placeholder="Odpowiedź a)">
-          <input type="text" formControlName="b" class="input-control answer" placeholder="Odpowiedź b)">
-          <input type="text" formControlName="c" class="input-control answer" placeholder="Odpowiedź c)">
-          <input type="text" formControlName="d" class="input-control answer" placeholder="Odpowiedź d)">
+          <div class="answer">
+              <input type="text" formControlName="a" class="input-control answer" placeholder="Odpowiedź a)">
+              <p class="hint-error" *ngIf="getAnswer(i, 'a').hasError('required') && getAnswer(i, 'a').touched">To pole jest <strong>wymagane.</strong></p>
+              <p class="hint-error" *ngIf="getAnswer(i, 'a').hasError('maxlength') && getAnswer(i, 'a').touched">Odpowiedź <strong>nie może być dłuższa</strong> niż {{ getAnswer(i, 'a').getError('maxlength').requiredLength }} znaków.</p>
+          </div>
+
+          <div class="answer">
+              <input type="text" formControlName="b" class="input-control answer" placeholder="Odpowiedź b)">
+              <p class="hint-error" *ngIf="getAnswer(i, 'b').hasError('required') && getAnswer(i, 'b').touched">To pole jest <strong>wymagane.</strong></p>
+              <p class="hint-error" *ngIf="getAnswer(i, 'b').hasError('maxlength') && getAnswer(i, 'b').touched">Odpowiedź <strong>nie może być dłuższa</strong> niż {{ getAnswer(i, 'a').getError('maxlength').requiredLength }} znaków.</p>
+          </div>
+
+          <div class="answer">
+              <input type="text" formControlName="c" class="input-control answer" placeholder="Odpowiedź c)">
+              <p class="hint-error" *ngIf="getAnswer(i, 'c').hasError('required') && getAnswer(i, 'c').touched">To pole jest <strong>wymagane.</strong></p>
+              <p class="hint-error" *ngIf="getAnswer(i, 'c').hasError('maxlength') && getAnswer(i, 'c').touched">Odpowiedź <strong>nie może być dłuższa</strong> niż {{ getAnswer(i, 'a').getError('maxlength').requiredLength }} znaków.</p>
+          </div>
+
+          <div class="answer">
+              <input type="text" formControlName="d" class="input-control answer" placeholder="Odpowiedź d)">
+              <p class="hint-error" *ngIf="getAnswer(i, 'd').hasError('required') && getAnswer(i, 'd').touched">To pole jest <strong>wymagane.</strong></p>
+              <p class="hint-error" *ngIf="getAnswer(i, 'd').hasError('maxlength') && getAnswer(i, 'd').touched">Odpowiedź <strong>nie może być dłuższa</strong> niż {{ getAnswer(i, 'a').getError('maxlength').requiredLength }} znaków.</p>
+          </div>
         </div>
       </div>
 
@@ -56,18 +75,25 @@
       </div>
 
       <div class="input-group">
-        <input type="number" name="duration" formControlName="duration" class="input-control" placeholder="Czas na odpowiedź w sekundach">
+        <input type="number" name="duration" formControlName="duration" class="input-control" placeholder="Czas na odpowiedź w sekundach (0 oznacza brak ograniczenia czasowego)">
       </div>
 
     </div>
 
   </div>
 
-  <button class="btn btn-block add-question-btn" (click)="addQuestion($event)">
+  <button type="button" class="btn btn-block quiz-form__action-btn" (click)="addQuestion()">
     <fa-icon [icon]="faPlus" size="lg"></fa-icon>
   </button>
 
-  <button class="btn btn-block add-quiz-btn" [disabled]="quizForm.invalid">
-      <fa-icon [icon]="faSave" size="lg"></fa-icon>
+  <button type="submit" class="btn btn-block btn-accent quiz-form__action-btn" [disabled]="quizForm.invalid" *ngIf="!editMode else updateQuizBtn">
+    <fa-icon [icon]="faSave" size="lg"></fa-icon>
   </button>
+
+  <ng-template #updateQuizBtn>
+    <button type="button" class="btn btn-block btn-accent quiz-form__action-btn" [disabled]="quizForm.invalid" (click)="updateQuiz()">
+      <fa-icon [icon]="faPen" size="lg"></fa-icon>
+    </button>
+  </ng-template>
+
 </form>

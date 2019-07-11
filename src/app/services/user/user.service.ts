@@ -30,6 +30,10 @@ export class UserService {
     this.user$.next(null);
   }
 
+  getUser() {
+    return this.http.get<User>(`${environment.apiOrigin}/users/me`);
+  }
+
   /**
    * Notifies app if the user is logged in.
    */

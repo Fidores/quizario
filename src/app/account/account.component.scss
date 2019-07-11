@@ -1,0 +1,30 @@
+@import '../sass/components/colours';
+@import '../sass/functions/em';
+
+.account {
+    background-color: $primary-color;    
+    width: 70vw;
+    margin: em(30px) auto;
+    border-radius: em(5px);
+    padding: 20px;
+
+    &__nav {
+        background-color: $light-primary-color;
+        border-radius: em(5px);
+    }
+    
+    &__tab {
+        display: inline-block;
+        padding: em(20px) em(50px);
+        font-size: 1.1rem;
+        text-decoration: none;
+        border-top-left-radius: em(5px);
+        border-top-right-radius: em(5px);
+
+        &.active {
+            background-color: $primary-color;
+        }
+    }
+
+
+}

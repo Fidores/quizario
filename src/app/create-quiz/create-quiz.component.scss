@@ -27,9 +27,13 @@
     margin-top: em(10px);
 }
 
+.quiz-form__action-btn:not(:first-child) {
+    margin-top: em(10px);
+}
+
 .question {
     background-color: $primary-color;
-    padding: em(10px);
+    padding: em(15px);
     border-radius: em(5px);
     margin-bottom: em(20);
 }

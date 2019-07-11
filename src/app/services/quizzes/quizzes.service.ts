@@ -31,4 +31,8 @@ export class QuizzesService {
   addQuiz(quiz: Quiz) {
     return this.http.post<Quiz>(`${this.url}/quizzes`, quiz);
   }
+
+  updateQuiz(id: string, quiz: Quiz) {
+    return this.http.put<Quiz>(`${this.url}/quizzes/${id}`, quiz);
+  }
 }
