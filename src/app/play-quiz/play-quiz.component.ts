@@ -34,7 +34,8 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   questionTimer: Subscription;
 
   ngOnInit() {
-    this.route.params.pipe(switchMap(params => this.quizzes.getQuizz(params.id)), take(1))
+    this.quizzes.getQuizz(this.route.snapshot.params.id)
+    .pipe(take(1))
     .subscribe(quiz => {
       this.quiz = quiz;
       this.questions = this.quiz.questions;
@@ -62,7 +63,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   setTimer(duration: number): void {
-    if (!duration) { return; }
+    if (!duration) return;
 
     const source = timer(1000, 1000);
 
@@ -74,15 +75,13 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   chooseAnswer(answer: string) {
-    if (this.choosenAnswer) { return; }
+    if (this.choosenAnswer) return;
     this.choosenAnswer = answer;
     this.question.isAnsweredCorrectly = this.question.rightAnswer === answer ? 1 : 0;
   }
 
   calculateScore(): number {
-    const answeredCorrectly = this.questions.reduce((score, question) => score + question.isAnsweredCorrectly || 0, 0);
-    const score = (answeredCorrectly / this.questions.length) * 100;
-    return score;
+    return (this.numberOfCorrectAnswers / this.questions.length) * 100;
   }
 
   get numberOfCorrectAnswers(): number {

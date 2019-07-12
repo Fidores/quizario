@@ -5,8 +5,7 @@ import { faPlus, faSave, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Quiz } from '../models/quiz';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { take, switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'create-quiz',
@@ -35,14 +34,13 @@ export class CreateQuizComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.pageTitle.setTitle('Quizario - stwórz quiz');
+    this.id = this.route.snapshot.params.id;
+    this.pageTitle.setTitle(this.id ? 'Quizario - edytuj quiz' : 'Quizario - stwórz quiz');
 
-    this.route.params
-      .pipe(take(1), switchMap(params => { this.id = params.id; return params.id ? this.quizzes.getQuizz(params.id) : of(null) }))
+    if(this.id)
+      this.quizzes.getQuizz(this.id)
+      .pipe(take(1))
       .subscribe((quiz: Quiz) => {
-        if(!quiz) return;
-
-        this.pageTitle.setTitle('Quizario - edytuj quiz');
         this.editMode = true;
         for(let i=0 ; i<=quiz.questions.length - 2 ; i++) this.addQuestion();
         this.quizForm.patchValue(quiz);
