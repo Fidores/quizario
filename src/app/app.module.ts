@@ -23,6 +23,7 @@ import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 import { AccountComponent } from './account/account.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
     AccountComponent,
     AccountDetailsComponent,
     UserQuizzesComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,

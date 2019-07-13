@@ -1,3 +1,3 @@
-<p>
-  user-quizzes works!
-</p>
+<div class="quizzes">
+  <quiz *ngFor="let quiz of quizzes" [quiz]="quiz" [showActions]="true" (onQuizDelete)="onQuizDelete($event)"></quiz>
+</div>

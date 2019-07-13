@@ -11,19 +11,9 @@
       </div>
   
       <ngx-slick-carousel class="quizzes-slider__carousel" [config]="sliderConfig">
-        
-        <div ngxSlickItem class="quiz" *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]">
   
-          <div class="quiz__title">
-            <h4>{{ quiz.title }}</h4>
-          </div>
-  
-          <div class="quiz__image">
-            <img src="{{ quiz.img ? env.backendOrigin + quiz.img : '../../assets/faq.png' }}">
-          </div>
-  
-        </div>
-  
+        <quiz ngxSlickItem *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]" [quiz]="quiz"></quiz>
+
       </ngx-slick-carousel>
   
     </div>

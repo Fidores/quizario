@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from 'src/app/models/quiz';
 import { environment } from 'src/environments/environment';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,25 +15,29 @@ export class QuizzesService {
     private readonly http: HttpClient
   ) { }
 
-  url = environment.apiOrigin;
+  url = `${environment.apiOrigin}/quizzes`;
 
   getHomeSections() {
     return this.http.get<SectionOfQuizzes>(environment.backendOrigin);
   }
 
   getQuizz(id: string): Observable<Quiz> {
-    return this.http.get<Quiz>(`${this.url}/quizzes/${id}`);
+    return this.http.get<Quiz>(`${this.url}/${id}`);
   }
 
-  getAllQuizzes(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`${this.url}quizzes`);
+  getAllQuizzes(params: Params): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(`${this.url}`, { params });
   }
 
   addQuiz(quiz: Quiz) {
-    return this.http.post<Quiz>(`${this.url}/quizzes`, quiz);
+    return this.http.post<Quiz>(`${this.url}`, quiz);
   }
 
   updateQuiz(id: string, quiz: Quiz) {
-    return this.http.put<Quiz>(`${this.url}/quizzes/${id}`, quiz);
+    return this.http.put<Quiz>(`${this.url}/${id}`, quiz);
+  }
+
+  deleteQuiz(id: string): Observable<Quiz> {
+    return this.http.delete<Quiz>(`${this.url}/${id}`);
   }
 }

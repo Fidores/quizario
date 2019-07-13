@@ -1,4 +1,5 @@
 export interface Quiz {
+    _id: string;
     title: string;
     questions: [ Question ];
     creationTime: Date;

@@ -1,0 +1,15 @@
+@import '../sass/functions/em';
+
+.quizzes {
+    margin-top: em(20px);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: em(10px);
+    justify-content: center;
+    align-items: center;
+
+    .quiz {
+        width: 100%;
+    }
+}
+

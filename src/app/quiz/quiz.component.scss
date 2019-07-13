@@ -1,0 +1,38 @@
+@import '../sass/components/colours';
+@import '../sass/functions/em';
+
+.quiz{
+    background-color: $light-primary-color;
+    border-radius: em(10px);
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+    padding-top: em(1px);
+    max-width: 300px;
+
+    &__title{
+        text-align: center;
+    }
+
+    &__image{
+        width: em(120px);
+        margin: 0px auto;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-right: 5px;
+    }
+
+    &__action {
+        color: $accent-color;
+
+        &:hover {
+            background-color: rgba($accent-color, 0.150);
+        }
+    }
+
+    &:hover{
+        background-color: $primary-color;
+    }
+}

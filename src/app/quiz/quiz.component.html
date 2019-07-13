@@ -1,0 +1,16 @@
+<div class="quiz">
+  
+  <div class="quiz__title">
+    <h4>{{ quiz.title }}</h4>
+  </div>
+
+  <div class="quiz__image">
+    <img src="{{ quiz.img ? env.backendOrigin + quiz.img : '../../assets/faq.png' }}">
+  </div>
+
+  <div class="quiz__actions" *ngIf="showActions">
+    <a class="quiz__action btn btn-empty btn-accent" [routerLink]="['/edit-quiz', quiz._id]"><fa-icon [icon]="faPen"></fa-icon></a>
+    <button class="quiz__action btn btn-empty" (click)="deleteQuiz(quiz._id)"><fa-icon [icon]="faTrash"></fa-icon></button>
+  </div>
+
+</div>
