@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { NotAuthGuard } from './route-guards/not-auth/not-auth.guard';
 import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
+import { GamesHistoryComponent } from './games-history/games-history.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'edit-quiz/:id', component: CreateQuizComponent, canActivate: [AuthGuard], data: { animation: 'edit-quiz' } },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard], data: { animation: 'account' }, children: [
     { path: 'me', component: AccountDetailsComponent },
-    { path: 'my-quizzes', component: UserQuizzesComponent }
+    { path: 'my-quizzes', component: UserQuizzesComponent },
+    { path: 'history', component: GamesHistoryComponent }
   ]},
   { path: '**', component: NotFoundComponent }
 ];

@@ -1,0 +1,17 @@
+@import '../sass/functions/em';
+
+.details__detail:not(:first-child) {
+    margin-top: em(20px);
+}
+
+.details__header {
+    font-size: em(15px);
+    color: #7D7D7D;
+    display: block;
+}
+
+.details__value {
+    font-size: em(18px);
+    display: block;
+    margin-top: em(5px);
+}

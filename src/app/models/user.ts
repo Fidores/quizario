@@ -6,4 +6,13 @@ export interface User {
     registrationTime: Date;
     isAdmin: boolean;
     password?: string;
+    gamesHistory: gamesHistory;
 }
+
+export interface gamesHistory {
+    dateOfGame: Date;
+    quizId: string;
+    title: string;
+}
+
+

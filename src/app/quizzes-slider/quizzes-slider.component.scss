@@ -1,16 +1,17 @@
 @import '../sass/components/colours';
 @import '../sass/functions/em';
 
-.quizzes-slider{
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+.slider{
+    margin-top: 50px;
 
     &__row{
-        width: 70vw;
+        display: grid;
+        grid-template-columns: 1fr 70vw 1fr;
     }
 
     &__title{
-        padding-left: em(20px);
+        width: 70vw;
+        margin: 0px auto;
     }
 
     &__nav-btn {
@@ -22,7 +23,7 @@
         border-radius: em(10px);
         cursor: pointer;
         color: #FFFFFF;
-        height: em(200px);
+        height: 100%;
         width: em(100px);
 
         &--prev {

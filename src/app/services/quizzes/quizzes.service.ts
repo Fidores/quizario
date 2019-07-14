@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Quiz } from 'src/app/models/quiz';
 import { environment } from 'src/environments/environment';
-import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class QuizzesService {
 
   url = `${environment.apiOrigin}/quizzes`;
 
-  getHomeSections() {
+  getHomeSections(): Observable<SectionOfQuizzes> {
     return this.http.get<SectionOfQuizzes>(environment.backendOrigin);
   }
 
@@ -25,11 +24,11 @@ export class QuizzesService {
     return this.http.get<Quiz>(`${this.url}/${id}`);
   }
 
-  getAllQuizzes(params: Params): Observable<Quiz[]> {
+  getAllQuizzes(params): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(`${this.url}`, { params });
   }
 
-  addQuiz(quiz: Quiz) {
+  addQuiz(quiz: Quiz): Observable<Quiz> {
     return this.http.post<Quiz>(`${this.url}`, quiz);
   }
 

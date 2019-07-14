@@ -1,25 +1,26 @@
-<div class="quizzes-slider">
+<div class="slider">
 
-    <button class="quizzes-slider__nav-btn quizzes-slider__nav-btn--prev" #prevBtn>
+  <div class="slider__title">
+    <h2>{{ section.title }}</h2>
+  </div>
+
+  <div class="slider__row">
+
+    <button class="slider__nav-btn slider__nav-btn--prev" #prevBtn>
       <fa-icon [icon]="faChevronLeft" size="4x"></fa-icon>
     </button>
-  
-    <div class="quizzes-slider__row">
-  
-      <div class="quizzes-slider__title">
-        <h2>{{ section.title }}</h2>
-      </div>
-  
-      <ngx-slick-carousel class="quizzes-slider__carousel" [config]="sliderConfig">
-  
-        <quiz ngxSlickItem *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]" [quiz]="quiz"></quiz>
 
-      </ngx-slick-carousel>
-  
-    </div>
-  
-    <button class="quizzes-slider__nav-btn quizzes-slider__nav-btn--next" #nextBtn>
+    <ngx-slick-carousel class="slider__carousel" [config]="sliderConfig">
+
+      <quiz ngxSlickItem *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]" [quiz]="quiz">
+      </quiz>
+
+    </ngx-slick-carousel>
+
+    <button class="slider__nav-btn slider__nav-btn--next" #nextBtn>
       <fa-icon [icon]="faChevronRight" size="4x"></fa-icon>
     </button>
-  
+
   </div>
+
+</div>
