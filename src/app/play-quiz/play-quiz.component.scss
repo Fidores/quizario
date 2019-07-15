@@ -3,7 +3,7 @@
 @import '../sass/abstract/reset-button';
 
 .quiz-board {
-    width: 50vw;
+    width: 70vw;
     margin: em(20px) auto 0px auto;
 
     .actions {
@@ -54,7 +54,7 @@
         &__answers {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, em(65px));
+            grid-template-rows: repeat(2, 1fr);
             grid-gap: em(20px);
         }
 
@@ -67,6 +67,7 @@
             cursor: pointer;
             transition: box-shadow .2s ease-in-out;
             font-size: 1.3rem;
+            height: em(65px);
 
             &--valid {
                 background-color: $answer-valid-color;
@@ -136,4 +137,22 @@
 .questions--heading {
     font-weight: 900;
     @extend .question;
+}
+
+@media (max-width: 1024px) {
+    .quiz-board {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .quiz-board {
+        width: 95vw;
+
+        .question {
+            &__answers {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
 }
