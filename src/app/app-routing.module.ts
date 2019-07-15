@@ -22,8 +22,7 @@ const routes: Routes = [
   { path: 'edit-quiz/:id', component: CreateQuizComponent, canActivate: [AuthGuard], data: { animation: 'edit-quiz' } },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard], data: { animation: 'account' }, children: [
     { path: 'me', component: AccountDetailsComponent },
-    { path: 'my-quizzes', component: UserQuizzesComponent },
-    { path: 'history', component: GamesHistoryComponent }
+    { path: 'my-quizzes', component: UserQuizzesComponent }
   ]},
   { path: '**', component: NotFoundComponent }
 ];

@@ -24,7 +24,6 @@ import { AccountComponent } from './account/account.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
 import { QuizComponent } from './quiz/quiz.component';
-import { GamesHistoryComponent } from './games-history/games-history.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { GamesHistoryComponent } from './games-history/games-history.component';
     AccountDetailsComponent,
     UserQuizzesComponent,
     QuizComponent,
-    GamesHistoryComponent,
   ],
   imports: [
     BrowserModule,
