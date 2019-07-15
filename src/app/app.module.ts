@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,9 +52,9 @@ import { GamesHistoryComponent } from './games-history/games-history.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SlickCarouselModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SwiperModule
   ],
   providers: [
     {

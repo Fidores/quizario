@@ -62,8 +62,7 @@
             @include reset-button();
             background-color: $answer-color;
             border-radius: em(3px);
-            display: flex;
-            align-items: center;
+            text-align: start;
             padding: 0 em(15px);
             cursor: pointer;
             transition: box-shadow .2s ease-in-out;

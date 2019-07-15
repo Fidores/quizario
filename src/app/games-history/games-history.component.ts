@@ -14,7 +14,7 @@ export class GamesHistoryComponent implements OnInit {
     private readonly user: UserService
   ) { }
 
-  history$: Observable<gamesHistory>;
+  history$: Observable<gamesHistory[]>;
 
   ngOnInit() {
     this.history$ = this.user.getHistory();

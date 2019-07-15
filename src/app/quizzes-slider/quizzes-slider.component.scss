@@ -6,11 +6,11 @@
 
     &__row{
         display: grid;
-        grid-template-columns: 1fr 70vw 1fr;
+        grid-template-columns: 1fr 1200px 1fr;
     }
 
     &__title{
-        width: 70vw;
+        width: 1200px;
         margin: 0px auto;
     }
 
@@ -35,8 +35,4 @@
             margin-left: em(20px);
         }
     }
-}
-
-.quiz {
-    margin: 0px em(20px);
 }

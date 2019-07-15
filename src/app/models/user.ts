@@ -6,7 +6,7 @@ export interface User {
     registrationTime: Date;
     isAdmin: boolean;
     password?: string;
-    gamesHistory: gamesHistory;
+    gamesHistory: gamesHistory[];
 }
 
 export interface gamesHistory {

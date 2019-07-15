@@ -34,12 +34,12 @@ export class UserService {
     return this.http.get<User>(`${environment.apiOrigin}/users/me`);
   }
 
-  getHistory(): Observable<gamesHistory> {
-    return this.http.get<gamesHistory>(`${environment.apiOrigin}/users/me/history`);
+  getHistory(): Observable<gamesHistory[]> {
+    return this.http.get<gamesHistory[]>(`${environment.apiOrigin}/users/me/history`);
   }
 
   /**
-   * Notifies app if the user is logged in.
+   * Notifies app at the beginning if the user is already logged in.
   */
 
   notify(): void {

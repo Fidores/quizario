@@ -9,6 +9,10 @@
     padding-top: em(1px);
     max-width: 300px;
 
+    &:hover{
+        background-color: lighten($primary-color, 7%);
+    }
+
     &__title{
         text-align: center;
     }
@@ -30,9 +34,5 @@
         &:hover {
             background-color: rgba($accent-color, 0.150);
         }
-    }
-
-    &:hover{
-        background-color: $primary-color;
     }
 }

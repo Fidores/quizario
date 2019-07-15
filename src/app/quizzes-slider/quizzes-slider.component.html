@@ -10,12 +10,12 @@
       <fa-icon [icon]="faChevronLeft" size="4x"></fa-icon>
     </button>
 
-    <ngx-slick-carousel class="slider__carousel" [config]="sliderConfig">
+    <swiper class="slider__carousel" [config]="sliderConfig">
 
-      <quiz ngxSlickItem *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]" [quiz]="quiz">
+      <quiz *ngFor="let quiz of section.quizzes" [routerLink]="['play-quiz', quiz._id]" [quiz]="quiz">
       </quiz>
 
-    </ngx-slick-carousel>
+    </swiper>
 
     <button class="slider__nav-btn slider__nav-btn--next" #nextBtn>
       <fa-icon [icon]="faChevronRight" size="4x"></fa-icon>
@@ -24,3 +24,5 @@
   </div>
 
 </div>
+
+

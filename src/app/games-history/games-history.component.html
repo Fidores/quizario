@@ -1,14 +1,6 @@
-<table>
-    <thead>
-        <tr>
-            <td>Nazwa quizu</td>
-            <td>Data gry</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let game of history$ | async">
-            <td>{{ game.title }}</td>
-            <td>{{ game.dateOfGame | date:'medium' }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="games" *ngFor="let game of history$ | async">
+    <div class="games__game">
+        <div class="games__title">{{ game.title }}</div>
+        <div class="games__date">{{ game.dateOfGame }}</div>
+    </div>
+</div>
