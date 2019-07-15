@@ -20,7 +20,7 @@ export class QuizzesService {
     return this.http.get<SectionOfQuizzes>(environment.backendOrigin);
   }
 
-  getQuizz(id: string, params: HttpParams): Observable<Quiz> {
+  getQuizz(id: string, params?: HttpParams): Observable<Quiz> {
     return this.http.get<Quiz>(`${this.url}/${id}`, { params });
   }
 
