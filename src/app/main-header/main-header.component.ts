@@ -1,9 +1,10 @@
+import { SearchService } from './../services/search/search.service';
 import { User } from './../models/user';
 import { UserService } from './../services/user/user.service';
 import { SideNavService } from './../services/side-nav/side-nav.service';
 import { Component, OnInit } from '@angular/core';
 import { faBars, faUser, faPlusSquare, faSearch, faSignOutAlt, faSignInAlt, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'main-header',
@@ -15,7 +16,8 @@ export class MainHeaderComponent implements OnInit {
   constructor(
     private readonly sideNav: SideNavService,
     private readonly _user: UserService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly _search: SearchService
   ) { }
 
   faBars = faBars;
@@ -39,6 +41,10 @@ export class MainHeaderComponent implements OnInit {
   signOut() {
     this._user.logOut();
     this.router.navigate(['/']);
+  }
+
+  search(text: string) {
+    this._search.searchText = text;
   }
 
 }

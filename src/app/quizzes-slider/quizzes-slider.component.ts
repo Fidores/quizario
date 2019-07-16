@@ -34,10 +34,6 @@ export class QuizzesSliderComponent implements OnInit {
     navigation: this.swiperNavigation,
     spaceBetween: 20,
     breakpoints: {
-      2560: {
-        slidesPerView: 5,
-        slidesPerGroup: 5
-      },
       1440: {
         slidesPerView: 3,
         slidesPerGroup: 3

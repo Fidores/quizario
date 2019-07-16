@@ -1,3 +1,4 @@
+import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './route-guards/auth/auth.guard';
@@ -15,6 +16,7 @@ import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'play-quiz/:id', component: PlayQuizComponent, data: { animation: 'play-quiz' } },
+  { path: 'search', component: SearchComponent, data: { animation: 'search' } },
   { path: 'login', component: LoginComponent, canActivate: [NotAuthGuard], data: { animation: 'login' } },
   { path: 'signup', component: SignUpComponent, canActivate: [NotAuthGuard], data: { animation: 'signup' } },
   { path: 'create-quiz', component: CreateQuizComponent, canActivate: [AuthGuard], data: { animation: 'create-quiz' } },

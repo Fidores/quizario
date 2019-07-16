@@ -9,6 +9,11 @@ export class AccountComponent implements OnInit {
 
   constructor() { }
 
+  swiperConfig = {
+    freeMode: true,
+    slidesPerView: 3
+  }
+
   ngOnInit() {
   }
 

@@ -19,10 +19,14 @@
     top: 0px;
     z-index: 11;
 
-    .header-item:not(:first-child){
+    .header-item {
         text-align: center;
         margin-left: em(32px);
         cursor: pointer;
+
+        &:first-child {
+            margin-left: 0px;
+        }
     }
 
     .logo-text{

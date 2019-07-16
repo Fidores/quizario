@@ -19,6 +19,7 @@
         text-decoration: none;
         border-top-left-radius: em(5px);
         border-top-right-radius: em(5px);
+        text-align: center;
 
         &.active {
             background-color: $primary-color;
