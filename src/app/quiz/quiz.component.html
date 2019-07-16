@@ -9,8 +9,9 @@
   </div>
 
   <div class="quiz__actions" *ngIf="showActions">
-    <a class="quiz__action btn btn-empty btn-accent" [routerLink]="['/edit-quiz', quiz._id]"><fa-icon [icon]="faPen"></fa-icon></a>
-    <button class="quiz__action btn btn-empty" (click)="deleteQuiz(quiz._id)"><fa-icon [icon]="faTrash"></fa-icon></button>
+    <a class="quiz__action btn btn-empty btn-accent" [routerLink]="['/edit-quiz', quiz._id]" [tooltip]="'Edytuj'"><fa-icon [icon]="faPen"></fa-icon></a>
+    <button class="quiz__action btn btn-empty" (click)="deleteQuiz(quiz._id)" [tooltip]="'Usuń'"><fa-icon [icon]="faTrash"></fa-icon></button>
+    <a class="quiz__action btn btn-empty" [routerLink]="['/play-quiz', quiz._id]" [tooltip]="'Graj'"><fa-icon [icon]="faPlay"></fa-icon></a>
   </div>
 
 </div>

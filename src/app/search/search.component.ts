@@ -3,7 +3,7 @@ import { SearchService } from './../services/search/search.service';
 import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { Quiz } from '../models/quiz';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +20,8 @@ export class SearchComponent implements OnInit {
   quizzes: Observable<Quiz[]>;
 
   ngOnInit() {
-    this.quizzes = this._search.searchListener.pipe(switchMap(text => this._quizzes.searchAllQuizzes({ pattern: `.*${text}.*`, field: 'title' })));
+    this.quizzes = this._search.searchListener
+      .pipe(switchMap(text => text ? this._quizzes.searchAllQuizzes({ pattern: `.*${text}.*`, field: 'title' }) : of(null)));
   }
 
 }
