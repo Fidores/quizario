@@ -6,7 +6,7 @@
     width: 70vw;
     margin: em(30px) auto;
     border-radius: em(5px);
-    padding: 20px;
+    padding: em(20px);
 
     &__nav {
         background-color: $light-primary-color;
@@ -14,7 +14,6 @@
     }
     
     &__tab {
-        display: inline-block;
         padding: em(20px) em(50px);
         font-size: 1.1rem;
         text-decoration: none;
@@ -27,4 +26,14 @@
     }
 
 
+}
+
+@media (max-width: 425px) {
+    .account {
+        width: 95vw;
+
+        &__tab {
+            padding: 20px;
+        }
+    }
 }

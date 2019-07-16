@@ -11,7 +11,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { NotAuthGuard } from './route-guards/not-auth/not-auth.guard';
 import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
-import { GamesHistoryComponent } from './games-history/games-history.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

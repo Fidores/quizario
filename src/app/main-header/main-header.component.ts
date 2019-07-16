@@ -2,7 +2,7 @@ import { User } from './../models/user';
 import { UserService } from './../services/user/user.service';
 import { SideNavService } from './../services/side-nav/side-nav.service';
 import { Component, OnInit } from '@angular/core';
-import { faBars, faUser, faPlusSquare, faSearch, faSignOutAlt, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser, faPlusSquare, faSearch, faSignOutAlt, faSignInAlt, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,6 +24,7 @@ export class MainHeaderComponent implements OnInit {
   faSearch = faSearch;
   faSignOut = faSignOutAlt;
   faSignIn = faSignInAlt;
+  faEllipsisV = faEllipsisV;
 
   user: User | null;
 

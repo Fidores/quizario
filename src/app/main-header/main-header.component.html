@@ -1,40 +1,46 @@
-<div class="header-left">
+<header class="header">
+    <div class="header-left">
     
-    <div class="header-item" (click)="openSideNav()">
-        <fa-icon [icon]="faBars" size="lg" ></fa-icon>
-    </div>
-
-    <div class="header-item logo-text" routerLink="/">
-        Quizario
-    </div>
-
-</div>
-
-<div class="header-middle">
-    <div class="input-sticker">
-        <div class="sticker">
-            <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+        <div class="header-item" (click)="openSideNav()">
+            <fa-icon [icon]="faBars" size="lg" ></fa-icon>
         </div>
-        <input type="text" class="input-control" name="search-quiz" placeholder="Szukaj quizu">
+    
+        <div class="header-item logo-text" routerLink="/">
+            Quizario
+        </div>
+    
     </div>
-</div>
-
-<div class="header-right">
-
-    <div class="header-item" [tooltip]="'Konto'" *ngIf="user" routerLink="/account/me">
-        <fa-icon [icon]="faUser" size="lg"></fa-icon>
+    
+    <div class="header-middle">
+        <div class="input-sticker">
+            <div class="sticker">
+                <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+            </div>
+            <input type="text" class="input-control" name="search-quiz" placeholder="Szukaj quizu">
+        </div>
     </div>
+    
+    <div class="header-right">
+    
+        <div class="header-item" [tooltip]="'Konto'" *ngIf="user" routerLink="/account/me">
+            <fa-icon [icon]="faUser" size="lg"></fa-icon>
+        </div>
+    
+        <div class="header-item" [tooltip]="'Wyloguj się'" *ngIf="user" (click)="signOut()">
+            <fa-icon [icon]="faSignOut" size="lg"></fa-icon>
+        </div>
+    
+        <div class="header-item" [tooltip]="'Zaloguj się'" routerLink="/login" *ngIf="!user">
+            <fa-icon [icon]="faSignIn" size="lg"></fa-icon>
+        </div>
+    
+        <div class="header-item" [tooltip]="'Dodaj nowy quiz'" routerLink="/create-quiz" *ngIf="user">
+            <fa-icon [icon]="faPlusSquare" size="lg"></fa-icon>
+        </div>
 
-    <div class="header-item" [tooltip]="'Wyloguj się'" *ngIf="user" (click)="signOut()">
-        <fa-icon [icon]="faSignOut" size="lg"></fa-icon>
+        <div class="header-item small-screen">
+            <fa-icon [icon]="faEllipsisV" size="lg"></fa-icon>
+        </div>
+    
     </div>
-
-    <div class="header-item" [tooltip]="'Zaloguj się'" routerLink="/login" *ngIf="!user">
-        <fa-icon [icon]="faSignIn" size="lg"></fa-icon>
-    </div>
-
-    <div class="header-item" [tooltip]="'Dodaj nowy quiz'" routerLink="/create-quiz" *ngIf="user">
-        <fa-icon [icon]="faPlusSquare" size="lg"></fa-icon>
-    </div>
-
-</div>
+</header>

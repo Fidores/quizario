@@ -3,7 +3,7 @@
 @import '../sass/components/colours';
 
 .quiz-form {
-    width: 50vw;
+    width: 70vw;
     margin: 0px auto;
 }
 
@@ -40,4 +40,16 @@
 
 .main-heading {
     text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .quiz-form {
+        width: 95vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .answers {
+        grid-template-columns: 1fr;
+    }
 }

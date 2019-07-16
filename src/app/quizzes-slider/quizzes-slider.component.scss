@@ -6,11 +6,11 @@
 
     &__row{
         display: grid;
-        grid-template-columns: 1fr 1200px 1fr;
+        grid-template-columns: 1fr 70vw 1fr;
     }
 
     &__title{
-        width: 1200px;
+        width: 70vw;
         margin: 0px auto;
     }
 
@@ -33,6 +33,67 @@
     
         &--next {
             margin-left: em(20px);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .slider {
+
+        &__row{
+            display: grid;
+            grid-template-columns: 100vw;
+            justify-items: center;
+
+            .slider__carousel {
+                width: 500px; 
+            }
+        }
+    
+        &__title{
+            width: 500px;
+            margin: 0px auto;
+        }
+
+        &__nav-btn--prev {
+            display: none;
+        }
+
+        &__nav-btn--next {
+            display: none;
+        }
+    }
+
+    .quiz {
+        width: 300px;
+    }
+}
+
+@media (max-width: 425px) {
+    .slider {
+
+        &__row{
+            display: grid;
+            grid-template-columns: 100vw;
+            justify-items: center;
+
+            .slider__carousel {
+                width: 300px;
+                
+            }
+        }
+    
+        &__title{
+            width: 300px;
+            margin-left: 0px auto;
+        }
+
+        &__nav-btn--prev {
+            display: none;
+        }
+
+        &__nav-btn--next {
+            display: none;
         }
     }
 }
