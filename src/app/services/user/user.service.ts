@@ -17,12 +17,8 @@ export class UserService {
   user$ = new Subject<User | null>();
 
   signUp(user: User) {
-    return this.http.post(`${ environment.apiOrigin }/users`, user, { observe: 'response', headers: { 'Access-Control-Expose-Headers': 'x-auth-token' } })
-      .pipe(map((response: HttpResponse<User>) => {
-        localStorage.setItem('auth-token', response.headers.get('x-auth-token'));
-        this.user$.next(response.body);
-        return response.body;
-      }));
+    return this.http.post<User>(`${ environment.apiOrigin }/users`, user, { observe: 'response'})
+      .pipe(map(res => this.saveUserLocally(res)));
   }
 
   logOut() {
@@ -44,5 +40,15 @@ export class UserService {
 
     this.http.get<User>(environment.apiOrigin + '/users/me')
       .subscribe(user => this.user$.next(user), (err: HttpErrorResponse) => this.user$.next(null));
+  }
+
+  /**
+   * Saves auth token to local storage. 
+  */
+
+  saveUserLocally(response: HttpResponse<User>) {
+    localStorage.setItem('auth-token', response.headers.get('x-auth-token'));
+    this.user$.next(response.body);
+    return response.body;
   }
 }

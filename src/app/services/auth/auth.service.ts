@@ -1,6 +1,6 @@
 import { UserService } from './../user/user.service';
 import { User } from './../../models/user';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
@@ -22,11 +22,7 @@ export class AuthService {
       },
       responseType: 'text' as 'json',
       observe: 'response'
-    }).pipe(map(res => { 
-      localStorage.setItem('auth-token', res.headers.get('x-auth-token')); 
-      this.user.user$.next(res.body);
-      return res.body;
-    }));
+    }).pipe( map(res => this.user.saveUserLocally(res)) );
   }
 
   isAuthorized(): boolean {
