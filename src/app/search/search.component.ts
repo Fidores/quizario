@@ -21,7 +21,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.quizzes = this._search.searchListener
-      .pipe(switchMap(text => text ? this._quizzes.searchAllQuizzes({ pattern: `.*${text}.*`, field: 'title' }) : of(null)));
+      .pipe(switchMap(text => text ? this._quizzes.getAllQuizzes({ title: { $regex: text, $options: 'i' } }) : of(null)));
+      
   }
 
 }

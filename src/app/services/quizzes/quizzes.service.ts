@@ -37,22 +37,11 @@ export class QuizzesService {
 
   /**
    * This route is made for querying quizzes.
-   * In order to query data you should use syntax for mongoose. 
+   * In order to query data you should use syntax for mongoose Model.find({}). 
   */
 
   getAllQuizzes(params): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`${this.url}`, { params });
-  }
-
-  /**
-   * This route is made for querying quizzes with Regular Expression.
-   * @param params.pattern Regular expression as string.
-   * @param params.field Fild to match the regular expression.
-   * @returns Array of quizzes.
-  */
-
-  searchAllQuizzes(params: { pattern: string, field: string }): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`${this.url}/search`, { params })
+    return this.http.get<Quiz[]>(`${this.url}`, { params: { query: JSON.stringify(params) } });
   }
 
   /**
