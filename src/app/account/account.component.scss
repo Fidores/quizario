@@ -14,7 +14,7 @@
     }
     
     &__tab {
-        padding: em(20px) em(50px);
+        padding: 20px 0px;
         font-size: 1.1rem;
         text-decoration: none;
         border-top-left-radius: em(5px);
@@ -25,16 +25,10 @@
             background-color: $primary-color;
         }
     }
-
-
 }
 
 @media (max-width: 425px) {
     .account {
         width: 95vw;
-
-        &__tab {
-            padding: 20px;
-        }
     }
 }

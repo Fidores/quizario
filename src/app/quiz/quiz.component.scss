@@ -12,6 +12,7 @@
 
     &.edit-mode {
         height: 230px;
+        cursor: default;
     }
 
     &:hover{
@@ -35,7 +36,7 @@
     &__actions {
         display: flex;
         flex-direction: row-reverse;
-        padding-right: 5px;
+        padding-right: em(5px);
     }
 
     &__action {
