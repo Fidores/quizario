@@ -58,11 +58,7 @@
     flex-wrap: nowrap;
     margin: em(20px) 0px;
 
-    .input-control{
+    *:not(:first-child) {
         margin-left: em(20px);
-
-        &:first-child{
-            margin-left: 0px;
-        }
     }
 }

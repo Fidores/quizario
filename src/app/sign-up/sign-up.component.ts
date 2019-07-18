@@ -39,8 +39,8 @@ export class SignUpComponent implements OnInit {
     this.error = null;
 
     this.user.signUp({ name, surname, email, password } as User)
-      .pipe(catchError((err: HttpErrorResponse) => { this.error = err; return of(empty); }), take(1))
-      .subscribe((user: User) => { if (!this.error) { this.router.navigate(['/']); } });
+      .pipe(take(1))
+      .subscribe((user: User) => { if (!this.error) { this.router.navigate(['/']); } }, (err: HttpErrorResponse) => { this.error = err; return of(empty); });
   }
 
   get password() {
@@ -52,7 +52,7 @@ export class SignUpComponent implements OnInit {
   }
 
   get email() {
-    return this.signUpForm.get('password');
+    return this.signUpForm.get('email');
   }
 
   get name() {

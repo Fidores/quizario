@@ -4,5 +4,5 @@ export function MatchPasswordsValidator(control: AbstractControl): {[key: string
     const password = control.get('password');
     const confirmPassword = control.get('confirmPassword');
 
-    return password.value !== confirmPassword.value ? { passwordsMatch: false } : null;
+    return password.value !== confirmPassword.value ? { passwordsMatch: true } : null;
 }
