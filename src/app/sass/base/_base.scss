@@ -1,0 +1,22 @@
+html {
+    font-size: 100%;
+}
+
+body {
+    background-color: $dark-primary-color;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+main {
+    position: relative;
+}

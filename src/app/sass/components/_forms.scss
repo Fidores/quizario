@@ -1,0 +1,36 @@
+.form-group {
+    margin: rem(20px) 0px;
+}
+
+.form-control {
+    background-color: $light-primary-color;
+    border-radius: rem(5px);
+    outline: none;
+    border: none;
+    padding: rem(12px) rem(22px);
+    color: #ffffff;
+    font-size: rem(17px);
+    width: 100%;
+    transition: box-shadow .2s ease-in-out;
+
+    &.ng-valid.ng-touched {
+        box-shadow: 0px 0px 0px rem(2px) $success-color;
+    }
+
+    &.ng-invalid.ng-touched {
+        box-shadow: 0px 0px 0px rem(2px) $danger-color;
+    }
+
+    &::placeholder {
+        color: #797979;
+    }
+}
+
+.hint{
+    font-size: rem(13px);
+    color: #808080;
+
+    &-error {
+        color: rgb(236, 70, 32);
+    }
+}

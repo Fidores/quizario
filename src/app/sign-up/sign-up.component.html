@@ -4,36 +4,36 @@
 
   <div class="input-inline-group">
     <div>
-      <input type="text" class="input-control" placeholder="Imię" formControlName="name">
+      <input type="text" class="form-control" placeholder="Imię" formControlName="name">
       <p class="hint-error" *ngIf="name.hasError('required') && name.touched">Imię jest <strong>wymagane</strong>.</p>
       <p class="hint-error" *ngIf="name.hasError('minlength') && name.touched">Imię nie <strong>może być krótsze</strong> niż {{ name.getError('minlength').requiredLength }} znaki.</p>
       <p class="hint-error" *ngIf="name.hasError('maxlength') && name.touched">Imię nie <strong>może być dłuższe</strong> niż {{ name.getError('maxlength').requiredLength }} znaki.</p>
     </div>
 
     <div>
-      <input type="text" class="input-control" placeholder="Nazwisko" formControlName="surname">
+      <input type="text" class="form-control" placeholder="Nazwisko" formControlName="surname">
       <p class="hint-error" *ngIf="surname.hasError('required') && surname.touched">Imię jest <strong>wymagane</strong>.</p>
       <p class="hint-error" *ngIf="surname.hasError('minlength') && surname.touched">Imię nie <strong>może być krótsze</strong> niż {{ surname.getError('minlength').requiredLength }} znaki.</p>
       <p class="hint-error" *ngIf="surname.hasError('maxlength') && surname.touched">Imię nie <strong>może być dłuższe</strong> niż {{ surname.getError('maxlength').requiredLength }} znaki.</p>
     </div>
   </div>
 
-  <div class="input-group">
-    <input type="email" class="input-control" placeholder="Email..." formControlName="email">
+  <div class="form-group">
+    <input type="email" class="form-control" placeholder="Email..." formControlName="email">
     <p class="hint-error" *ngIf="email.hasError('required') && email.touched">Email jest <strong>wymagany</strong>.</p>
     <p class="hint-error" *ngIf="email.hasError('email') && email.touched">Podaj <strong>prawidłowy</strong> email.</p>
     <p class="hint-error" *ngIf="email.hasError('maxlength') && email.touched">Imię nie <strong>może być dłuższe</strong> niż {{ email.getError('maxlength').requiredLength }} znaki.</p>
   </div>
 
-  <div class="input-group">
-    <input type="password" class="input-control" placeholder="Hasło..." formControlName="password">
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Hasło..." formControlName="password">
     <p class="hint-error" *ngIf="password.hasError('required') && password.touched">Hasło jest <strong>wymagane</strong>.</p>
     <p class="hint-error" *ngIf="password.hasError('maxlength') && password.touched">Hasło nie <strong>może być dłuższe</strong> niż {{ password.getError('maxlength').requiredLength }} znaki.</p>
     <p class="hint-error" *ngIf="password.hasError('minlength') && password.touched">Hasło nie <strong>może być krótsze</strong> niż {{ password.getError('minlength').requiredLength }} znaki.</p>
   </div>
 
-  <div class="input-group">
-    <input type="password" class="input-control" placeholder="Powtórz hasło..." formControlName="confirmPassword" [ngClass]="{ 'invalid': password.value !== confirmPassword.value }">
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Powtórz hasło..." formControlName="confirmPassword" [ngClass]="{ 'invalid': password.value !== confirmPassword.value }">
     <p class="hint-error" *ngIf="confirmPassword.hasError('required') && confirmPassword.touched">Hasło jest <strong>wymagane</strong>.</p>
     <p class="hint-error" *ngIf="confirmPassword.hasError('maxlength') && confirmPassword.touched">Hasło nie <strong>może być dłuższe</strong> niż {{ confirmPassword.getError('maxlength').requiredLength }} znaki.</p>
     <p class="hint-error" *ngIf="confirmPassword.hasError('minlength') && confirmPassword.touched">Hasło nie <strong>może być krótsze</strong> niż {{ confirmPassword.getError('minlength').requiredLength }} znaki.</p>
@@ -42,10 +42,10 @@
 
   <p class="hint-error" *ngIf="error">{{ error.error }}</p>
 
-  <p>Masz już konto ? <a routerLink="/login">Zaloguj się tutaj</a></p>
+  <p>Masz już konto ? <a routerLink="/login" class="link">Zaloguj się tutaj</a></p>
 
   <div class="input-group">
-    <button type="submit" class="btn btn-block" [disabled]="signUpForm.invalid">
+    <button type="submit" class="btn btn--primary btn--block" [disabled]="signUpForm.invalid">
       Załóż konto
     </button>
   </div>

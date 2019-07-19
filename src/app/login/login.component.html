@@ -2,13 +2,13 @@
 
   <h1>Zaloguj się</h1>
 
-  <div class="input-group">
+  <div class="form-group">
     <input 
       name="email" 
       #email="ngModel" 
       email
       maxlength="128"
-      class="input-control" 
+      class="form-control" 
       placeholder="Email..." 
       [(ngModel)]="logIn.email" 
       required >
@@ -17,12 +17,12 @@
     <p class="hint-error" *ngIf="email.hasError('email') && email.touched">Podaj <strong>poprawny</strong> adres email.</p>
   </div>
 
-  <div class="input-group">
+  <div class="form-group">
     <input 
       name="password" 
       #password="ngModel" 
       type="password" 
-      class="input-control"
+      class="form-control"
       placeholder="Hasło..." 
       [(ngModel)]="logIn.password"
       maxlength="255" 
@@ -33,9 +33,9 @@
 
   <p class="hint-error" *ngIf="error">{{ error.error }}</p>
 
-  <p>Nie masz jeszcze konta ? <a routerLink="/signup">Załóż konto tutaj</a></p>
+  <p>Nie masz jeszcze konta ? <a routerLink="/signup" class="link">Załóż konto tutaj</a></p>
 
-  <div class="input-group">
+  <div class="form-group">
     <button type="submit" class="btn btn--primary btn--block" [disabled]="logInForm.invalid">
       Zaloguj się
     </button>

@@ -1,0 +1,24 @@
+.input-inline-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: rem(20px) 0px;
+
+    *:not(:first-child) {
+        margin-left: rem(20px);
+    }
+}
+
+.input-sticker{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: $light-primary-color;
+    border-radius: rem(5px);
+    padding: 0px rem(10px);
+
+    .sticker{
+        color: #797979;
+    }
+}
