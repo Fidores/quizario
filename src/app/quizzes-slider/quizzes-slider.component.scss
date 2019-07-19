@@ -1,5 +1,5 @@
-@import '../sass/components/colours';
-@import '../sass/functions/em';
+@import '../sass/abstracts/variables';
+@import '../sass/abstracts/functions';
 
 .slider{
     margin-top: 50px;
@@ -20,19 +20,19 @@
         display: grid;
         background-color: #2E2E2E;
         border: none;
-        border-radius: em(10px);
+        border-radius: rem(10px);
         cursor: pointer;
         color: #FFFFFF;
         height: 100%;
-        width: em(100px);
+        width: rem(100px);
 
         &--prev {
             justify-self: end;
-            margin-right: em(20px);
+            margin-right: rem(20px);
         }
     
         &--next {
-            margin-left: em(20px);
+            margin-left: rem(20px);
         }
     }
 }

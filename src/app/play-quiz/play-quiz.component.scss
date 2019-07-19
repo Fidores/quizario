@@ -1,6 +1,7 @@
-@import '../sass/components/colours';
-@import '../sass/functions/em';
-@import '../sass/abstract/reset-button';
+@import '../sass/abstracts/variables';
+@import '../sass/abstracts/functions';
+@import '../sass/abstracts/mixins';
+
 
 .quiz-board {
     width: 70vw;

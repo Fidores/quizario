@@ -1,12 +1,11 @@
-@import '../functions/em';
-@import '../animations/fadeIn';
+
 
 .tooltip{
     position: fixed;
     background-color: black;
-    padding: em(5px) em(10px);
-    border-radius: em(3px);
-    font-size: em(14px);
+    padding: rem(5px) rem(10px);
+    border-radius: rem(3px);
+    font-size: rem(14px);
     text-align: center;
     z-index: 999;
     

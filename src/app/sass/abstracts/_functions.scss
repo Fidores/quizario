@@ -1,4 +1,4 @@
-@function em($pixels, $root-font-size: 16){
+@function rem($pixels, $root-font-size: 16){
     @if(unitless($pixels)){
         $pixels: $pixels * 1px;
     }

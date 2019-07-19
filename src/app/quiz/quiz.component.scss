@@ -1,17 +1,17 @@
-@import '../sass/components/colours';
-@import '../sass/functions/em';
+@import '../sass/abstracts/variables';
+@import '../sass/abstracts/functions';
 
 .quiz{
     background-color: $light-primary-color;
-    border-radius: em(10px);
+    border-radius: rem(10px);
     cursor: pointer;
     transition: background-color 0.2s ease-out;
-    padding-top: em(1px);
+    padding-top: rem(1px);
     width: 300px;
     height: 200px;
 
     &.edit-mode {
-        height: 230px;
+        height: rem(230px);
         cursor: default;
     }
 
@@ -21,29 +21,25 @@
 
     &__title{
         text-align: center;
-        max-width: 200px;
-        max-height: 60px;
+        max-width: rem(200px);
+        max-height: rem(60px);
         overflow: hidden;
         display: block;
         margin: 0px auto;
     }
 
     &__image{
-        width: em(120px);
+        width: rem(120px);
         margin: 0px auto;
     }
 
     &__actions {
         display: flex;
         flex-direction: row-reverse;
-        padding-right: em(5px);
+        padding-right: rem(5px);
     }
 
-    &__action {
-        color: $accent-color;
-
-        &:hover {
-            background-color: rgba($accent-color, 0.150);
-        }
+    &__action:not(:first-child) {
+        margin-right: 10px;
     }
 }

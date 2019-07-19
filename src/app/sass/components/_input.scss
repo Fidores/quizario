@@ -1,23 +1,23 @@
-@import '../functions/em';
-@import '../components/colours';
+@import '../abstracts/variables';
+@import '../abstracts/functions';
 
 .input-control{
     background-color: $light-primary-color;
-    border-radius: em(5px);
+    border-radius: rem(5px);
     outline: none;
     border: none;
-    padding: em(12px) em(22px);
+    padding: rem(12px) rem(22px);
     color: #ffffff;
-    font-size: em(17px);
+    font-size: rem(17px);
     width: 100%;
     transition: box-shadow .2s ease-in-out;
 
     &.ng-valid.ng-touched, &.valid.ng-touched {
-        box-shadow: 0px 0px 0px em(2px) #0F8F2B;
+        box-shadow: 0px 0px 0px rem(2px) #0F8F2B;
     }
 
     &.ng-invalid.ng-touched, &.invalid.ng-touched {
-        box-shadow: 0px 0px 0px em(2px) rgb(161, 45, 19);
+        box-shadow: 0px 0px 0px rem(2px) rgb(161, 45, 19);
     }
 
     &::placeholder{
@@ -29,10 +29,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: center;
+    align-itrems: center;
     background-color: $light-primary-color;
-    border-radius: em(5px);
-    padding: 0px em(10px);
+    border-radius: rem(5px);
+    padding: 0px rem(10px);
 
     .sticker{
         color: #797979;
@@ -40,11 +40,11 @@
 }
 
 .input-group{
-    margin: em(20px) 0px;
+    margin: rem(20px) 0px;
 }
 
 .hint{
-    font-size: em(13px);
+    font-size: rem(13px);
     color: #808080;
 
     &-error {
@@ -56,9 +56,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin: em(20px) 0px;
+    margin: rem(20px) 0px;
 
     *:not(:first-child) {
-        margin-left: em(20px);
+        margin-left: rem(20px);
     }
 }

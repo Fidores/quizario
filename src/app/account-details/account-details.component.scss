@@ -1,17 +1,17 @@
-@import '../sass/functions/em';
+@import '../sass/abstracts/functions';
 
 .details__detail:not(:first-child) {
-    margin-top: em(20px);
+    margin-top: rem(20px);
 }
 
 .details__header {
-    font-size: em(15px);
+    font-size: rem(15px);
     color: #7D7D7D;
     display: block;
 }
 
 .details__value {
-    font-size: em(18px);
+    font-size: rem(18px);
     display: block;
-    margin-top: em(5px);
+    margin-top: rem(5px);
 }

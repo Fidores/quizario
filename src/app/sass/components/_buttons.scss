@@ -1,0 +1,65 @@
+@import '../abstracts/mixins';
+
+.btn {
+    border-radius: rem(3px);
+    border: none;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    outline: none;
+    padding: rem(10px);
+    text-transform: uppercase;
+    transition: all .2s ease-out;
+    text-align: center;
+    width: fit-content;
+
+    &--primary {
+        @include button($secondary-color);
+    }
+
+    &--secondary {
+        @include button($accent-color);
+    }
+
+    &--warning {
+        @include button($warning-color);
+    }
+
+    &--danger {
+        @include button($danger-color);
+    }
+
+    &--success {
+        @include button($success-color);
+    }
+
+    &--outline-primary {
+        @include outline-button($secondary-color);
+    }
+
+    &--outline-secondary {
+        @include outline-button($accent-color);
+    }  
+    
+    &--outline-success {
+        @include outline-button($success-color);
+    } 
+
+    &--outline-danger {
+        @include outline-button($danger-color);
+    } 
+
+    &--outline-warning {
+        @include outline-button($warning-color);
+    } 
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: default;
+    }
+}

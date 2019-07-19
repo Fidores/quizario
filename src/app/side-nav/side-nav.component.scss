@@ -1,13 +1,12 @@
-@import '../sass/functions/em';
-@import '../sass/components/colours';
+@import '../sass/abstracts/variables';
+@import '../sass/abstracts/functions';
 
 :host {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
     background-color: #1C1C1C;
-    transform: translateX(em(-240px));
+    transform: translateX(rem(-240px));
     transition: transform .3s ease-in-out;
     height: 100vh;
     z-index: 100;
@@ -25,10 +24,10 @@
     display: flex;
     align-items: center;
     text-align: center;
-    width: em(240px);
+    width: rem(240px);
     cursor: pointer;
     transition: background-color .2s ease-in-out;
-    height: em(64px);
+    height: rem(64px);
     color: #FFFFFF;
     text-decoration: none;
 
@@ -37,11 +36,11 @@
     }
     
     &--icon {
-        padding-left: em(32px);
+        padding-left: rem(32px);
     }
     
     &--text {
-        padding-left: em(32px);
+        padding-left: rem(32px);
     }
 }
 
@@ -54,6 +53,6 @@
 
     .side-nav__item--text{
         font-weight: 900;
-        font-size: em(24px);
+        font-size: rem(24px);
     }
 }

@@ -1,5 +1,5 @@
-@import '../sass/functions/em';
-@import '../sass/components/colours';
+@import '../sass/abstracts/functions';
+@import '../sass/abstracts/variables';
 
 %header-section {
     display: flex;
@@ -11,9 +11,9 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    height: em(64px);
-    box-shadow: 0px em(4px) em(15px) rgba(0, 0, 0, 0.25);
-    padding: 0px em(32px);
+    height: rem(64px);
+    box-shadow: 0px rem(4px) rem(15px) rgba(0, 0, 0, 0.25);
+    padding: 0px rem(32px);
     background-color: $primary-color;
     position: sticky;
     top: 0px;
@@ -21,7 +21,7 @@
 
     .header-item {
         text-align: center;
-        margin-left: em(32px);
+        margin-left: rem(32px);
         cursor: pointer;
 
         &:first-child {
@@ -31,7 +31,7 @@
 
     .logo-text{
         font-weight: 900;
-        font-size: em(24px);
+        font-size: rem(24px);
     }
 
     .header-left {
@@ -54,7 +54,7 @@
 
 @media (max-width: 768px) {
     .header {
-        grid-column-gap: em(24px);
+        grid-column-gap: rem(24px);
 
         .logo-text {
             display: none;

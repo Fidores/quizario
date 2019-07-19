@@ -1,13 +1,13 @@
 .form{
-    width: em(500px);
+    width: rem(500px);
     margin: 0px auto;
     margin-top: 50px;
-    padding: em(10px) em(20px) em(20px) em(20px);
+    padding: rem(10px) rem(20px) rem(20px) rem(20px);
     background-color: $primary-color;
     position: absolute;
     left: 50%; top: 30%;
     transform: translateX(-50%);
-    border-radius: em(3px);
+    border-radius: rem(3px);
 
     h1{
         text-align: center;

@@ -1,6 +1,6 @@
-@import '../sass/functions/em';
-@import '../sass/abstract/reset-button';
-@import '../sass/components/colours';
+@import '../sass/abstracts/functions';
+@import '../sass/abstracts/mixins';
+@import '../sass/abstracts/variables';
 
 .quiz-form {
     width: 70vw;
@@ -11,7 +11,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-gap: em(10px);
+    grid-gap: rem(10px);
 }
 
 .add-question-btn {
@@ -24,18 +24,18 @@
     @include reset-button;
     background-color: $accent-color;
     color: #000;
-    margin-top: em(10px);
+    margin-top: rem(10px);
 }
 
 .quiz-form__action-btn:not(:first-child) {
-    margin-top: em(10px);
+    margin-top: rem(10px);
 }
 
 .question {
     background-color: $primary-color;
-    padding: em(15px);
-    border-radius: em(5px);
-    margin-bottom: em(20);
+    padding: rem(15px);
+    border-radius: rem(5px);
+    margin-bottom: rem(20);
 }
 
 .main-heading {
