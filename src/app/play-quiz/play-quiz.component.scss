@@ -5,139 +5,129 @@
 
 .quiz-board {
     width: 70vw;
-    margin: em(20px) auto 0px auto;
+    margin: rem(20px) auto 0px auto;
 
-    .actions {
+    &__actions {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        margin-bottom: em(10px);
-        padding: 0px 20px;
-
-        .ng-fa-icon { cursor: pointer; }
-
-        &__close {
-            @include reset-button();
-            justify-self: start;
-        }
-
-        &__timer {
-            text-align: center;
-            font-weight: 900;
-        }
-
-        &__next {
-            @include reset-button();
-            justify-self: end;
-        }
+        margin-bottom: rem(10px);
+        padding: 0px rem(20px);
     }
 
-    .question {
+    &__close {
+        justify-self: start;
+    }
+
+    &__timer {
+        text-align: center;
+        font-weight: 900;
+    }
+
+    &__next {
+        justify-self: end;
+    }
+
+    &__question {
         background-color: $light-primary-color;
-        border-radius: em(3px);
-        padding: em(15px);
+        border-radius: rem(3px);
+        padding: rem(15px);
+    }
 
-        &__title {
-            text-align: center;
-            font-weight: 900;
+    &__title {
+        text-align: center;
+        font-weight: 900;
+    }
+
+    &__image {
+        background-image: url('../../assets/JavaScript-logo.png');
+        background-position: center center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        max-width: rem(700px);
+        height: rem(300px);
+        margin: rem(20px) auto;
+    }
+
+    &__answers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: rem(20px);
+    }
+
+    &__answer {
+        background-color: $answer-color;
+        text-align: start;
+        font-size: 1.3rem;
+        height: rem(65px);
+
+        &--valid {
+            background-color: $success-color;
         }
 
-        &__image {
-            background-image: url('../../assets/JavaScript-logo.png');
-            background-position: center center;
-            background-size: auto 100%;
-            background-repeat: no-repeat;
-            max-width: em(700px);
-            height: em(300px);
-            margin: em(20px) auto;
+        &--invalid {
+            background-color: $answer-invalid-color;
         }
 
-        &__answers {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            grid-gap: em(20px);
+        &--choosen {
+            box-shadow: 0px 0px 0px rem(3px) $accent-color !important; 
         }
 
-        &__answer {
-            @include reset-button();
-            background-color: $answer-color;
-            border-radius: em(3px);
-            text-align: start;
-            padding: 0 em(15px);
-            cursor: pointer;
-            transition: box-shadow .2s ease-in-out;
-            font-size: 1.3rem;
-            height: em(65px);
-
-            &--valid {
-                background-color: $answer-valid-color;
-            }
-
-            &--invalid {
-                background-color: $answer-invalid-color;
-            }
-
-            &--choosen {
-                box-shadow: 0px 0px 0px em(3px) $accent-color !important; 
-            }
-
-            &:hover {
-                box-shadow: 0px 0px 0px em(1px) $accent-color; 
-            }
+        &:hover {
+            box-shadow: 0px 0px 0px rem(1px) $accent-color; 
         }
     }
 }
 
 .summary {
     width: 50vw;
-    margin: em(20px) auto 0px auto;
+    margin: rem(20px) auto 0px auto;
     background-color: $light-primary-color;
-    border-radius: em(3px);
-    padding: em(15px) em(60px);
+    border-radius: rem(3px);
+    padding: rem(15px) rem(60px);
 
     &__title {
         text-align: center;
     }
 
     &__score {
-        font-size: em(20px);
-        margin: em(20px) 0px;
+        font-size: rem(20px);
+        margin: rem(20px) 0px;
     }
 
     &__details {
-        font-size: em(18px);
+        font-size: rem(18px);
     }
 
-    .question {
+    &__question {
         display: grid;
         grid-template-columns: 8fr 3fr;
-        padding: em(15px) 0px;
+        padding: rem(15px) 0px;
         align-items: center;
+    }
 
-        &__name {
-            font-size: em(20px);
+    &__heading {
+        font-weight: 900;
+        @extend .summary__question;
+    }
 
-            &--correct {
-                color: lighten($answer-valid-color, 20);
-            }
-            
-            &--wrong {
-                color: lighten($answer-invalid-color, 20);
-            }
+    &__name {
+        font-size: rem(20px);
+
+        &--correct {
+            color: lighten($answer-valid-color, 20);
         }
         
+        &--wrong {
+            color: lighten($answer-invalid-color, 20);
+        }
     }
 
     &__button {
         text-align: end;
-        margin-top: em(70px);
+        margin-top: rem(70px);
     }
-}
-
-.questions--heading {
-    font-weight: 900;
-    @extend .question;
 }
 
 @media (max-width: 1024px) {
@@ -150,10 +140,8 @@
     .quiz-board {
         width: 95vw;
 
-        .question {
-            &__answers {
-                grid-template-columns: 1fr;
-            }
+        &__answers {
+            grid-template-columns: 1fr;
         }
     }
 }

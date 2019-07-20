@@ -2,8 +2,8 @@
     border-radius: rem(3px);
     border: none;
     cursor: pointer;
-    color: #000;
-    font-weight: bold;
+    color: #FFFFFF;
+    font-weight: 400;
     outline: none;
     padding: rem(10px);
     text-transform: uppercase;
@@ -50,6 +50,10 @@
     &--outline-warning {
         @include outline-button($warning-color);
     } 
+
+    &--icon {
+        @include icon-button(#FFFFFF);
+    }
 
     &--block {
         display: block;

@@ -1,17 +1,17 @@
 <header class="header">
-    <div class="header-left">
+    <div class="header__section">
     
-        <div class="header-item" (click)="openSideNav()">
-            <fa-icon [icon]="faBars" size="lg" ></fa-icon>
+        <div class="header__item" (click)="openSideNav()">
+            <fa-icon [icon]="faBars" size="lg"></fa-icon>
         </div>
     
-        <div class="header-item logo-text" routerLink="/">
+        <div class="header__item header__logo" routerLink="/">
             Quizario
         </div>
     
     </div>
     
-    <div class="header-middle">
+    <div class="header__section">
         <div class="input-sticker">
             <div class="sticker">
                 <fa-icon [icon]="faSearch" size="lg"></fa-icon>
@@ -20,25 +20,25 @@
         </div>
     </div>
     
-    <div class="header-right">
+    <div class="header__section">
     
-        <div class="header-item" [tooltip]="'Konto'" *ngIf="user" routerLink="/account/me">
+        <div class="header__item" [tooltip]="'Konto'" *ngIf="user" routerLink="/account/me">
             <fa-icon [icon]="faUser" size="lg"></fa-icon>
         </div>
     
-        <div class="header-item" [tooltip]="'Wyloguj się'" *ngIf="user" (click)="signOut()">
+        <div class="header__item" [tooltip]="'Wyloguj się'" *ngIf="user" (click)="signOut()">
             <fa-icon [icon]="faSignOut" size="lg"></fa-icon>
         </div>
     
-        <div class="header-item" [tooltip]="'Zaloguj się'" routerLink="/login" *ngIf="!user">
+        <div class="header__item" [tooltip]="'Zaloguj się'" routerLink="/login" *ngIf="!user">
             <fa-icon [icon]="faSignIn" size="lg"></fa-icon>
         </div>
     
-        <div class="header-item" [tooltip]="'Dodaj nowy quiz'" routerLink="/create-quiz" *ngIf="user">
+        <div class="header__item" [tooltip]="'Dodaj nowy quiz'" routerLink="/create-quiz" *ngIf="user">
             <fa-icon [icon]="faPlusSquare" size="lg"></fa-icon>
         </div>
 
-        <div class="header-item small-screen">
+        <div class="header__item small-screen">
             <fa-icon [icon]="faEllipsisV" size="lg"></fa-icon>
         </div>
     

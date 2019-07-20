@@ -1,37 +1,37 @@
 <div class="quiz-board" *ngIf="!isFinished else summary">
 
-  <div class="actions">
-    <button class="actions__close" [routerLink]="['/']">
+  <div class="quiz-board__actions">
+    <button class="actions__close btn btn--icon" routerLink="/">
       <fa-icon [icon]="faTimes" size="2x"></fa-icon>
     </button>
 
-    <div class="actions__timer" [style.visibility]="question && question.duration ? 'visible' : 'hidden'">
+    <div class="quiz-board__timer" [style.visibility]="question && question.duration ? 'visible' : 'hidden'">
       Pozostały czas: {{ timeLeft }}s
     </div>
 
-    <button class="actions__next" (click)="next()">
+    <button class="quiz-board__next btn btn--icon" (click)="next()">
       <fa-icon [icon]="faArrowRight" size="2x"></fa-icon>
     </button>
   </div>
 
-  <div class="question" *ngIf="question">
-    <h3 class="question__title">
+  <div class="quiz-board__question" *ngIf="question">
+    <h3 class="quiz-board__title">
       {{ question.title }}
     </h3>
 
-    <div class="question__image" *ngIf="question.img" [style.background-image]="'url('+ environment.backendOrigin + question.img +')'">
+    <div class="quiz-board__image" *ngIf="question.img" [style.background-image]="'url('+ environment.backendOrigin + question.img +')'">
 
     </div>
 
-    <div class="question__answers">
+    <div class="quiz-board__answers">
 
       <button
-        class="question__answer" 
+        class="quiz-board__answer btn btn--block" 
         *ngFor="let answer of question.answers | keyvalue"
         [ngClass]="{ 
-          'question__answer--valid': choosenAnswer && question.rightAnswer === answer.key, 
-          'question__answer--invalid': choosenAnswer && question.rightAnswer !== answer.key, 
-          'question__answer--choosen': choosenAnswer === answer.key }" 
+          'quiz-board__answer--valid': choosenAnswer && question.rightAnswer === answer.key, 
+          'quiz-board__answer--invalid': choosenAnswer && question.rightAnswer !== answer.key, 
+          'quiz-board__answer--choosen': choosenAnswer === answer.key }" 
         (click)="chooseAnswer(answer.key)">{{ answer.key }}) {{ answer.value }}</button>
         
     </div>
@@ -50,15 +50,15 @@
 
     <div class="summary__details">
 
-      <div class="questions--heading">
+      <div class="summary__heading">
         <div>Treść pytania</div>
         <div>Prawidłowa odpowiedź</div>
       </div>
 
-      <div class="question" *ngFor="let question of questions; let index = index">
-        <div class="question__name" [ngClass]="question.isAnsweredCorrectly ? 'question__name--correct' : 'question__name--wrong'">{{ question.title }}</div>
+      <div class="summary__question" *ngFor="let question of questions; let index = index">
+        <div class="summary__name" [ngClass]="question.isAnsweredCorrectly ? 'summary__name--correct' : 'summary__name--wrong'">{{ question.title }}</div>
 
-        <div class="question__answer">
+        <div class="summary__answer">
           {{ question.answers[question.rightAnswer] }}
         </div>
       </div>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="summary__button">
-      <button class="btn btn-empty" [routerLink]="['/']">Zakończ</button>
+      <button class="btn btn--outline-primary" routerLink="/">Zakończ</button>
     </div>
 
   </div>

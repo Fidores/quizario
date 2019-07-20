@@ -2,54 +2,43 @@
 @import '../sass/abstracts/mixins';
 @import '../sass/abstracts/variables';
 
-.quiz-form {
+.quiz {
     width: 70vw;
     margin: 0px auto;
-}
 
-.answers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: rem(10px);
-}
+    &__heading {
+        text-align: center;
+    }
 
-.add-question-btn {
-    @include reset-button;
-    background-color: $secondary-color;
-    color: #000;
-}
+    &__question {
+        background-color: $primary-color;
+        padding: rem(15px);
+        border-radius: rem(5px);
+        margin-bottom: rem(20);
+    }
 
-.add-quiz-btn {
-    @include reset-button;
-    background-color: $accent-color;
-    color: #000;
-    margin-top: rem(10px);
-}
+    &__answers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: rem(10px);
+    }
 
-.quiz-form__action-btn:not(:first-child) {
-    margin-top: rem(10px);
-}
-
-.question {
-    background-color: $primary-color;
-    padding: rem(15px);
-    border-radius: rem(5px);
-    margin-bottom: rem(20);
-}
-
-.main-heading {
-    text-align: center;
+    &__action:not(:first-child) {
+        margin-top: rem(10px);
+    }
 }
 
 @media (max-width: 1024px) {
-    .quiz-form {
+    .quiz {
         width: 95vw;
     }
 }
 
 @media (max-width: 768px) {
-    .answers {
-        grid-template-columns: 1fr;
+    .quiz {
+        &__answers {
+            grid-template-columns: 1fr;
+        }
     }
 }
