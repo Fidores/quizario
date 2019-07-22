@@ -1,12 +1,31 @@
 $primary-color: #282828;
 $light-primary-color: #2E2E2E;
 $dark-primary-color: #121212;
+
 $secondary-color: #10FC52;
 $accent-color: #DA8E1D;
 $warning-color: #ffc107;
 $danger-color: #dc3545;
 $success-color: #28a745;
 
+$dark-text-color: #000000;
+$light-text-color: #FFFFFF;
+
 $answer-color: #3D3D3D;
 $answer-valid-color: #0F8F2B;
 $answer-invalid-color: #722D1E;
+
+$margins: (
+    sm: (
+        top: 8px,
+        bottom: 8px
+    ),
+    lg: (
+        top: 20px,
+        bottom: 20px
+    ),
+    xxl: (
+        top: 40px,
+        bottom: 40px
+    )
+);

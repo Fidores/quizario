@@ -1,11 +1,8 @@
 @import '../sass/abstracts/variables';
 @import '../sass/abstracts/functions';
-@import '../sass/abstracts/mixins';
-
 
 .quiz-board {
     width: 70vw;
-    margin: rem(20px) auto 0px auto;
 
     &__actions {
         display: grid;
@@ -16,7 +13,7 @@
     }
 
     &__close {
-        justify-self: start;
+        justify-self: stretch;
     }
 
     &__timer {

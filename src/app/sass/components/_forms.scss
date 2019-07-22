@@ -8,7 +8,7 @@
     outline: none;
     border: none;
     padding: rem(12px) rem(22px);
-    color: #ffffff;
+    color: $light-text-color;
     font-size: rem(17px);
     width: 100%;
     transition: box-shadow .2s ease-in-out;
@@ -26,11 +26,11 @@
     }
 }
 
-.hint{
+.hint {
     font-size: rem(13px);
     color: #808080;
 
     &-error {
-        color: rgb(236, 70, 32);
+        color: $danger-color;
     }
 }

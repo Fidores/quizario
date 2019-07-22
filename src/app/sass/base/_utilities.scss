@@ -1,0 +1,8 @@
+.u-margin {
+    @include margin-spacer;
+}
+
+.u-margin-auto {
+    margin-left: auto;
+    margin-right: auto;
+}

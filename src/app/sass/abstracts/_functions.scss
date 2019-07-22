@@ -12,8 +12,8 @@
 
 @function text-color($color) {
     @if (lightness($color) > 50) {
-        @return #000000;
+        @return $dark-text-color;
     } @else {
-        @return #FFFFFF;
+        @return $light-text-color;
     }
 }
