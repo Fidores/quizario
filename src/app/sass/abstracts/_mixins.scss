@@ -44,7 +44,7 @@
     color: $color;
 }
 
-@mixin margin-spacer {
+@mixin margin-utilities {
     @each $size, $positions in $margins {
         @each $position, $margin in $positions {
           &-#{$position}-#{$size} {

@@ -45,7 +45,11 @@
 
 @media (max-width: 768px) {
     .header {
-        grid-column-gap: rem(24px);
+        grid-column-gap: rem(12px);
+
+        &__item {
+            margin-left: 0px;
+        }
 
         &__logo {
             display: none;

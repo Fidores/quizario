@@ -40,8 +40,8 @@ export class QuizzesService {
    * In order to query data you should use syntax for mongoose Model.find({}). 
   */
 
-  getAllQuizzes(params): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`${this.url}`, { params: { query: JSON.stringify(params) } });
+  getAllQuizzes(query): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>(`${this.url}`, { params: { query: JSON.stringify(query) } });
   }
 
   /**
