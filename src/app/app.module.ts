@@ -26,6 +26,7 @@ import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { SearchComponent } from './search/search.component';
 import { InfoComponent } from './info/info.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { InfoComponent } from './info/info.component';
     QuizComponent,
     SearchComponent,
     InfoComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { HistoryComponent } from './history/history.component';
 import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { AccountComponent } from './account/account.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'edit-quiz/:id', component: CreateQuizComponent, canActivate: [AuthGuard], data: { animation: 'edit-quiz' } },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard], data: { animation: 'account' }, children: [
     { path: 'me', component: AccountDetailsComponent },
+    { path: 'history', component: HistoryComponent },
     { path: 'my-quizzes', component: UserQuizzesComponent }
   ]},
   { path: '**', component: NotFoundComponent }

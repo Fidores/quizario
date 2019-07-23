@@ -1,7 +1,7 @@
 import { SectionOfQuizzes } from './../../models/quiz';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Quiz } from 'src/app/models/quiz';
 import { environment } from 'src/environments/environment';
 
@@ -31,8 +31,8 @@ export class QuizzesService {
    * @returns Quiz.
   */
 
-  getQuizz(id: string): Observable<Quiz> {
-    return this.http.get<Quiz>(`${this.url}/${id}`);
+  getQuizz(id: string, params?): Observable<Quiz> {
+    return this.http.get<Quiz>(`${this.url}/${id}`, { params });
   }
 
   /**

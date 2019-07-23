@@ -38,7 +38,7 @@ export class CreateQuizComponent implements OnInit {
     this.pageTitle.setTitle(this.id ? 'Quizario - edytuj quiz' : 'Quizario - stwórz quiz');
 
     if(this.id)
-      this.quizzes.getQuizz(this.id)
+      this.quizzes.getQuizz(this.id, { skipHistory: true })
       .pipe(take(1))
       .subscribe((quiz: Quiz) => {
         this.editMode = true;
