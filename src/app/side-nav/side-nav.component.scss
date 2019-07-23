@@ -1,7 +1,7 @@
 @import '../sass/abstracts/variables';
 @import '../sass/abstracts/functions';
 
-:host {
+.side-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -18,40 +18,40 @@
     &.opened {
         transform: translateX(0);
     }
-}
-
-.side-nav__item {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: rem(240px);
-    cursor: pointer;
-    transition: background-color .2s ease-in-out;
-    height: rem(64px);
-    color: #FFFFFF;
-    text-decoration: none;
-
-    &:hover {
-        background-color: rgb(44, 44, 44);
-    }
     
-    &--icon {
-        padding-left: rem(32px);
-    }
+    &__item {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        width: rem(240px);
+        cursor: pointer;
+        transition: background-color .2s ease-in-out;
+        height: rem(64px);
+        color: #FFFFFF;
+        text-decoration: none;
     
-    &--text {
-        padding-left: rem(32px);
+        &:hover {
+            background-color: rgb(44, 44, 44);
+        }
+        
+        &--icon {
+            padding-left: rem(32px);
+        }
+        
+        &--text {
+            padding-left: rem(32px);
+        }
     }
-}
 
-.logo{
-    background-color: $primary-color;
-
-    &:hover{
+    &__logo {
         background-color: $primary-color;
+    
+        &:hover {
+            background-color: $primary-color;
+        }
     }
 
-    .side-nav__item--text{
+    &__logo-text {
         font-weight: 900;
         font-size: rem(24px);
     }

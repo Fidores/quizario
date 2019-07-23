@@ -1,6 +1,6 @@
 <div class="quiz-board u-margin-auto u-margin-top-lg" *ngIf="!isFinished else summary">
 
-  <div class="quiz-board__actions">
+  <div class="quiz-board__actions u-margin-bottom-sm">
     <button class="actions__close btn btn--icon" routerLink="/">
       <fa-icon [icon]="faTimes" size="2x"></fa-icon>
     </button>
@@ -39,12 +39,12 @@
 </div>
 
 <ng-template #summary>
-  <div class="summary">
+  <div class="summary u-margin-auto u-margin-top-lg">
     <h2 class="summary__title">
       Podsumowanie
     </h2>
 
-    <div class="summary__score">
+    <div class="summary__score u-margin-vertical-lg">
       Zdobyłeś {{ this.numberOfCorrectAnswers }} / {{ this.questions.length }} punktów ({{ this.calculateScore().toFixed(0) }}%)
     </div>
 
@@ -65,7 +65,7 @@
 
     </div>
 
-    <div class="summary__button">
+    <div class="summary__button u-margin-top-xxl">
       <button class="btn btn--outline-primary" routerLink="/">Zakończ</button>
     </div>
 

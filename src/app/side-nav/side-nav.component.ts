@@ -19,8 +19,7 @@ export class SideNavComponent implements OnInit {
   faBars = faBars;
   faSave = faSave;
   faHistory = faHistory;
-
-  @HostBinding('class') status = '';
+  status: string;
 
   ngOnInit() {
     this.sideNav.closeListeaner.subscribe(className => this.status = className as string);

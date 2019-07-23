@@ -17,15 +17,21 @@ $answer-invalid-color: #722D1E;
 
 $margins: (
     sm: (
-        top: 8px,
-        bottom: 8px
+        top: 10px,
+        bottom: 10px,
+        left: 10px,
+        right: 10px
     ),
     lg: (
         top: 20px,
-        bottom: 20px
+        bottom: 20px,
+        left: 20px,
+        right: 20px
     ),
     xxl: (
         top: 40px,
-        bottom: 40px
+        bottom: 40px,
+        left: 40px,
+        right: 40px
     )
 );

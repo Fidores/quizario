@@ -1,5 +1,5 @@
 
-<div class="quizzes">
+<div class="quizzes u-margin-top-xxl">
     <div class="quizzes__quiz" *ngFor="let quiz of quizzes | async">
         <quiz [quiz]="quiz" [routerLink]="['/play-quiz', quiz._id]"></quiz>
     </div>

@@ -4,7 +4,6 @@
 .account {
     background-color: $primary-color;    
     width: 70vw;
-    margin: rem(30px) auto;
     border-radius: rem(5px);
     padding: rem(20px);
 
@@ -15,7 +14,7 @@
     
     &__tab {
         padding: 20px 0px;
-        font-size: 1.1rrem;
+        font-size: 1.1rem;
         text-decoration: none;
         border-top-left-radius: rem(5px);
         border-top-right-radius: rem(5px);

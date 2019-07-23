@@ -1,9 +1,5 @@
 @import '../sass/abstracts/functions';
 
-.details__detail:not(:first-child) {
-    margin-top: rem(20px);
-}
-
 .details__header {
     font-size: rem(15px);
     color: #7D7D7D;

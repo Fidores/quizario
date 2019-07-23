@@ -1,10 +1,8 @@
 @import '../sass/abstracts/functions';
-@import '../sass/abstracts/mixins';
 @import '../sass/abstracts/variables';
 
 .quiz {
     width: 70vw;
-    margin: 0px auto;
 
     &__heading {
         text-align: center;
@@ -14,7 +12,6 @@
         background-color: $primary-color;
         padding: rem(15px);
         border-radius: rem(5px);
-        margin-bottom: rem(20);
     }
 
     &__answers {

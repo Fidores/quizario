@@ -1,21 +1,21 @@
 <div class="details" *ngIf="userDetails">
 
-    <div class="details__detail">
+    <div class="details__detail u-margin-top-lg">
         <span class="details__header">Imię</span>
         <span class="details__value">{{ userDetails.name }}</span>
     </div>
 
-    <div class="details__detail">
+    <div class="details__detail u-margin-top-lg">
         <span class="details__header">Nazwisko</span>
         <span class="details__value">{{ userDetails.surname }}</span>
     </div>
 
-    <div class="details__detail">
+    <div class="details__detail u-margin-top-lg">
         <span class="details__header">Email</span>
         <span class="details__value">{{ userDetails.email }}</span>
     </div>
 
-    <div class="details__detail">
+    <div class="details__detail u-margin-top-lg">
         <span class="details__header">Data rejestracji</span>
         <span class="details__value">{{ userDetails.registrationTime | date:'short' }}</span>
     </div>

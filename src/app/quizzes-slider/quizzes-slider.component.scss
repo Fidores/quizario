@@ -2,7 +2,6 @@
 @import '../sass/abstracts/functions';
 
 .slider{
-    margin-top: 50px;
 
     &__row{
         display: grid;
@@ -11,7 +10,6 @@
 
     &__title{
         width: 70vw;
-        margin: 0px auto;
     }
 
     &__nav-btn {
@@ -28,11 +26,6 @@
 
         &--prev {
             justify-self: end;
-            margin-right: rem(20px);
-        }
-    
-        &--next {
-            margin-left: rem(20px);
         }
     }
 }
@@ -41,7 +34,6 @@
     .slider {
 
         &__row{
-            display: grid;
             grid-template-columns: 100vw;
             justify-items: center;
 
@@ -52,7 +44,6 @@
     
         &__title{
             width: 650px; 
-            margin: 0px auto;
         }
 
         &__nav-btn--prev {
@@ -73,19 +64,16 @@
     .slider {
 
         &__row{
-            display: grid;
             grid-template-columns: 100vw;
             justify-items: center;
 
             .slider__carousel {
                 width: 300px;
-                
             }
         }
     
         &__title{
             width: 300px;
-            margin-left: 0px auto;
         }
 
         &__nav-btn--prev {

@@ -8,7 +8,7 @@ import { OverlayService } from '../overlay/overlay.service';
 export class SideNavService {
 
   constructor(
-    private readonly Overlay: OverlayService
+    private readonly overlay: OverlayService
   ) { }
 
   private readonly _openListeaner$ = new Subject();
@@ -16,12 +16,12 @@ export class SideNavService {
 
   close(className = 'closed') {
     this._openListeaner$.next(className);
-    this.Overlay.fullScreen(false);
+    this.overlay.fullScreen(false);
   }
 
   open(className = 'opened') {
     this._openListeaner$.next(className);
-    this.Overlay.fullScreen(true);
+    this.overlay.fullScreen(true);
   }
 
   get openListeaner() {

@@ -1,10 +1,10 @@
 <div class="quiz" [ngClass]="{ 'edit-mode': showActions }">
   
-  <div class="quiz__title">
+  <div class="quiz__title u-margin-auto u-text-center">
     <h4>{{ quiz.title }}</h4>
   </div>
 
-  <div class="quiz__image">
+  <div class="quiz__image u-margin-auto u-margin-top-sm">
     <img src="{{ quiz.img ? env.backendOrigin + quiz.img : '../../assets/faq.png' }}">
   </div>
 
