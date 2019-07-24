@@ -48,7 +48,7 @@ import { HistoryComponent } from './history/history.component';
     QuizComponent,
     SearchComponent,
     InfoComponent,
-    HistoryComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

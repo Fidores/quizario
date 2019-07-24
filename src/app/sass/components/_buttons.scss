@@ -45,6 +45,18 @@
         @include icon-button-theme($light-text-color);
     }
 
+    &--menu-item {
+        text-transform: none;
+        text-align: start;
+        border-radius: 0px;
+        font-weight: 700;
+        padding: rem(15px);
+        
+        &:hover {
+            background-color: lighten($light-primary-color, 10%);
+        }
+    }
+
     &--block {
         display: block;
         width: 100%;
