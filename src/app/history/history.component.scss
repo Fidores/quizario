@@ -10,6 +10,8 @@
         border-radius: 5px;
         cursor: pointer;
         transition: transform 0.1s ease-out, background-color .1s ease-out;
+        color: $light-text-color;
+        text-decoration: none;
 
         &:hover {
             background-color: lighten($light-primary-color, 7%);

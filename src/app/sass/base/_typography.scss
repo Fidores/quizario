@@ -3,12 +3,6 @@ a.link:link, a.link:visited, a.link {
     text-decoration: underline;
 }
 
-a:link, a:visited, a {
-    color: $light-text-color;
-    text-decoration: none;
-
-}
-
 body {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;

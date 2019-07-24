@@ -42,7 +42,7 @@
     } 
 
     &--icon {
-        @include icon-button-theme(#FFFFFF);
+        @include icon-button-theme($light-text-color);
     }
 
     &--block {
