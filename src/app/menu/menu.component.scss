@@ -1,0 +1,15 @@
+@import '../sass/abstracts/variables';
+
+:host {
+    position: absolute;
+    
+}
+
+.menu {
+    padding: 10px 0px;
+    background-color: $light-primary-color;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}

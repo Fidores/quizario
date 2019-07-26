@@ -41,6 +41,13 @@
         <div class="header__item small-screen" #triggerMenu>
             <fa-icon [icon]="faEllipsisV" size="lg"></fa-icon>
         </div>
+
+        <app-menu [triggerButton]="triggerMenu">
+            <button class="btn btn--menu-item">Konto</button>
+            <button class="btn btn--menu-item">Wyloguj się</button>
+            <button class="btn btn--menu-item">Zaloguj się</button>
+            <button class="btn btn--menu-item">Dodaj nowy quiz</button>
+        </app-menu>
     
     </div>
 </header>

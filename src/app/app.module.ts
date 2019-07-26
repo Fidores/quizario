@@ -27,6 +27,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { SearchComponent } from './search/search.component';
 import { InfoComponent } from './info/info.component';
 import { HistoryComponent } from './history/history.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HistoryComponent } from './history/history.component';
     QuizComponent,
     SearchComponent,
     InfoComponent,
-    HistoryComponent
+    HistoryComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

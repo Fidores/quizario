@@ -51,6 +51,7 @@
         border-radius: 0px;
         font-weight: 700;
         padding: rem(15px);
+        width: 100%;
         
         &:hover {
             background-color: lighten($light-primary-color, 10%);
