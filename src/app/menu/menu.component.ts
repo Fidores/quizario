@@ -1,6 +1,8 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit, Input, AfterViewChecked, ElementRef, HostListener } from '@angular/core';
 import { zoomIn, zoomOut } from 'ng-animate';
 import { trigger, transition } from '@angular/animations';
+import { OverlayService } from '../services/overlay/overlay.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,16 +18,17 @@ import { trigger, transition } from '@angular/animations';
 export class MenuComponent implements OnInit, AfterViewChecked {
 
   constructor(
-    private readonly host: ElementRef<HTMLElement>
+    private readonly host: ElementRef<HTMLElement>,
+    private readonly overlay: OverlayService
   ) { }
 
   @Input('triggerButton') triggerButton: HTMLElement;
-  @HostListener('document:click', ['$event']) onOutsideClick($event) {
-    
-  }
-
+  @HostListener('click') onclick() { this.close() }
+  
   isVisible = false;
   hostPositions: DOMRect | ClientRect;
+  overlaySubscription: Subscription;
+  menuRef;
 
   ngOnInit() {
     this.triggerButton.addEventListener('click', this.toggleVisibility.bind(this));
@@ -36,7 +39,21 @@ export class MenuComponent implements OnInit, AfterViewChecked {
   }
 
   toggleVisibility() {
-    this.isVisible = !this.isVisible;
+    this.isVisible ? this.close() : this.open();
+  }
+
+  private open() {
+    this.isVisible = true;
+    this.overlay.openFullScreen();
+    this.overlaySubscription = this.overlay.fullScreenClickEmitter.subscribe(click => this.close());
+    this.menuRef = this.overlay.appendElement(this.host.nativeElement);
+  }
+
+  private close() {
+    this.isVisible = false;
+    this.overlay.deleteElement(this.menuRef);
+    this.overlay.closeFullScreen();
+    this.overlaySubscription.unsubscribe();
   }
 
   private setPosition() {

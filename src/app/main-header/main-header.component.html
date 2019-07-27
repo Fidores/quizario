@@ -43,10 +43,10 @@
         </div>
 
         <app-menu [triggerButton]="triggerMenu">
-            <button class="btn btn--menu-item">Konto</button>
-            <button class="btn btn--menu-item">Wyloguj się</button>
-            <button class="btn btn--menu-item">Zaloguj się</button>
-            <button class="btn btn--menu-item">Dodaj nowy quiz</button>
+            <button class="btn btn--menu-item" routerLink="/account/me" *ngIf="user">Konto</button>
+            <button class="btn btn--menu-item" (click)="signOut()" *ngIf="user">Wyloguj się</button>
+            <button class="btn btn--menu-item" routerLink="/login" *ngIf="!user">Zaloguj się</button>
+            <button class="btn btn--menu-item" routerLink="/create-quiz" *ngIf="user">Dodaj nowy quiz</button>
         </app-menu>
     
     </div>

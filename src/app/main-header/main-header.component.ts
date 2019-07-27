@@ -14,9 +14,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class MainHeaderComponent implements OnInit {
 
   constructor(
-    private readonly sideNav: SideNavService,
+    private readonly _sideNav: SideNavService,
     private readonly _user: UserService,
-    private readonly router: Router,
+    private readonly _router: Router,
     private readonly _search: SearchService
   ) { }
 
@@ -35,12 +35,12 @@ export class MainHeaderComponent implements OnInit {
   }
 
   openSideNav() {
-    this.sideNav.open();
+    this._sideNav.open();
   }
 
   signOut() {
     this._user.logOut();
-    this.router.navigate(['/']);
+    this._router.navigate(['/']);
   }
 
   search(text: string) {

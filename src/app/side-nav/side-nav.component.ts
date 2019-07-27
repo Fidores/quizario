@@ -24,17 +24,17 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     this.sideNav.closeListeaner.subscribe(className => this.status = className as string);
     this.sideNav.openListeaner.subscribe(className => this.status = className as string);
-    this.overlay.fullScreenClickListener.subscribe(click => this.close());
+    this.overlay.fullScreenClickEmitter.subscribe(click => { if(this.status === 'opened') this.close() });
   }
 
   close() {
     this.status = 'closed';
-    this.overlay.fullScreen(false);
+    this.overlay.closeFullScreen();
   }
 
   open() {
     this.status = 'opened';
-    this.overlay.fullScreen(true);
+    this.overlay.openFullScreen();
   }
 
 }

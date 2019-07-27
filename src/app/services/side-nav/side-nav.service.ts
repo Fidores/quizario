@@ -16,12 +16,12 @@ export class SideNavService {
 
   close(className = 'closed') {
     this._openListeaner$.next(className);
-    this.overlay.fullScreen(false);
+    this.overlay.closeFullScreen();
   }
 
   open(className = 'opened') {
     this._openListeaner$.next(className);
-    this.overlay.fullScreen(true);
+    this.overlay.openFullScreen();
   }
 
   get openListeaner() {

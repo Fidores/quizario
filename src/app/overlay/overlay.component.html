@@ -1,6 +1,10 @@
 <div 
 #fullScreenContainer
 class="container"
-*ngIf="fullScreen"
+*ngIf="fullScreenConfig.isOpened"
+[ngClass]="{ 
+    'container--transparent': fullScreenConfig.isTransparent,
+    'container--dimmed': !fullScreenConfig.isTransparent
+ }"
 @fullscreen
 (click)="notifyClick()"></div>
