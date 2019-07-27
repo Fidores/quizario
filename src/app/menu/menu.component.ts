@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit, Input, AfterViewChecked, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, Input, AfterViewChecked, ElementRef, HostListener, OnDestroy } from '@angular/core';
 import { zoomIn, zoomOut } from 'ng-animate';
 import { trigger, transition } from '@angular/animations';
 import { OverlayService } from '../services/overlay/overlay.service';
@@ -12,10 +12,10 @@ import { OverlayService } from '../services/overlay/overlay.service';
     trigger('menu', [ 
       transition('void => *', zoomIn, { params: { timing: 0.2 } }), 
       transition('* => void', zoomOut, { params: { timing: 0.2 } }) 
-    ]),
+    ])
   ]
 })
-export class MenuComponent implements OnInit, AfterViewChecked {
+export class MenuComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   constructor(
     private readonly host: ElementRef<HTMLElement>,
@@ -28,10 +28,15 @@ export class MenuComponent implements OnInit, AfterViewChecked {
   isVisible = false;
   hostPositions: DOMRect | ClientRect;
   overlaySubscription: Subscription;
-  menuRef;
+  menuRef: HTMLElement;
 
   ngOnInit() {
     this.triggerButton.addEventListener('click', this.toggleVisibility.bind(this));
+    this.menuRef = this.overlay.appendElement(this.host.nativeElement);
+  }
+
+  ngOnDestroy() {
+    this.overlay.deleteElement(this.menuRef);
   }
 
   ngAfterViewChecked() {
@@ -44,14 +49,12 @@ export class MenuComponent implements OnInit, AfterViewChecked {
 
   private open() {
     this.isVisible = true;
-    this.overlay.openFullScreen();
+    this.overlay.openFullScreen(true);
     this.overlaySubscription = this.overlay.fullScreenClickEmitter.subscribe(click => this.close());
-    this.menuRef = this.overlay.appendElement(this.host.nativeElement);
   }
 
   private close() {
     this.isVisible = false;
-    this.overlay.deleteElement(this.menuRef);
     this.overlay.closeFullScreen();
     this.overlaySubscription.unsubscribe();
   }
