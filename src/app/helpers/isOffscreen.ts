@@ -8,6 +8,12 @@ interface Options {
     autoCorrect?: Boolean;
 }
 
+/**
+ * Checks if element falls of the screen. You can set autoCorrect to move it in view.
+ * @param el Element to check
+ * @param _options Funtion options
+*/
+
 export const isOffscreen = (el: HTMLElement, _options?: Options): Offscreen  => {
     const elPos = el.getBoundingClientRect();
     const options: Options = { ..._options };

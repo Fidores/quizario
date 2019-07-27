@@ -3,6 +3,7 @@ import { Component, OnInit, Input, AfterViewChecked, ElementRef, HostListener, O
 import { zoomIn, zoomOut } from 'ng-animate';
 import { trigger, transition } from '@angular/animations';
 import { OverlayService } from '../services/overlay/overlay.service';
+import { isOffscreen } from '../helpers/isOffscreen';
 
 @Component({
   selector: 'app-menu',
@@ -51,6 +52,7 @@ export class MenuComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.isVisible = true;
     this.overlay.openFullScreen(true);
     this.overlaySubscription = this.overlay.fullScreenClickEmitter.subscribe(click => this.close());
+    isOffscreen(this.menuRef, { autoCorrect: true });
   }
 
   private close() {
@@ -63,7 +65,7 @@ export class MenuComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.hostPositions = this.host.nativeElement.getBoundingClientRect();
     const btn = this.triggerButton.getBoundingClientRect();
     this.host.nativeElement.style.setProperty('top', `${ btn.top }px`);
-    this.host.nativeElement.style.setProperty('left', `${ btn.left - this.hostPositions.width - 20 }px`);
+    this.host.nativeElement.style.setProperty('left', `${ btn.left - this.hostPositions.width - 10 }px`);
   }
 
 }
