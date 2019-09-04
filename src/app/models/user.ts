@@ -1,3 +1,6 @@
+/**
+ * Model of user that is returned from API call.
+*/
 export interface User {
     _id: string;
     name: string;
@@ -8,6 +11,10 @@ export interface User {
     password?: string;
     gamesHistory: gamesHistory[];
 }
+
+/**
+ * Model of user that is needed to create or update already existing user in database.
+*/
 
 export interface UserPayload {
     name: string;
@@ -21,5 +28,3 @@ export interface gamesHistory {
     quizId: string;
     title: string;
 }
-
-
