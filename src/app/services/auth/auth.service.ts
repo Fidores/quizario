@@ -16,7 +16,7 @@ export class AuthService {
   ) { }
 
   logIn(email: string, password: string) {
-    return this.http.post<User>(environment.apiOrigin + '/auth', { password, email }, {
+    return this.http.post<User>(environment.api + '/auth', { password, email }, {
       headers: {
         'Content-Type': 'application/json'
       },

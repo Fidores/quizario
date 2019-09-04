@@ -68,7 +68,6 @@ export class OverlayService {
 
   /**
    * This function allows overlay component to listen for append element request. 
-   * @see appendElement 
   */
 
   get addElementEmitter() {
@@ -77,7 +76,6 @@ export class OverlayService {
 
   /**
    * This function allows overlay component to listen for delete element request. 
-   * @see deleteElement
   */
 
   get deleteElementEmitter() {
@@ -86,7 +84,6 @@ export class OverlayService {
 
   /**
    * This function allows overlay component to listen for open fullscreen request. 
-   * @see openFullscreen
   */
 
   get fullScreenEmitter() {
@@ -95,7 +92,6 @@ export class OverlayService {
 
   /**
    * This function allows overlay component to listen for click events. 
-   * @see emitClickOnFullScreen
   */
 
   get fullScreenClickEmitter() {

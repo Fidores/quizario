@@ -9,6 +9,13 @@ export interface User {
     gamesHistory: gamesHistory[];
 }
 
+export interface UserPayload {
+    name: string;
+    surname: string;
+    email: string;
+    password?: string;
+}
+
 export interface gamesHistory {
     dateOfGame: Date;
     quizId: string;

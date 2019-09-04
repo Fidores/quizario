@@ -11,24 +11,24 @@ export class SideNavService {
     private readonly overlay: OverlayService
   ) { }
 
-  private readonly _openListeaner$ = new Subject();
-  private readonly _closeListeaner$ = new Subject();
+  private readonly _openEmitter$ = new Subject();
+  private readonly _closeEmitter$ = new Subject();
 
   close(className = 'closed') {
-    this._openListeaner$.next(className);
+    this._openEmitter$.next(className);
     this.overlay.closeFullScreen();
   }
 
   open(className = 'opened') {
-    this._openListeaner$.next(className);
+    this._openEmitter$.next(className);
     this.overlay.openFullScreen();
   }
 
   get openListeaner() {
-    return this._openListeaner$;
+    return this._openEmitter$;
   }
 
   get closeListeaner() {
-    return this._closeListeaner$;
+    return this._closeEmitter$;
   }
 }

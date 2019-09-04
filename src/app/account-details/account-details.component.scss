@@ -11,3 +11,8 @@
     display: block;
     margin-top: rem(5px);
 }
+
+.actions {
+    display: flex;
+    flex-direction: row-reverse;
+}

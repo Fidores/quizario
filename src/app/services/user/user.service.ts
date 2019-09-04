@@ -1,4 +1,4 @@
-import { User } from './../../models/user';
+import { User, UserPayload } from './../../models/user';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -16,8 +16,8 @@ export class UserService {
 
   user$ = new Subject<User | null>();
 
-  signUp(user: User) {
-    return this.http.post<User>(`${ environment.apiOrigin }/users`, user, { observe: 'response'})
+  signUp(user: UserPayload) {
+    return this.http.post<User>(`${ environment.api }/users`, user, { observe: 'response'})
       .pipe(map(res => this.saveUserLocally(res)));
   }
 
@@ -27,7 +27,11 @@ export class UserService {
   }
 
   getUser() {
-    return this.http.get<User>(`${environment.apiOrigin}/users/me`);
+    return this.http.get<User>(`${environment.api}/users/me`);
+  }
+
+  updateUser(user: UserPayload) {
+    return this.http.put<User>(`${ environment.api }/users`, user);
   }
 
   /**
@@ -38,7 +42,7 @@ export class UserService {
     const token = localStorage.getItem('auth-token');
     if(!token) return null;
 
-    this.http.get<User>(environment.apiOrigin + '/users/me')
+    this.http.get<User>(environment.api + '/users/me')
       .subscribe(user => this.user$.next(user), (err: HttpErrorResponse) => this.user$.next(null));
   }
 

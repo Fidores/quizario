@@ -1,4 +1,10 @@
-<div class="details" *ngIf="userDetails">
+<div class="actions">
+    <button class="actions__edit btn btn__icon" (click)="toggleEdit()">
+        <fa-icon [icon]="faPen" size="lg"></fa-icon>
+    </button>
+</div>
+
+<div class="details" *ngIf="userDetails && !editMode else editUser;">
 
     <div class="details__detail u-margin-top-lg">
         <span class="details__header">Imię</span>
@@ -21,3 +27,16 @@
     </div>
     
 </div>
+
+<ng-template #editUser>
+    
+    <form class="edit-user" *ngIf="userDetails" [formGroup]="updateForm">
+        <h2>Edytuj konto</h2>
+        <input type="text" name="name" class="form-control u-margin-top-lg" placeholder="Nowe imię" formControlName="name">
+        <input type="text" name="surname" class="form-control u-margin-top-lg" placeholder="Nowe nazwisko" formControlName="surname">
+        <input type="email" name="email" class="form-control u-margin-top-lg" placeholder="Nowy email" formControlName="email">
+        <input type="password" class="form-control u-margin-top-lg" placeholder="Nowe hasło" formControlName="password">
+        <button type="button" class="btn btn--block btn--primary u-margin-top-lg" (click)="updateUser()"><fa-icon [icon]="faSave"></fa-icon></button>
+    </form>
+
+</ng-template>

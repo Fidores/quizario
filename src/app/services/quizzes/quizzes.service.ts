@@ -14,7 +14,7 @@ export class QuizzesService {
     private readonly http: HttpClient
   ) { }
 
-  url = `${environment.apiOrigin}/quizzes`;
+  url = `${environment.api}/quizzes`;
 
   /**
    * Retrieves sections of quizzes from database.
@@ -22,7 +22,7 @@ export class QuizzesService {
   */
 
   getHomeSections(): Observable<SectionOfQuizzes> {
-    return this.http.get<SectionOfQuizzes>(environment.backendOrigin);
+    return this.http.get<SectionOfQuizzes>(environment.backend);
   }
 
   /**

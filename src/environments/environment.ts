@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  backendOrigin: 'http://localhost:3000',
-  apiOrigin: 'http://localhost:3000/api'
+  backend: 'http://localhost:3000',
+  api: 'http://localhost:3000/api'
 };
 
 /*

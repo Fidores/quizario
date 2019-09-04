@@ -12,7 +12,7 @@
 
   <div formArrayName="questions" class="questions">
 
-    <div *ngFor="let question of questions.controls; let i=index" [formGroupName]="i" class="quiz__question">
+    <div *ngFor="let question of questions.controls; let i=index" [formGroupName]="i" class="quiz__question u-margin-top-lg">
 
       <h2>Pytanie {{ i + 1 }}</h2>
 
