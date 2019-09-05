@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -28,6 +28,10 @@ import { SearchComponent } from './search/search.component';
 import { InfoComponent } from './info/info.component';
 import { HistoryComponent } from './history/history.component';
 import { MenuComponent } from './menu/menu.component';
+import { ErrorsHandler } from './common/errors/errors-handler';
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   declarations: [
@@ -60,13 +64,21 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SwiperModule
+    SwiperModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      progressBar: true
+    })
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: ErrorHandler,
+      useClass: ErrorsHandler
     }
   ],
   bootstrap: [AppComponent]

@@ -32,10 +32,34 @@
     
     <form class="edit-user" *ngIf="userDetails" [formGroup]="updateForm">
         <h2>Edytuj konto</h2>
-        <input type="text" name="name" class="form-control u-margin-top-lg" placeholder="Nowe imię" formControlName="name">
-        <input type="text" name="surname" class="form-control u-margin-top-lg" placeholder="Nowe nazwisko" formControlName="surname">
-        <input type="email" name="email" class="form-control u-margin-top-lg" placeholder="Nowy email" formControlName="email">
-        <input type="password" class="form-control u-margin-top-lg" placeholder="Nowe hasło" formControlName="password">
+
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Nowe imię" formControlName="name">
+            <p class="hint hint-error" *ngIf="name.hasError('required') && name.touched">Imię jest <strong>wymagane</strong>.</p>
+            <p class="hint hint-error" *ngIf="name.hasError('minlength') && name.touched">Imię <strong>musi</strong> posiadać więcej niż {{ name.getError('minlength').requiredLength }} znaków.</p>
+            <p class="hint hint-error" *ngIf="name.hasError('maxlength') && name.touched">Imię <strong>nie może</strong> posiadać więcej niż {{ name.getError('maxlength').requiredLength }} znaków.</p>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="surname" class="form-control" placeholder="Nowe nazwisko" formControlName="surname">
+            <p class="hint hint-error" *ngIf="surname.hasError('required') && surname.touched">Nazwisko jest <strong>wymagane</strong>.</p>
+            <p class="hint hint-error" *ngIf="surname.hasError('minlength') && surname.touched">Nazwisko <strong>musi</strong> posiadać więcej niż {{ surname.getError('minlength').requiredLength }} znaków.</p>
+            <p class="hint hint-error" *ngIf="surname.hasError('maxlength') && surname.touched">Nazwisko <strong>nie może</strong> posiadać więcej niż {{ surname.getError('maxlength').requiredLength }} znaków.</p>
+        </div>
+
+        <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Nowy email" formControlName="email">
+            <p class="hint hint-error" *ngIf="email.hasError('required') && email.touched">Email jest <strong>wymagane</strong>.</p>
+            <p class="hint hint-error" *ngIf="email.hasError('maxlength') && email.touched">Email <strong>nie może</strong> posiadać więcej niż {{ email.getError('maxlength').requiredLength }} znaków.</p>
+            <p class="hint hint-error" *ngIf="email.hasError('email') && email.touched">Podaj <strong>prawidłowy</strong> adres email.</p>
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Nowe hasło" formControlName="password">
+            <p class="hint hint-error" *ngIf="password.hasError('minlength') && password.touched">Hasło <strong>musi</strong> posiadać więcej niż {{ password.getError('minlength').requiredLength }} znaków.</p>
+            <p class="hint hint-error" *ngIf="password.hasError('maxlength') && password.touched">Hasło <strong>nie może</strong> posiadać więcej niż {{ password.getError('maxlength').requiredLength }} znaków.</p>
+        </div>
+
         <button type="button" class="btn btn--block btn--primary u-margin-top-lg" (click)="updateUser()"><fa-icon [icon]="faSave"></fa-icon></button>
     </form>
 
