@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { take } from 'rxjs/operators';
 import { faPen, faSave } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-account-details',
@@ -12,12 +13,14 @@ import { faPen, faSave } from '@fortawesome/free-solid-svg-icons';
 })
 export class AccountDetailsComponent implements OnInit {
 
-  constructor( private readonly user: UserService ) { }
+  constructor(
+    private readonly user: UserService, 
+    private readonly notifications: ToastrService) { }
 
   userDetails: User;
   faPen = faPen;
   faSave = faSave;
-  editMode = true;
+  editMode = false;
 
   updateForm = new FormGroup({
     name: new FormControl('', [ Validators.minLength(3), Validators.maxLength(128), Validators.required ]),
@@ -35,7 +38,11 @@ export class AccountDetailsComponent implements OnInit {
   }
 
   updateUser() {
-    this.user.updateUser(this.updateForm.value).subscribe(user => this.editMode = false);
+    this.user.updateUser(this.updateForm.value).subscribe(user => {
+      this.editMode = false;
+      this.notifications.success('Aktualizacja danych zakończona powodzeniem', 'Twoje konto');
+      this.userDetails = user;
+    }, error => this.notifications.error('Aktualizacja danych zakończona niepowodzeniem', 'Twoje konto'));
   }
 
   // Getters for form

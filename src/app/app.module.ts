@@ -30,8 +30,7 @@ import { HistoryComponent } from './history/history.component';
 import { MenuComponent } from './menu/menu.component';
 import { ErrorsHandler } from './common/errors/errors-handler';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -65,10 +64,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     SwiperModule,
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right',
-      progressBar: true
-    })
+    ToastrModule.forRoot(environment.notificationsConfig)
   ],
   providers: [
     {
