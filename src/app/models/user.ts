@@ -1,3 +1,5 @@
+import { Quiz } from './quiz';
+
 /**
  * Model of user that is returned from API call.
 */
@@ -10,6 +12,7 @@ export interface User {
     isAdmin: boolean;
     password?: string;
     gamesHistory: gamesHistory[];
+    bookmarks: Bookmark[];
 }
 
 /**
@@ -27,4 +30,8 @@ export interface gamesHistory {
     dateOfGame: Date;
     quizId: string;
     title: string;
+}
+
+export interface Bookmark {
+    quiz: string;
 }

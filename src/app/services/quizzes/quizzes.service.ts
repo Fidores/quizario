@@ -71,4 +71,6 @@ export class QuizzesService {
   deleteQuiz(id: string): Observable<Quiz> {
     return this.http.delete<Quiz>(`${this.url}/${id}`);
   }
+
+  
 }

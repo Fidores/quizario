@@ -27,6 +27,7 @@ const routes: Routes = [
     { path: 'history', component: HistoryComponent },
     { path: 'my-quizzes', component: UserQuizzesComponent }
   ]},
+  { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

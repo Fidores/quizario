@@ -1,4 +1,4 @@
-<div class="quiz" [ngClass]="{ 'edit-mode': showActions }">
+<div class="quiz">
   
   <div class="quiz__title u-margin-auto u-text-center">
     <h4>{{ quiz.title }}</h4>
@@ -8,10 +8,18 @@
     <img src="{{ quiz.img ? env.backend + quiz.img : '../../assets/faq.png' }}">
   </div>
 
-  <div class="quiz__actions" *ngIf="showActions">
-    <a class="quiz__action btn btn--outline-warning" [routerLink]="['/edit-quiz', quiz._id]" [tooltip]="'Edytuj'"><fa-icon [icon]="faPen"></fa-icon></a>
-    <button class="quiz__action btn btn--outline-danger" (click)="deleteQuiz(quiz._id)" [tooltip]="'Usuń'"><fa-icon [icon]="faTrash"></fa-icon></button>
-    <a class="quiz__action btn btn--outline-success" [routerLink]="['/play-quiz', quiz._id]" [tooltip]="'Graj'"><fa-icon [icon]="faPlay"></fa-icon></a>
+  <div class="quiz__actions" >
+
+    <ng-container *ngIf="showActions">
+        <a class="quiz__action btn btn--outline-warning" [routerLink]="['/edit-quiz', quiz._id]" [tooltip]="'Edytuj'"><fa-icon [icon]="faPen"></fa-icon></a>
+        <button class="quiz__action btn btn--outline-danger" (click)="deleteQuiz(quiz._id)" [tooltip]="'Usuń'"><fa-icon [icon]="faTrash"></fa-icon></button>
+        <a class="quiz__action btn btn--outline-success" [routerLink]="['/play-quiz', quiz._id]" [tooltip]="'Graj'"><fa-icon [icon]="faPlay"></fa-icon></a>
+    </ng-container>
+
+    <button *ngIf="!isBookmarked else remove" class="quiz__action btn btn--outline-secondary" (click)="bookmark(quiz._id, $event)" [tooltip]="'Zapisz'"><fa-icon [icon]="faBookmark"></fa-icon></button>
+    <ng-template #remove>
+      <button *ngIf="isBookmarked" class="quiz__action btn btn--outline-secondary" (click)="bookmark(quiz._id, $event)" [tooltip]="'Usuń z zapisanych'"><fa-icon [icon]="faMinus"></fa-icon></button>
+    </ng-template>
   </div>
 
 </div>

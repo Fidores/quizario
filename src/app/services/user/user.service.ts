@@ -2,7 +2,7 @@ import { User, UserPayload } from './../../models/user';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -14,7 +14,8 @@ export class UserService {
     private readonly http: HttpClient
   ) { }
 
-  user$ = new Subject<User | null>();
+  // user$ = new Subject<User | null>();
+  user$ = new BehaviorSubject<User | null>(null);
 
   signUp(user: UserPayload) {
     return this.http.post<User>(`${ environment.api }/users`, user, { observe: 'response'})
@@ -54,5 +55,21 @@ export class UserService {
     localStorage.setItem('auth-token', response.headers.get('x-auth-token'));
     this.user$.next(response.body);
     return response.body;
+  }
+
+  /**
+   * Bookmarks quiz
+  */
+
+  bookmark(id: string) {
+    return this.http.post(`${environment.api}/users/bookmarks`, { id });
+  }
+
+  /**
+   * Gets bookmarked quizzes
+  */
+
+  getBookmarks() {
+    return this.http.get(`${environment.api}/users/bookmarks`);
   }
 }
