@@ -53,11 +53,11 @@ export class QuizComponent implements OnInit {
     this.isBookmarked = this.checkBookmark();
   }
 
-  checkBookmark() {
+  private checkBookmark() {
     return this.bookmarks.some(bookmark => bookmark.quiz === this.quiz._id);
   }
 
-  get bookmarks() {
+  private get bookmarks() {
     return this._user.user$.value.bookmarks;
   }
 
