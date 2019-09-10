@@ -31,6 +31,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ErrorsHandler } from './common/errors/errors-handler';
 import { ToastrModule } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { ImageInputComponent } from './view/image-input/image-input.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { environment } from 'src/environments/environment';
     SearchComponent,
     InfoComponent,
     HistoryComponent,
-    MenuComponent
+    MenuComponent,
+    ImageInputComponent,
   ],
   imports: [
     BrowserModule,
