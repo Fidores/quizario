@@ -69,7 +69,8 @@ export class CreateQuizComponent implements OnInit {
         d: new FormControl('', [Validators.required, Validators.maxLength(50)])
       }),
       rightAnswer: new FormControl('', Validators.required),
-      duration: new FormControl('', [Validators.required, Validators.min(0)])
+      duration: new FormControl('', [Validators.required, Validators.min(0)]),
+      img: new FormControl('')
     });
 
     this.questions.push(question);
@@ -85,6 +86,10 @@ export class CreateQuizComponent implements OnInit {
 
   getAnswer(index: number, answer: string) {
     return (this.quizForm.get('questions') as FormArray).at(index).get('answers').get(answer)
+  }
+  
+  getImage(index: number) {
+    return (this.quizForm.get('questions') as FormArray).at(index).get('img');
   }
 
   get questions() {

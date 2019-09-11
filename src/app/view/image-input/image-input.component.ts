@@ -1,18 +1,25 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, Renderer2, forwardRef, OnInit } from '@angular/core';
 import { faFileImage } from '@fortawesome/free-solid-svg-icons';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'image-input',
   templateUrl: './image-input.component.html',
-  styleUrls: ['./image-input.component.scss']
+  styleUrls: ['./image-input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ImageInputComponent),
+      multi: true
+    }
+  ]
 })
-export class ImageInputComponent implements OnInit {
+export class ImageInputComponent implements OnInit, ControlValueAccessor {
 
-  constructor() { }
+  constructor(private readonly renderer: Renderer2) { }
 
   @Input('name') name: string;
-  @Input('path') imgPath: string | ArrayBuffer;
-
   @ViewChild('imgPreview') imgPreview: ElementRef<HTMLImageElement>;
   @ViewChild('imgInput') imgInput: ElementRef<HTMLInputElement>;
 
@@ -20,13 +27,28 @@ export class ImageInputComponent implements OnInit {
 
   faFileImage = faFileImage;
 
-  ngOnInit() {
-    console.log(this.imgPath);
-    this.imgInput.nativeElement.addEventListener('input', $event => this.reader.readAsDataURL(this.imgInput.nativeElement.files[0]));
-    this.reader.addEventListener('load', ($event: any) => this.imgPath = $event.target.result);
+  change;
+
+  writeValue(obj: string): void {
+    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', environment.backend + obj);
   }
 
-  get image() {
+  registerOnChange(fn: any): void {
+    this.change = fn;
+  }
+
+  registerOnTouched(fn: any): void {}
+
+  ngOnInit() {
+    this.reader.addEventListener('load', ($event: any) => this.renderer.setProperty(this.imgPreview.nativeElement, 'src', $event.target.result));
+  }
+
+  onChange($event) {
+    this.change(this.value);
+    this.reader.readAsDataURL(this.value);
+  }
+
+  get value() {
     return this.imgInput.nativeElement.files[0];
   }
 

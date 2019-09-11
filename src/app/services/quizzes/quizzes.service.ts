@@ -60,6 +60,7 @@ export class QuizzesService {
   */
 
   updateQuiz(id: string, quiz: Quiz) {
+    console.log(quiz);
     return this.http.put<Quiz>(`${this.url}/${id}`, quiz);
   }
 
