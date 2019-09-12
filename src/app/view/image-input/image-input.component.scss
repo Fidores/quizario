@@ -27,3 +27,15 @@
         @include absolute-centering;
     }
 }
+
+:host.ng-invalid.ng-touched {
+    .image-input {
+        border-color: $danger-color;
+    }
+}
+
+:host.ng-valid.ng-touched {
+    .image-input {
+        border-color: $success-color;
+    }
+}

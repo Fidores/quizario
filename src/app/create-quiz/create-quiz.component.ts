@@ -6,6 +6,7 @@ import { Quiz } from '../models/quiz';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { ExtensionValidator } from '../common/validators/extensionValidator';
 
 @Component({
   selector: 'create-quiz',
@@ -70,7 +71,7 @@ export class CreateQuizComponent implements OnInit {
       }),
       rightAnswer: new FormControl('', Validators.required),
       duration: new FormControl('', [Validators.required, Validators.min(0)]),
-      img: new FormControl('')
+      img: new FormControl('', ExtensionValidator('image/png', 'image/jpeg'))
     });
 
     this.questions.push(question);

@@ -28,16 +28,19 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   faFileImage = faFileImage;
 
   change;
+  touched;
 
-  writeValue(obj: string): void {
-    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', environment.backend + obj);
+  writeValue(path: string): void {
+    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', path ? environment.backend + path : '');
   }
 
   registerOnChange(fn: any): void {
     this.change = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.touched = fn;
+  }
 
   ngOnInit() {
     this.reader.addEventListener('load', ($event: any) => this.renderer.setProperty(this.imgPreview.nativeElement, 'src', $event.target.result));
@@ -45,7 +48,12 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
 
   onChange($event) {
     this.change(this.value);
+    this.touched();
     this.reader.readAsDataURL(this.value);
+  }
+
+  onTouched() {
+    this.touched();
   }
 
   get value() {
