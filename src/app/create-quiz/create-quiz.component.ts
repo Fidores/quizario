@@ -1,6 +1,6 @@
 import { QuizzesService } from './../services/quizzes/quizzes.service';
 import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faPlus, faSave, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Quiz } from '../models/quiz';
 import { Title } from '@angular/platform-browser';
@@ -21,6 +21,8 @@ export class CreateQuizComponent implements OnInit {
     private readonly router: Router,
     private readonly route: ActivatedRoute
   ) { }
+
+  @ViewChild('form') form: ElementRef<HTMLFormElement>;
 
   faPlus = faPlus;
   faSave = faSave;
@@ -51,7 +53,7 @@ export class CreateQuizComponent implements OnInit {
   }
 
   addQuiz() {
-    const quiz = this.quizForm.value as Quiz;
+    const quiz = this.quizForm.value;
     this.quizzes.addQuiz(quiz).subscribe((quiz) => this.router.navigate(['/']));
   }
   
@@ -71,7 +73,7 @@ export class CreateQuizComponent implements OnInit {
       }),
       rightAnswer: new FormControl('', Validators.required),
       duration: new FormControl('', [Validators.required, Validators.min(0)]),
-      img: new FormControl('', ExtensionValidator('image/png', 'image/jpeg'))
+      img: new FormControl('', [ExtensionValidator('image/png', 'image/jpeg')])
     });
 
     this.questions.push(question);

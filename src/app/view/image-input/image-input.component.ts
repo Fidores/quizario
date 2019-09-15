@@ -43,13 +43,15 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    this.reader.addEventListener('load', ($event: any) => this.renderer.setProperty(this.imgPreview.nativeElement, 'src', $event.target.result));
+    this.reader.addEventListener('load', async $event => {
+      this.renderer.setProperty(this.imgPreview.nativeElement, 'src', $event.target.result);
+    });
   }
 
-  onChange($event) {
-    this.change(this.value);
+  async onChange($event) {
+    this.change(await this.toBase64(this.imgInput.nativeElement.files[0]));
     this.touched();
-    this.reader.readAsDataURL(this.value);
+    this.reader.readAsDataURL(this.imgInput.nativeElement.files[0]);
   }
 
   onTouched() {
@@ -59,5 +61,12 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   get value() {
     return this.imgInput.nativeElement.files[0];
   }
+
+  toBase64 = (file: File) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
 
 }
