@@ -49,9 +49,8 @@ export class QuizzesService {
    * @param Quiz Quiz that will be saved to database.
   */
 
-  addQuiz(quiz: Quiz): Observable<Quiz> | any {
-    console.log(quiz);
-    // return this.http.post<Quiz>(`${this.url}`, quiz);
+  addQuiz(quiz: Quiz): Observable<Quiz> {
+    return this.http.post<Quiz>(`${this.url}`, quiz);
   }
 
   /**

@@ -32,7 +32,7 @@ export class CreateQuizComponent implements OnInit {
   id: string;
 
   quizForm = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
+    title: new FormControl('AAAAAAAAA', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
     questions: new FormArray([], [Validators.required])
   });
 
@@ -64,15 +64,15 @@ export class CreateQuizComponent implements OnInit {
 
   addQuestion() {
     const question = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
+      title: new FormControl('AAAAAAAAAA', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
       answers: new FormGroup({
-        a: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-        b: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-        c: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-        d: new FormControl('', [Validators.required, Validators.maxLength(50)])
+        a: new FormControl('AAAAAAAAAA', [Validators.required, Validators.maxLength(50)]),
+        b: new FormControl('AAAAAAAAAA', [Validators.required, Validators.maxLength(50)]),
+        c: new FormControl('AAAAAAAAAA', [Validators.required, Validators.maxLength(50)]),
+        d: new FormControl('AAAAAAAAAA', [Validators.required, Validators.maxLength(50)])
       }),
-      rightAnswer: new FormControl('', Validators.required),
-      duration: new FormControl('', [Validators.required, Validators.min(0)]),
+      rightAnswer: new FormControl('a', Validators.required),
+      duration: new FormControl(0, [Validators.required, Validators.min(0)]),
       img: new FormControl('', [ExtensionValidator('image/png', 'image/jpeg')])
     });
 

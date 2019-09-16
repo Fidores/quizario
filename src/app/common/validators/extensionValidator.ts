@@ -11,8 +11,9 @@ export function ExtensionValidator(...extensions) {
         let file = control.value as string | any | File;
 
         if(file && typeof file === 'string') {
-            const temp = file.split(',')[0].split(';')[0].replace('data:', '');
-            file = { file, type: temp };
+            // Retrive mime type from Base64 header
+            const type = file.split(',')[0].split(';')[0].replace('data:', '');
+            file = { file, type };
         }
 
         if(file) 

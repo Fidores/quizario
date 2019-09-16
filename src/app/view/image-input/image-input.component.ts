@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef, Input, Renderer2, forwardRef, OnInit } from '@angular/core';
 import { faFileImage } from '@fortawesome/free-solid-svg-icons';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'image-input',
@@ -30,8 +29,8 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   change;
   touched;
 
-  writeValue(path: string): void {
-    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', path ? environment.backend + path : '');
+  writeValue(image): void {
+    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', image);
   }
 
   registerOnChange(fn: any): void {
@@ -43,9 +42,7 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   }
 
   ngOnInit() {
-    this.reader.addEventListener('load', async $event => {
-      this.renderer.setProperty(this.imgPreview.nativeElement, 'src', $event.target.result);
-    });
+    this.reader.addEventListener('load', $event => this.renderer.setProperty(this.imgPreview.nativeElement, 'src', this.reader.result));
   }
 
   async onChange($event) {
