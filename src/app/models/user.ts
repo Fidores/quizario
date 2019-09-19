@@ -27,7 +27,7 @@ export interface UserPayload {
 }
 
 export interface gamesHistory {
-    dateOfGame: Date;
+    date: Date;
     quizId: string;
     title: string;
 }

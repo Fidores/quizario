@@ -58,7 +58,7 @@ export class QuizComponent implements OnInit {
   }
 
   private get bookmarks() {
-    return this._user.user$.value.bookmarks;
+    return this._user.isAuthorized() && !!this._user.user$.value.bookmarks ? this._user.user$.value.bookmarks : [];
   }
 
 }

@@ -29,8 +29,8 @@
         class="quiz-board__answer btn btn--block" 
         *ngFor="let answer of question.answers | keyvalue"
         [ngClass]="{ 
-          'quiz-board__answer--valid': choosenAnswer && question.rightAnswer === answer.key, 
-          'quiz-board__answer--invalid': choosenAnswer && question.rightAnswer !== answer.key, 
+          'quiz-board__answer--valid': choosenAnswer && question.correctAnswer === answer.key, 
+          'quiz-board__answer--invalid': choosenAnswer && question.correctAnswer !== answer.key, 
           'quiz-board__answer--choosen': choosenAnswer === answer.key }" 
         (click)="chooseAnswer(answer.key)">{{ answer.key }}) {{ answer.value }}</button>
         
@@ -59,7 +59,7 @@
         <div class="summary__name" [ngClass]="question.isAnsweredCorrectly ? 'summary__name--correct' : 'summary__name--wrong'">{{ question.title }}</div>
 
         <div class="summary__answer">
-          {{ question.answers[question.rightAnswer] }}
+          {{ question.answers[question.correctAnswer] }}
         </div>
       </div>
 

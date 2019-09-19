@@ -71,7 +71,7 @@ export class CreateQuizComponent implements OnInit {
         c: new FormControl('AAAAAAAAAA', [Validators.required, Validators.maxLength(50)]),
         d: new FormControl('AAAAAAAAAA', [Validators.required, Validators.maxLength(50)])
       }),
-      rightAnswer: new FormControl('a', Validators.required),
+      correctAnswer: new FormControl('a', Validators.required),
       duration: new FormControl(0, [Validators.required, Validators.min(0)]),
       img: new FormControl('', [ExtensionValidator('image/png', 'image/jpeg')])
     });
@@ -83,8 +83,8 @@ export class CreateQuizComponent implements OnInit {
     return (this.quizForm.get('questions') as FormArray).at(index).get('title');
   }
 
-  getRightAnswer(index: number) {
-    return (this.quizForm.get('questions') as FormArray).at(index).get('rightAnswer');
+  getCorrectAnswer(index: number) {
+    return (this.quizForm.get('questions') as FormArray).at(index).get('correctAnswer');
   }
 
   getAnswer(index: number, answer: string) {

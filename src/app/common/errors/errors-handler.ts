@@ -42,6 +42,8 @@ export class ErrorsHandler implements ErrorHandler {
             }
 
         }
+
+        console.log(error);
         
     }
 }

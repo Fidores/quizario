@@ -25,8 +25,4 @@ export class AuthService {
     }).pipe( map(res => this.user.saveUserLocally(res)) );
   }
 
-  isAuthorized(): boolean {
-    return localStorage.getItem('auth-token') ? true : false;
-  }
-
 }

@@ -6,8 +6,8 @@
     <div>
       <input type="text" class="form-control" placeholder="Imię" formControlName="name">
       <p class="hint-error" *ngIf="name.hasError('required') && name.touched">Imię jest <strong>wymagane</strong>.</p>
-      <p class="hint-error" *ngIf="name.hasError('minlength') && name.touched">Imię nie <strong>może być krótsze</strong> niż {{ name.getError('minlength').requiredLength }} znaki.</p>
-      <p class="hint-error" *ngIf="name.hasError('maxlength') && name.touched">Imię nie <strong>może być dłuższe</strong> niż {{ name.getError('maxlength').requiredLength }} znaki.</p>
+      <p class="hint-error" *ngIf="name.hasError('minlength') && name.touched">Imię <strong>nie może być krótsze</strong> niż {{ name.getError('minlength').requiredLength }} znaki.</p>
+      <p class="hint-error" *ngIf="name.hasError('maxlength') && name.touched">Imię <strong>nie może być dłuższe</strong> niż {{ name.getError('maxlength').requiredLength }} znaki.</p>
     </div>
 
     <div>

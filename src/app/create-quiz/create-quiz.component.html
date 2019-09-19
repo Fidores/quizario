@@ -59,26 +59,26 @@
       <div class="form-group">
         <h3>Prawidłowa odpowiedź</h3>
         <label>
-          <input type="radio" value="a" formControlName="rightAnswer">
+          <input type="radio" value="a" formControlName="correctAnswer">
           a
         </label>
 
         <label>
-          <input type="radio" value="b" formControlName="rightAnswer">
+          <input type="radio" value="b" formControlName="correctAnswer">
           b
         </label>
 
         <label>
-          <input type="radio" value="c" formControlName="rightAnswer">
+          <input type="radio" value="c" formControlName="correctAnswer">
           c
         </label>
 
         <label>
-          <input type="radio" value="d" formControlName="rightAnswer">
+          <input type="radio" value="d" formControlName="correctAnswer">
           d
         </label>
 
-        <p class="hint-error" *ngIf="getRightAnswer(i).hasError('required') && getRightAnswer(i).touched">Prawidłowa odpowiedź jest <strong>wymagana</strong>.</p>
+        <p class="hint-error" *ngIf="getCorrectAnswer(i).hasError('required') && getCorrectAnswer(i).touched">Prawidłowa odpowiedź jest <strong>wymagana</strong>.</p>
       </div>
 
       <div class="form-group">

@@ -30,7 +30,7 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   touched;
 
   writeValue(image): void {
-    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', image);
+    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', image)
   }
 
   registerOnChange(fn: any): void {
@@ -65,5 +65,12 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
     reader.onload = () => resolve(reader.result);
     reader.onerror = error => reject(error);
   });
+
+  arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+  };
 
 }

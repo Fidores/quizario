@@ -10,7 +10,7 @@ export interface Quiz {
 export interface Question {
     title: string;
     answers: [ Answer ];
-    rightAnswer: string;
+    correctAnswer: string;
     duration: number;
     img?: string ;
     isAnsweredCorrectly?: number;

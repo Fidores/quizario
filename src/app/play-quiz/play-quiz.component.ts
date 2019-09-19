@@ -77,7 +77,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   chooseAnswer(answer: string) {
     if (this.choosenAnswer) return;
     this.choosenAnswer = answer;
-    this.question.isAnsweredCorrectly = this.question.rightAnswer === answer ? 1 : 0;
+    this.question.isAnsweredCorrectly = this.question.correctAnswer === answer ? 1 : 0;
   }
 
   calculateScore(): number {

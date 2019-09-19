@@ -71,4 +71,8 @@ export class UserService {
   getBookmarks() {
     return this.http.get(`${environment.api}/users/bookmarks`);
   }
+
+  isAuthorized(): boolean {
+    return localStorage.getItem('auth-token') ? true : false;
+  }
 }
