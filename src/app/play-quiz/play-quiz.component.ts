@@ -1,5 +1,6 @@
+import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
 import { Question, Quiz } from './../models/quiz';
-import { switchMap, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
@@ -23,6 +24,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   faArrowRight = faArrowRight;
 
   environment = environment;
+  arrayBufferToBase64 = arrayBufferToBase64;
 
   index = 0;
   quiz: Quiz;

@@ -1,6 +1,9 @@
 import { Component, ViewChild, ElementRef, Input, Renderer2, forwardRef, OnInit } from '@angular/core';
 import { faFileImage } from '@fortawesome/free-solid-svg-icons';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Image, BinaryData } from 'src/app/models/quiz';
+import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
+import { fileToBase64 } from 'src/app/helpers/fileToBase64';
 
 @Component({
   selector: 'image-input',
@@ -26,11 +29,15 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
 
   faFileImage = faFileImage;
 
-  change;
-  touched;
+  change: Function;
+  touched: Function;
 
-  writeValue(image): void {
-    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', image)
+  writeValue(image: Image): void {
+    const img = new Object(image.binaryData) as BinaryData;
+  
+    if(img.hasOwnProperty('data'))
+      this.renderer.setProperty(this.imgPreview.nativeElement, 'src', `${ image.header },${ arrayBufferToBase64(img.data) }`);
+    
   }
 
   registerOnChange(fn: any): void {
@@ -46,31 +53,17 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   }
 
   async onChange($event) {
-    this.change(await this.toBase64(this.imgInput.nativeElement.files[0]));
+    this.change(await fileToBase64(this.value));
     this.touched();
-    this.reader.readAsDataURL(this.imgInput.nativeElement.files[0]);
+    this.reader.readAsDataURL(this.value);
   }
 
   onTouched() {
     this.touched();
   }
 
-  get value() {
+  get value(): File {
     return this.imgInput.nativeElement.files[0];
   }
-
-  toBase64 = (file: File) => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-
-  arrayBufferToBase64(buffer) {
-    var binary = '';
-    var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => binary += String.fromCharCode(b));
-    return window.btoa(binary);
-  };
 
 }

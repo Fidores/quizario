@@ -12,8 +12,18 @@ export interface Question {
     answers: [ Answer ];
     correctAnswer: string;
     duration: number;
-    img?: string ;
+    img?: Image;
     isAnsweredCorrectly?: number;
+}
+
+export interface Image {
+    binaryData: BinaryData;
+    header: string;
+}
+
+export interface BinaryData {
+    type: string;
+    data: ArrayBuffer;
 }
 
 export interface Answer {

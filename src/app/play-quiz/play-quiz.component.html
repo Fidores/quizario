@@ -19,9 +19,7 @@
       {{ question.title }}
     </h3>
 
-    <div class="quiz-board__image" *ngIf="question.img" [style.background-image]="'url('+ environment.backend + question.img +')'">
-
-    </div>
+    <img [src]="question.img.header + ',' + arrayBufferToBase64(question.img.binaryData.data)" alt="quiz-image" class="quiz-board__image">
 
     <div class="quiz-board__answers">
 

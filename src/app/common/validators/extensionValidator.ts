@@ -1,4 +1,5 @@
 import { AbstractControl } from '@angular/forms';
+import { BinaryData } from 'src/app/models/quiz';
 
 /**
  * Checks if file is of required type. It accepts File object and Base64. If no file is passed, it does not return any errors.
@@ -8,7 +9,7 @@ import { AbstractControl } from '@angular/forms';
 export function ExtensionValidator(...extensions) {
 
     return function extensionValidator(control: AbstractControl): {[key: string]: any} | null {
-        let file = control.value as string | any | File;
+        let file = control.value as string | any | File | BinaryData;
 
         if(file && typeof file === 'string') {
             // Retrive mime type from Base64 header
