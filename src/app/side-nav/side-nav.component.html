@@ -1,41 +1,29 @@
 <div class="side-nav" [ngClass]="status">
-    <div class="side-nav__item side-nav__logo">
+  <div class="side-nav__item side-nav__logo">
 
-        <div class="side-nav__item--icon" (click)="close()">
-          <fa-icon [icon]="faBars" size="lg"></fa-icon>
-        </div>
-      
-        <div class="side-nav__item--text side-nav__logo-text">
-          Quizario
-        </div>
+    <div class="side-nav__item--icon" (click)="close()">
+      <fa-icon [icon]="faBars" size="lg"></fa-icon>
+    </div>
 
+    <div class="side-nav__item--text side-nav__logo-text">
+      Quizario
+    </div>
+
+  </div>
+
+  <div class="side-nav__body" (click)="close()">
+
+    <a class="side-nav__item" routerLink="/">
+
+      <div class="side-nav__item--icon">
+        <fa-icon [icon]="faHome" size="lg"></fa-icon>
       </div>
 
-      <div class="side-nav__body" (click)="close()">
-
-          <a class="side-nav__item" routerLink="/">
-
-            <div class="side-nav__item--icon">
-              <fa-icon [icon]="faHome" size="lg"></fa-icon>
-            </div>
-          
-            <div class="side-nav__item--text">
-              Główna
-            </div>
-
-          </a>
-          
-          <a class="side-nav__item">
-
-            <div class="side-nav__item--icon">
-              <fa-icon [icon]="faSave" size="lg"></fa-icon>
-            </div>
-          
-            <div class="side-nav__item--text">
-              Zapisane
-            </div>
-
-          </a>
-
+      <div class="side-nav__item--text">
+        Główna
       </div>
+
+    </a>
+
+  </div>
 </div>
