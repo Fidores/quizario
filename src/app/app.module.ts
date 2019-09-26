@@ -55,7 +55,7 @@ import { ImageInputComponent } from './view/image-input/image-input.component';
     InfoComponent,
     HistoryComponent,
     MenuComponent,
-    ImageInputComponent
+    ImageInputComponent,
   ],
   imports: [
     BrowserModule,

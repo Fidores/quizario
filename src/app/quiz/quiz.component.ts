@@ -14,13 +14,13 @@ import { take } from 'rxjs/operators';
 export class QuizComponent implements OnInit {
 
   constructor(
-    private readonly _quizzes: QuizzesService,
-    private readonly _user: UserService
+    private readonly _quizzes: QuizzesService
   ) { }
 
   @Input('quiz') quiz: Quiz;
   @Input('showActions') showActions: boolean = false;
   @Output('onQuizDelete') onQuizDelete = new EventEmitter<Quiz>();
+  @Output('onDeleteFromBookmarks') onDeleteFromBookmarks = new EventEmitter(); 
 
   faTrash = faTrash;
   faPen = faPen;
@@ -32,33 +32,11 @@ export class QuizComponent implements OnInit {
   isBookmarked: boolean;
 
   ngOnInit() {
-    this.isBookmarked = this.checkBookmark();
+    
   }
 
   deleteQuiz(id: string) {
     this._quizzes.deleteQuiz(id).pipe(take(1)).subscribe(quiz => this.onQuizDelete.emit(this.quiz));
-  }
-
-  bookmark(id: string, $event: Event) {
-    $event.stopPropagation();
-    this._user.bookmark(id).subscribe();
-
-    if(this.isBookmarked){
-      const bookmark = this.bookmarks.find(bookmark => bookmark.quiz === this.quiz._id);
-      const index = this.bookmarks.indexOf(bookmark);
-      this.bookmarks.splice(index, 1);
-    } else
-      this.bookmarks.push({ quiz: this.quiz._id });
-
-    this.isBookmarked = this.checkBookmark();
-  }
-
-  private checkBookmark() {
-    return this.bookmarks.some(bookmark => bookmark.quiz === this.quiz._id);
-  }
-
-  private get bookmarks() {
-    return this._user.isAuthorized() && !!this._user.user$.value.bookmarks ? this._user.user$.value.bookmarks : [];
   }
 
 }

@@ -57,20 +57,8 @@ export class UserService {
   }
 
   /**
-   * Bookmarks quiz
+   * Cheks if user is logged in.
   */
-
-  bookmark(id: string) {
-    return this.http.post(`${environment.api}/users/bookmarks`, { id });
-  }
-
-  /**
-   * Gets bookmarked quizzes
-  */
-
-  getBookmarks() {
-    return this.http.get(`${environment.api}/users/bookmarks`);
-  }
 
   isAuthorized(): boolean {
     return localStorage.getItem('auth-token') ? true : false;
