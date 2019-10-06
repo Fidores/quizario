@@ -12,17 +12,6 @@ export interface User {
     gamesHistory: Game[];
 }
 
-/**
- * Model of user that is needed to create or update already existing user in database.
-*/
-
-export interface UserPayload {
-    name: string;
-    surname: string;
-    email: string;
-    password?: string;
-}
-
 export interface Game {
     date: Date;
     quizId: string;

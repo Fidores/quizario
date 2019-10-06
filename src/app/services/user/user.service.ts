@@ -1,4 +1,4 @@
-import { User, UserPayload } from './../../models/user';
+import { User } from './../../models/user';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,7 @@ export class UserService {
 
   user$ = new BehaviorSubject<User | null>(null);
 
-  signUp(user: UserPayload) {
+  signUp(user: Partial<User>) {
     return this.http.post<User>(`${ environment.api }/users`, user, { observe: 'response'})
       .pipe(map(res => this.saveUserLocally(res)));
   }
@@ -30,7 +30,7 @@ export class UserService {
     return this.http.get<User>(`${environment.api}/users/me`);
   }
 
-  updateUser(user: UserPayload) {
+  updateUser(user: Partial<User>) {
     return this.http.put<User>(`${ environment.api }/users`, user);
   }
 
