@@ -1,0 +1,15 @@
+@import '../sass/abstracts/mixins';
+
+.not-found {
+    text-align: center;
+    position: relative;
+    height: 80vh;
+
+    &__heading {
+        font-size: 5rem;
+    }
+
+    &__placer {
+        @include absolute-centering;
+    }
+}
