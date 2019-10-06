@@ -1,8 +1,9 @@
-import { SectionOfQuizzes } from './../../models/quiz';
+import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Quiz } from 'src/app/models/quiz';
+import { HttpClient } from '@angular/common/http';
+import { Quiz, APIQuiz, SectionOfQuizzes, Image, APISectionOfQuizzes } from 'src/app/models/quiz';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,8 +22,17 @@ export class QuizzesService {
    * @returns Array od Sections.
   */
 
-  getHomeSections(): Observable<SectionOfQuizzes> {
-    return this.http.get<SectionOfQuizzes>(environment.backend);
+  getHomeSections(): Observable<SectionOfQuizzes[]> {
+    return this.http.get<APISectionOfQuizzes[]>(environment.backend)
+      .pipe(
+        map(sections => 
+
+          sections.map(section => {
+            return { title: section.title, quizzes: section.quizzes.map(quiz => this.convertImagesToBase64(quiz)) } as any;
+          })
+
+        )
+      );
   }
 
   /**
@@ -32,7 +42,7 @@ export class QuizzesService {
   */
 
   getQuizz(id: string, params?): Observable<Quiz> {
-    return this.http.get<Quiz>(`${this.url}/${id}`, { params });
+    return this.http.get<APIQuiz>(`${this.url}/${id}`, { params }).pipe(map(apiQuiz => this.convertImagesToBase64(apiQuiz)));
   }
 
   /**
@@ -41,7 +51,8 @@ export class QuizzesService {
   */
 
   getAllQuizzes(query): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>(`${this.url}`, { params: { query: JSON.stringify(query) } });
+    return this.http.get<APIQuiz[]>(`${this.url}`, { params: { query: JSON.stringify(query) } })
+      .pipe(map(apiQuizzes => apiQuizzes.map(apiQuiz => this.convertImagesToBase64(apiQuiz))));
   }
 
   /**
@@ -50,7 +61,7 @@ export class QuizzesService {
   */
 
   addQuiz(quiz: Quiz): Observable<Quiz> {
-    return this.http.post<Quiz>(`${this.url}`, quiz);
+    return this.http.post<APIQuiz>(`${this.url}`, quiz).pipe(map(apiQuiz => this.convertImagesToBase64(apiQuiz)));
   }
 
   /**
@@ -60,7 +71,7 @@ export class QuizzesService {
   */
 
   updateQuiz(id: string, quiz: Quiz) {
-    return this.http.put<Quiz>(`${this.url}/${id}`, quiz);
+    return this.http.put<APIQuiz>(`${this.url}/${id}`, quiz).pipe(map(apiQuiz => this.convertImagesToBase64(apiQuiz)));
   }
 
   /**
@@ -69,7 +80,22 @@ export class QuizzesService {
   */
 
   deleteQuiz(id: string): Observable<Quiz> {
-    return this.http.delete<Quiz>(`${this.url}/${id}`);
+    return this.http.delete<APIQuiz>(`${this.url}/${id}`).pipe(map(apiQuiz => this.convertImagesToBase64(apiQuiz)));
+  }
+
+  /**
+   * Converts quiz images from Buffer type to Base64 type. It converts Quiz.img and Quiz.questions[i].img
+   * @param quiz 
+  */
+
+  private convertImagesToBase64(quiz: APIQuiz): Quiz {
+    if(quiz.img && quiz.img.binaryData) quiz.img = `${quiz.img.header},${arrayBufferToBase64(quiz.img.binaryData.data)}` as unknown as Image;
+    
+    quiz.questions.forEach((question, index) => {
+      if(question.img && question.img.binaryData) quiz.questions[index].img = `${question.img.header},${arrayBufferToBase64(question.img.binaryData.data)}` as unknown as Image;
+    });
+
+    return quiz as unknown as Quiz;
   }
   
 }

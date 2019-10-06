@@ -41,6 +41,7 @@
         width: auto;
         margin: rem(20px) auto;
         display: block;
+        border-radius: 3px;
     }
 
     &__answers {
@@ -133,6 +134,21 @@
 
         &__answers {
             grid-template-columns: 1fr;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .summary {
+        width: 90vw;
+        padding: rem(10px) rem(20px);
+    }
+
+    .quiz-board {
+        &__image {
+            max-width: 90%;
+            height: auto;
+            margin: 0px auto rem(20px) auto;
         }
     }
 }

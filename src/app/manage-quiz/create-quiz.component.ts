@@ -1,4 +1,4 @@
-import { QuizzesService } from './../services/quizzes/quizzes.service';
+import { QuizzesService } from '../services/quizzes/quizzes.service';
 import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { faPlus, faSave, faPen } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ import { ExtensionValidator } from '../common/validators/extensionValidator';
   templateUrl: './create-quiz.component.html',
   styleUrls: ['./create-quiz.component.scss']
 })
-export class CreateQuizComponent implements OnInit {
+export class ManageQuizComponent implements OnInit {
 
   constructor(
     private readonly quizzes: QuizzesService,
@@ -33,6 +33,7 @@ export class CreateQuizComponent implements OnInit {
 
   quizForm = new FormGroup({
     title: new FormControl('AAAAAAAAA', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
+    img: new FormControl(''),
     questions: new FormArray([], [Validators.required])
   });
 

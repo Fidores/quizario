@@ -7,3 +7,9 @@ body {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
 }
+
+@media (max-width: 320px) {
+    html {
+        font-size: 85%;
+    }
+}

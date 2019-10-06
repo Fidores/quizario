@@ -1,4 +1,4 @@
-import { UserService } from './../services/user/user.service';
+import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
 import { QuizzesService } from './../services/quizzes/quizzes.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../models/quiz';
@@ -29,10 +29,10 @@ export class QuizComponent implements OnInit {
   faMinus = faMinus;
 
   env = environment;
+  arrayBufferToBase64 = arrayBufferToBase64;
   isBookmarked: boolean;
 
   ngOnInit() {
-    
   }
 
   deleteQuiz(id: string) {

@@ -1,6 +1,6 @@
 <div class="image-input">
 
-  <input type="file" title="" #imgInput (input)="onChange()">
+  <input type="file" title="" #imgInput (change)="onChange($event)">
 
   <fa-icon [icon]="faFileImage" size="10x"></fa-icon>
 

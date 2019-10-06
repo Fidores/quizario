@@ -4,6 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Image, BinaryData } from 'src/app/models/quiz';
 import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
 import { fileToBase64 } from 'src/app/helpers/fileToBase64';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'image-input',
@@ -32,12 +33,8 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   change: Function;
   touched: Function;
 
-  writeValue(image: Image): void {
-    const img = new Object(image.binaryData) as BinaryData;
-  
-    if(img.hasOwnProperty('data'))
-      this.renderer.setProperty(this.imgPreview.nativeElement, 'src', `${ image.header },${ arrayBufferToBase64(img.data) }`);
-    
+  writeValue(image: string): void {
+    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', image);
   }
 
   registerOnChange(fn: any): void {

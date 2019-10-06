@@ -3,7 +3,7 @@ import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './route-guards/auth/auth.guard';
-import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { ManageQuizComponent } from './manage-quiz/create-quiz.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent, data: { animation: 'search' } },
   { path: 'login', component: LoginComponent, canActivate: [NotAuthGuard], data: { animation: 'login' } },
   { path: 'signup', component: SignUpComponent, canActivate: [NotAuthGuard], data: { animation: 'signup' } },
-  { path: 'create-quiz', component: CreateQuizComponent, canActivate: [AuthGuard], data: { animation: 'create-quiz' } },
-  { path: 'edit-quiz/:id', component: CreateQuizComponent, canActivate: [AuthGuard], data: { animation: 'edit-quiz' } },
+  { path: 'create-quiz', component: ManageQuizComponent, canActivate: [AuthGuard], data: { animation: 'create-quiz' } },
+  { path: 'edit-quiz/:id', component: ManageQuizComponent, canActivate: [AuthGuard], data: { animation: 'edit-quiz' } },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard], data: { animation: 'account' }, children: [
     { path: 'me', component: AccountDetailsComponent },
     { path: 'history', component: HistoryComponent },

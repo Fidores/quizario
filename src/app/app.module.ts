@@ -19,7 +19,7 @@ import { QuizzesSliderComponent } from './quizzes-slider/quizzes-slider.componen
 import { PlayQuizComponent } from './play-quiz/play-quiz.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './common/HTTP/AuthHttpInterceptor';
-import { CreateQuizComponent } from './create-quiz/create-quiz.component';
+import { ManageQuizComponent } from './manage-quiz/create-quiz.component';
 import { AccountComponent } from './account/account.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { UserQuizzesComponent } from './user-quizzes/user-quizzes.component';
@@ -46,7 +46,7 @@ import { ImageInputComponent } from './view/image-input/image-input.component';
     SideNavComponent,
     QuizzesSliderComponent,
     PlayQuizComponent,
-    CreateQuizComponent,
+    ManageQuizComponent,
     AccountComponent,
     AccountDetailsComponent,
     UserQuizzesComponent,

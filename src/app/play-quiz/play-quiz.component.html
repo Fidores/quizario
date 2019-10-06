@@ -19,7 +19,7 @@
       {{ question.title }}
     </h3>
 
-    <img *ngIf="question.img" [src]="question.img.header + ',' + arrayBufferToBase64(question.img.binaryData.data)" alt="quiz-image" class="quiz-board__image">
+    <img *ngIf="question.img" [src]="question.img" alt="quiz-image" class="quiz-board__image">
 
     <div class="quiz-board__answers">
 

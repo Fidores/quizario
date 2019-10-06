@@ -22,7 +22,7 @@
     }
 
     img {
-        height: 280px;
+        max-height: 280px;
         width: auto;
         @include absolute-centering;
     }
@@ -37,5 +37,15 @@
 :host.ng-valid.ng-touched {
     .image-input {
         border-color: $success-color;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-input {
+
+        img {
+            max-width: 95%;
+            height: auto;
+        }
     }
 }

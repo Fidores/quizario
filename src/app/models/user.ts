@@ -9,7 +9,7 @@ export interface User {
     registrationTime: Date;
     isAdmin: boolean;
     password?: string;
-    gamesHistory: gamesHistory[];
+    gamesHistory: Game[];
 }
 
 /**
@@ -23,7 +23,7 @@ export interface UserPayload {
     password?: string;
 }
 
-export interface gamesHistory {
+export interface Game {
     date: Date;
     quizId: string;
     title: string;

@@ -1,3 +1,7 @@
+/**
+ * Interface of a quiz that is returned from a service. The difference between Quiz and APIQuiz is that Quiz has converted images to Base64 format.
+*/
+
 export interface Quiz {
     _id: string;
     title: string;
@@ -12,8 +16,21 @@ export interface Question {
     answers: [ Answer ];
     correctAnswer: string;
     duration: number;
-    img?: Image;
-    isAnsweredCorrectly?: number;
+    img?: string;
+    [x: string]: any;
+}
+
+/**
+ * Interface of a quiz that is returned from api call.
+*/
+
+export interface APIQuiz extends Omit<Quiz, 'img' | 'questions'> {
+    img: Image;
+    questions: [ APIQuestion ];
+}
+
+export interface APIQuestion extends Omit<Question, 'img'> {
+    img: Image
 }
 
 export interface Image {
@@ -36,4 +53,8 @@ export interface Answer {
 export interface SectionOfQuizzes {
     title: string;
     quizzes: [ Quiz ];
+}
+
+export interface APISectionOfQuizzes extends Omit<SectionOfQuizzes, 'quizzes'> {
+    quizzes: [ APIQuiz ]
 }

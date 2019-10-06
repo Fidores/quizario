@@ -7,7 +7,7 @@ const notificationsConfig: Partial<GlobalConfig> = {
 
 export const environment = {
   production: true,
-  backend: 'http://localhost:3000',
-  api: 'http://localhost:3000/api',
+  backend: 'http://192.168.1.11:3000',
+  api: 'http://192.168.1.11:3000/api',
   notificationsConfig
 };
