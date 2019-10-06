@@ -20,8 +20,8 @@ export class QuizzesSliderComponent implements OnInit {
   env = environment;
 
   @Input('section') section: SectionOfQuizzes;
-  @ViewChild('prevBtn') prevArrow: ElementRef<Element>;
-  @ViewChild('nextBtn') nextArrow: ElementRef<Element>;
+  @ViewChild('prevBtn', { static: true }) prevArrow: ElementRef<Element>;
+  @ViewChild('nextBtn', { static: true }) nextArrow: ElementRef<Element>;
 
   swiperNavigation: SwiperNavigationInterface = {
     prevEl: {} as HTMLElement,

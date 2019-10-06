@@ -23,8 +23,8 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   constructor(private readonly renderer: Renderer2) { }
 
   @Input('name') name: string;
-  @ViewChild('imgPreview') imgPreview: ElementRef<HTMLImageElement>;
-  @ViewChild('imgInput') imgInput: ElementRef<HTMLInputElement>;
+  @ViewChild('imgPreview', { static: true }) imgPreview: ElementRef<HTMLImageElement>;
+  @ViewChild('imgInput', { static: true }) imgInput: ElementRef<HTMLInputElement>;
 
   reader: FileReader = new FileReader();
 

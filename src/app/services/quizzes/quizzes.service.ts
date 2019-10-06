@@ -1,8 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { Quiz, APIQuiz, SectionOfQuizzes, Image, APISectionOfQuizzes } from 'src/app/models/quiz';
 import { environment } from 'src/environments/environment';
 

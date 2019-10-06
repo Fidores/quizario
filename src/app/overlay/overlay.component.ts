@@ -25,7 +25,7 @@ export class OverlayComponent implements OnInit {
     private hostEl: ElementRef
   ) { }
 
-  @ViewChild('fullScreenContainer') container: ElementRef<HTMLElement>;
+  @ViewChild('fullScreenContainer', { static: false }) container: ElementRef<HTMLElement>;
   fullScreenConfig: FullScreenOptions = {
     isOpened: false,
     isTransparent: false

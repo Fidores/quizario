@@ -3,7 +3,7 @@ import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './route-guards/auth/auth.guard';
-import { ManageQuizComponent } from './manage-quiz/create-quiz.component';
+import { ManageQuizComponent } from './manage-quiz/manage-quiz.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

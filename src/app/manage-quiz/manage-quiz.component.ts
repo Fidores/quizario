@@ -9,9 +9,9 @@ import { take } from 'rxjs/operators';
 import { ExtensionValidator } from '../common/validators/extensionValidator';
 
 @Component({
-  selector: 'create-quiz',
-  templateUrl: './create-quiz.component.html',
-  styleUrls: ['./create-quiz.component.scss']
+  selector: 'manage-quiz',
+  templateUrl: './manage-quiz.component.html',
+  styleUrls: ['./manage-quiz.component.scss']
 })
 export class ManageQuizComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class ManageQuizComponent implements OnInit {
     private readonly route: ActivatedRoute
   ) { }
 
-  @ViewChild('form') form: ElementRef<HTMLFormElement>;
+  @ViewChild('form', { static: true }) form: ElementRef<HTMLFormElement>;
 
   faPlus = faPlus;
   faSave = faSave;
