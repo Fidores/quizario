@@ -7,7 +7,7 @@
     border-radius: 5px;
     position: relative;
 
-    input[type="file"] {
+    &__input {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -16,12 +16,20 @@
         cursor: pointer;
     }
 
-    .ng-fa-icon {
+    &__actions {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 20px;
+        z-index: 100;
+    }
+
+    &__icon {
         @include absolute-centering;
         color: lighten($light-primary-color, 15%);
     }
 
-    img {
+    &__image {
         max-height: 280px;
         width: auto;
         @include absolute-centering;
@@ -43,9 +51,10 @@
 @media (max-width: 768px) {
     .image-input {
 
-        img {
+        &__image {
             max-width: 95%;
             height: auto;
         }
+        
     }
 }

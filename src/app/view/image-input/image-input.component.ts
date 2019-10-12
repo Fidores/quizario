@@ -1,10 +1,7 @@
 import { Component, ViewChild, ElementRef, Input, Renderer2, forwardRef, OnInit } from '@angular/core';
-import { faFileImage } from '@fortawesome/free-solid-svg-icons';
+import { faFileImage, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Image, BinaryData } from 'src/app/models/quiz';
-import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
 import { fileToBase64 } from 'src/app/helpers/fileToBase64';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'image-input',
@@ -29,6 +26,7 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
   reader: FileReader = new FileReader();
 
   faFileImage = faFileImage;
+  faTrash = faTrash;
 
   change: Function;
   touched: Function;
@@ -45,6 +43,15 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
     this.touched = fn;
   }
 
+  onTouched() {
+    this.touched();
+  }
+
+  removeImage() {
+    this.imgInput.nativeElement.value = '';   
+    this.renderer.setProperty(this.imgPreview.nativeElement, 'src', '');
+  }
+
   ngOnInit() {
     this.reader.addEventListener('load', $event => this.renderer.setProperty(this.imgPreview.nativeElement, 'src', this.reader.result));
   }
@@ -55,12 +62,12 @@ export class ImageInputComponent implements OnInit, ControlValueAccessor {
     this.reader.readAsDataURL(this.value);
   }
 
-  onTouched() {
-    this.touched();
-  }
-
   get value(): File {
     return this.imgInput.nativeElement.files[0];
+  }
+
+  get hasValue(): boolean {
+    return !!this.imgPreview.nativeElement.getAttribute('src');
   }
 
 }

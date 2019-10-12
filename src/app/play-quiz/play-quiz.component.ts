@@ -27,7 +27,6 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   arrayBufferToBase64 = arrayBufferToBase64;
 
   index = 0;
-  quiz: Quiz;
   questions: Question[] = [];
   question: Question;
   choosenAnswer: string;
@@ -39,9 +38,8 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     this.quizzes.getQuizz(this.route.snapshot.params.id)
     .pipe(take(1))
     .subscribe(quiz => {
-      this.quiz = quiz;
-      this.questions = this.quiz.questions;
-      this.question = this.quiz.questions[0];
+      this.questions = quiz.questions;
+      this.question = quiz.questions[0];
       this.timeLeft = this.question.duration;
       this.setTimer(this.question.duration);
     });
@@ -67,9 +65,7 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   setTimer(duration: number): void {
     if (!duration) return;
 
-    const source = timer(1000, 1000);
-
-    this.questionTimer = source.pipe(take(duration + 1))
+    timer(1000, 1000).pipe(take(duration + 1))
       .subscribe(time => {
         if (time === duration) { this.next(); }
         this.timeLeft = duration - time;
@@ -82,12 +78,12 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
     this.question.isAnsweredCorrectly = this.question.correctAnswer === answer ? 1 : 0;
   }
 
-  calculateScore(): number {
+  get score(): number {
     return (this.numberOfCorrectAnswers / this.questions.length) * 100;
   }
 
   get numberOfCorrectAnswers(): number {
-    return this.questions.reduce((answers, question) => question.isAnsweredCorrectly ? answers + 1 : answers, 0);
+    return this.questions.filter(question => question.isAnsweredCorrectly === 1).length;
   }
 
 }

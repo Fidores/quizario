@@ -18,6 +18,7 @@ export interface Question {
     duration: number;
     img?: string;
     [x: string]: any;
+    isAnsweredCorrectly?: number;
 }
 
 /**

@@ -1,9 +1,19 @@
 <div class="image-input">
 
-  <input type="file" title="" #imgInput (change)="onChange($event)">
+  <div class="image-input__actions">
 
-  <fa-icon [icon]="faFileImage" size="10x"></fa-icon>
+    <button type="button" class="btn" (click)="removeImage()">
 
-  <img src="" #imgPreview>
+      <fa-icon class="image-input__remove-image btn btn--danger" [icon]="faTrash"></fa-icon>
+
+    </button>
+
+  </div>
+
+  <input class="image-input__input" type="file" title="" #imgInput (change)="onChange($event)">
+
+  <fa-icon class="image-input__icon" [icon]="faFileImage" size="10x" *ngIf="!hasValue"></fa-icon>
+  
+  <img class="image-input__image" #imgPreview>
 
 </div>
