@@ -9,7 +9,5 @@ describe('NotAuthGuard', () => {
     });
   });
 
-  it('should ...', inject([NotAuthGuard], (guard: NotAuthGuard) => {
-    expect(guard).toBeTruthy();
-  }));
+
 });
