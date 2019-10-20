@@ -49,6 +49,14 @@ describe('AccountDetailsComponentUnit', () => {
             component.toggleEdit();
 
             expect(component.editMode).toBeTruthy();
+
+            component.toggleEdit();
+
+            expect(component.editMode).toBeFalsy();
+
+            component.toggleEdit();
+
+            expect(component.editMode).toBeTruthy();
         });
 
     });

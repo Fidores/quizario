@@ -1,6 +1,10 @@
 <div class="games">
+
   <a class="games__game u-margin-top-lg" *ngFor="let game of history$ | async" [routerLink]="['/play-quiz', game.quizId]">
+
     <div class="games__title">{{ game.title }}</div>
     <div class="games__date">{{ game.dateOfGame | date:'medium' }}</div>
+    
   </a>
+
 </div>

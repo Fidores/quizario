@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs';
 import { QuizzesService } from './../services/quizzes/quizzes.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { SectionOfQuizzes } from '../models/quiz';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,7 @@ export class HomeComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
-  sections;
+  sections: Observable<SectionOfQuizzes[]>;
 
   ngOnInit() {
     this.pageTitle.setTitle('Quizario');

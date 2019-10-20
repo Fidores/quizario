@@ -1,6 +1,7 @@
 import { map } from 'rxjs/operators';
 import { UserService } from './../services/user/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-history',
@@ -13,7 +14,7 @@ export class HistoryComponent implements OnInit {
     private readonly user: UserService
   ) { }
 
-  history$;
+  history$: Observable<any>;
 
   ngOnInit() {
     this.history$ = this.user.getUser().pipe(map(user => user.gamesHistory));
