@@ -7,7 +7,6 @@ import { UserService } from './../services/user/user.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountDetailsComponent } from './account-details.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { User } from '../models/user';
 
