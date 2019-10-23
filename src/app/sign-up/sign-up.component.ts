@@ -5,7 +5,7 @@ import { UserService } from './../services/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { of, empty } from 'rxjs';
 
 @Component({
