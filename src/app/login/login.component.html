@@ -31,7 +31,7 @@
     <p class="hint-error" *ngIf="password.hasError('required') && password.touched">Hasło jest <strong>wymagane.</strong></p>
   </div>
 
-  <p class="hint-error" *ngIf="error">{{ error.error }}</p>
+  <p class="hint-error log-in-error" *ngIf="error">{{ error.error }}</p>
 
   <p>Nie masz jeszcze konta ? <a routerLink="/signup" class="link">Załóż konto tutaj</a></p>
 

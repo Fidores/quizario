@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './../services/auth/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor(
     private readonly auth: AuthService,
@@ -21,9 +21,6 @@ export class LoginComponent implements OnInit {
     password: '123456'
   };
   error: HttpErrorResponse;
-
-  ngOnInit() {
-  }
 
   logInUser(form: NgForm) {
     this.error = null;
