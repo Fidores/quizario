@@ -1,4 +1,3 @@
-import { User } from './../models/user';
 import { of, throwError } from 'rxjs';
 import { AuthService } from './../services/auth/auth.service';
 import { RouterModule } from '@angular/router';

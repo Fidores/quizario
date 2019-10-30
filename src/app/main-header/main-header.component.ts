@@ -4,7 +4,7 @@ import { UserService } from './../services/user/user.service';
 import { SideNavService } from './../services/side-nav/side-nav.service';
 import { Component, OnInit } from '@angular/core';
 import { faBars, faUser, faPlusSquare, faSearch, faSignOutAlt, faSignInAlt, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'main-header',

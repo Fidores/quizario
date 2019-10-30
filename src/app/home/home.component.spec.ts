@@ -37,4 +37,8 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create component', () => {
+    expect(component).toBeTruthy();
+  });
+
 });
