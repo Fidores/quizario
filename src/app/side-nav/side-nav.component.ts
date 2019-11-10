@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faHome, faBars, faSave, faHistory } from '@fortawesome/free-solid-svg-icons';
 import { SideNavService } from '../services/side-nav/side-nav.service';
 import { OverlayService } from '../services/overlay/overlay.service';
@@ -22,8 +22,8 @@ export class SideNavComponent implements OnInit {
   status: string;
 
   ngOnInit() {
-    this.sideNav.closeListeaner.subscribe(className => this.status = className as string);
-    this.sideNav.openListeaner.subscribe(className => this.status = className as string);
+    this.sideNav.closeListeaner.subscribe(() => this.status = 'closed');
+    this.sideNav.openListeaner.subscribe(() => this.status = 'opened');
     this.overlay.fullScreenClickEmitter.subscribe(click => { if(this.status === 'opened') this.close() });
   }
 

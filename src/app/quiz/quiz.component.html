@@ -1,4 +1,4 @@
-<div class="quiz">
+<div class="quiz" *ngIf="quiz">
   
   <div class="quiz__title u-margin-auto u-text-center">
     <h4>{{ quiz.title }}</h4>
@@ -8,13 +8,11 @@
     <img [src]="quiz.img || '../../assets/faq.png'">
   </div>
 
-  <div class="quiz__actions" >
+  <div class="quiz__actions" *ngIf="showActions">
 
-    <ng-container *ngIf="showActions">
-        <a class="quiz__action btn btn--outline-warning" [routerLink]="['/edit-quiz', quiz._id]" [tooltip]="'Edytuj'"><fa-icon [icon]="faPen"></fa-icon></a>
-        <button class="quiz__action btn btn--outline-danger" (click)="deleteQuiz(quiz._id)" [tooltip]="'Usuń'"><fa-icon [icon]="faTrash"></fa-icon></button>
-        <a class="quiz__action btn btn--outline-success" [routerLink]="['/play-quiz', quiz._id]" [tooltip]="'Graj'"><fa-icon [icon]="faPlay"></fa-icon></a>
-    </ng-container>
+    <a class="quiz__action btn btn--outline-warning" [routerLink]="['/edit-quiz', quiz._id]" [tooltip]="'Edytuj'"><fa-icon [icon]="faPen"></fa-icon></a>
+    <button class="quiz__action btn btn--outline-danger" (click)="deleteQuiz(quiz._id)" [tooltip]="'Usuń'"><fa-icon [icon]="faTrash"></fa-icon></button>
+    <a class="quiz__action btn btn--outline-success" [routerLink]="['/play-quiz', quiz._id]" [tooltip]="'Graj'"><fa-icon [icon]="faPlay"></fa-icon></a>
 
   </div>
 

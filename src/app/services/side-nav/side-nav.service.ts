@@ -14,13 +14,13 @@ export class SideNavService {
   private readonly _openEmitter$ = new Subject();
   private readonly _closeEmitter$ = new Subject();
 
-  close(className = 'closed') {
-    this._openEmitter$.next(className);
+  close() {
+    this._openEmitter$.next();
     this.overlay.closeFullScreen();
   }
 
-  open(className = 'opened') {
-    this._openEmitter$.next(className);
+  open() {
+    this._openEmitter$.next();
     this.overlay.openFullScreen();
   }
 

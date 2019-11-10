@@ -1,9 +1,8 @@
-import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
 import { QuizzesService } from './../services/quizzes/quizzes.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Quiz } from '../models/quiz';
 import { environment } from 'src/environments/environment';
-import { faTrash, faPen, faPlay, faBookmark, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPen, faPlay, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +10,7 @@ import { take } from 'rxjs/operators';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent {
 
   constructor(
     private readonly _quizzes: QuizzesService
@@ -20,20 +19,13 @@ export class QuizComponent implements OnInit {
   @Input('quiz') quiz: Quiz;
   @Input('showActions') showActions: boolean = false;
   @Output('onQuizDelete') onQuizDelete = new EventEmitter<Quiz>();
-  @Output('onDeleteFromBookmarks') onDeleteFromBookmarks = new EventEmitter(); 
 
   faTrash = faTrash;
   faPen = faPen;
   faPlay = faPlay;
-  faBookmark = faBookmark;
   faMinus = faMinus;
 
   env = environment;
-  arrayBufferToBase64 = arrayBufferToBase64;
-  isBookmarked: boolean;
-
-  ngOnInit() {
-  }
 
   deleteQuiz(id: string) {
     this._quizzes.deleteQuiz(id).pipe(take(1)).subscribe(quiz => this.onQuizDelete.emit(this.quiz));
