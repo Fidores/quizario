@@ -1,5 +1,4 @@
-import { arrayBufferToBase64 } from 'src/app/helpers/arrayBufferToBase64';
-import { Question, Quiz } from './../models/quiz';
+import { Question } from './../models/quiz';
 import { take } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -24,9 +23,8 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   faArrowRight = faArrowRight;
 
   environment = environment;
-  arrayBufferToBase64 = arrayBufferToBase64;
 
-  index = 0;
+  currentQuestion = 0;
   questions: Question[] = [];
   question: Question;
   choosenAnswer: string;
@@ -50,13 +48,11 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
   }
 
   next(): void {
-    if (this.index + 1 > this.questions.length - 1) {
-      this.isFinished = true;
-      return;
-    }
+    if (this.isLast()) return this.endQuiz();
+    
     this.choosenAnswer = '';
-    this.index++;
-    this.question = this.questions[this.index];
+    this.currentQuestion++;
+    this.question = this.questions[this.currentQuestion];
     if (this.questionTimer) { this.questionTimer.unsubscribe(); }
     this.timeLeft = this.question.duration;
     this.setTimer(this.question.duration);
@@ -72,10 +68,19 @@ export class PlayQuizComponent implements OnInit, OnDestroy {
       });
   }
 
-  chooseAnswer(answer: string) {
+  chooseAnswer(answer: string): void {
     if (this.choosenAnswer) return;
+
     this.choosenAnswer = answer;
     this.question.isAnsweredCorrectly = this.question.correctAnswer === answer ? 1 : 0;
+  }
+
+  isLast(): boolean {
+    return this.currentQuestion + 1 > this.questions.length - 1;
+  }
+
+  endQuiz(): void {
+    this.isFinished = true;
   }
 
   get score(): number {
